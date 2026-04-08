@@ -1,0 +1,137 @@
+---
+import { ClientRouter } from "astro:transitions"
+import "../styles/global.css"
+import { Navbar } from "@/components/Navbar"
+import Footer from "@/components/Footer.astro"
+import ThemeProvider from "@/components/ThemeProvider.astro"
+import { siteConfig, getLocationText } from "@/config/site"
+import PopupModal from "@/components/ui/PopupModal.astro"
+import FreeScanButton from "@/components/ui/FreeScanButton.astro"
+
+interface Props {
+  title: string
+  description?: string
+  keywords?: string
+  ogImage?: string
+}
+
+const { 
+  title: rawTitle, 
+  description: rawDescription = siteConfig.seo.defaultDescription,
+  keywords = siteConfig.seo.keywords,
+  ogImage = siteConfig.seo.ogImage,
+} = Astro.props
+
+const description = getLocationText(rawDescription)
+const fullTitle = rawTitle.includes(siteConfig.seo.siteName) ? rawTitle : `${rawTitle} | ${siteConfig.seo.siteName}`
+const canonical = new URL(Astro.url.pathname, siteConfig.seo.siteUrl).href
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    
+    <!-- Force all pages to be indexable -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <link rel="canonical" href={canonical} />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    
+    <link rel="icon" type="image/avif" href={siteConfig.logo.src} />
+    <link rel="apple-touch-icon" href={siteConfig.logo.src} />
+    <meta name="theme-color" content={siteConfig.colors.primary} />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={siteConfig.seo.twitterHandle} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": siteConfig.business.name,
+      "description": description,
+      "url": siteConfig.seo.siteUrl,
+      "telephone": siteConfig.contact.phoneFormatted,
+      "email": siteConfig.contact.email,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteConfig.location.address,
+        "addressLocality": siteConfig.location.city,
+        "addressRegion": siteConfig.location.state
+      }
+    })} />
+    
+    <!-- Preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Barlow + Barlow Condensed from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    </noscript>
+    
+    <ClientRouter />
+    <ThemeProvider />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Navbar client:idle />
+    <main class="flex-1">
+      <slot />
+    </main>
+    
+    <Footer />
+    <FreeScanButton />
+    <PopupModal />
+
+    <script>
+      // Optimize scroll animations for mobile
+      function initScrollAnimations() {
+        // Skip animations on mobile for better performance
+        if (window.innerWidth < 768) {
+          document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach((el) => {
+            el.classList.add('is-visible');
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      // Run on initial load
+      initScrollAnimations();
+
+      // Re-run after Astro page transitions
+      document.addEventListener('astro:page-load', initScrollAnimations);
+    </script>
+  </body>
+</html>

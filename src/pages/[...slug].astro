@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages")
+  return pages
+    .filter(page => !page.id.startsWith("index") && page.id.includes("/") && !page.data.draft)
+    .map((page) => {
+      const slug = page.id.replace(/\.mdx?$/, '')
+      return {
+        params: { slug },
+        props: { page },
+      }
+    })
+}
+
+const { page } = Astro.props
+const { Content } = await page.render()
+---
+
+<BaseLayout 
+  title={page.data.title} 
+  description={page.data.description}
+  keywords={page.data.keywords}
+  ogImage={page.data.ogImage}
+  noindex={page.data.noindex}
+>
+  <Content />
+</BaseLayout>

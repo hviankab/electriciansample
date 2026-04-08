@@ -1,0 +1,126 @@
+---
+interface Feature {
+  icon: string
+  title: string
+  description: string
+}
+
+interface Props {
+  cityName: string
+  title?: string
+  description?: string
+  features?: Feature[]
+}
+
+const { 
+  cityName,
+  title = `Reliable HVAC Services in ${cityName}`,
+  description = `{business} is proud to provide top-tier heating, ventilation, and air conditioning (HVAC) services across ${cityName}. Whether you're in the coastal neighborhoods or inland areas, our expert technicians are here to ensure your comfort in every season. With a commitment to quality and efficiency, we're the trusted choice for ${cityName}'s residents and businesses.`,
+  features = [
+    {
+      icon: "🏙️",
+      title: "Local Expertise",
+      description: `${cityName}'s unique climate and diverse properties present specific HVAC challenges. Our team specializes in delivering tailored solutions to fit the needs of your space.`
+    },
+    {
+      icon: "🔧",
+      title: "Comprehensive Services",
+      description: "From system installations to emergency repairs, we offer a full range of heating, cooling, and air quality services."
+    },
+    {
+      icon: "⭐",
+      title: "Customer-Focused Approach",
+      description: "We prioritize your satisfaction with prompt responses, transparent pricing, and reliable service."
+    }
+  ]
+} = Astro.props
+---
+
+<section class="py-16 md:py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Header -->
+      <div class="text-center mb-12" data-animate="fade-up">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          {title}
+        </h2>
+        <p class="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
+          {description}
+        </p>
+      </div>
+
+      <!-- Why Choose Us -->
+      <div class="mb-8" data-animate="fade-up">
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+          Why Choose Us
+        </h3>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid md:grid-cols-3 gap-8" data-animate="fade-up" data-animate-delay="200">
+        {features.map((feature) => (
+          <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100">
+            <!-- Icon -->
+            <div class="text-5xl mb-4">
+              {feature.icon}
+            </div>
+            
+            <!-- Title -->
+            <h4 class="text-xl font-bold text-gray-900 mb-3">
+              {feature.title}
+            </h4>
+            
+            <!-- Description -->
+            <p class="text-gray-600 leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animation styles */
+  [data-animate] {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-animate="fade-up"] {
+    transform: translateY(40px);
+  }
+
+  [data-animate].is-visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  [data-animate-delay="200"].is-visible {
+    transition-delay: 200ms;
+  }
+</style>
+
+<script>
+  // Scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-animate]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

@@ -1,0 +1,164 @@
+---
+interface Props {
+  logos?: string[];
+}
+
+const {
+  logos = [
+    "/newimages/24-7-Emergency-Service.webp",
+    "/newimages/Angies-List-Award.webp",
+    "/newimages/BBB-Logo.webp",
+    "/newimages/Certified.webp",
+    "/newimages/Google-Reviews-Logo.webp",
+    "/newimages/Home-Advisor-Logo.webp",
+    "/newimages/Licensed.webp",
+  ]
+} = Astro.props;
+---
+
+<section class="logo-carousel-section">
+  <div class="carousel-container">
+    <div class="carousel-track">
+      {/* First set of logos */}
+      {logos.map((logo) => (
+        <div class="logo-item">
+          <img src={logo} alt="Badge" loading="lazy" decoding="async" />
+        </div>
+      ))}
+      {/* Duplicate set for seamless loop */}
+      {logos.map((logo) => (
+        <div class="logo-item">
+          <img src={logo} alt="Badge" loading="lazy" decoding="async" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-carousel-section {
+    background: white;
+    padding: 3rem 0;
+    overflow: hidden;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Gradient fade on edges */
+  .carousel-container::before,
+  .carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+  }
+
+  .carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 30s linear infinite;
+    width: fit-content;
+  }
+
+  .logo-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    min-width: 120px;
+  }
+
+  .logo-item img {
+    max-height: 100%;
+    max-width: 150px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .logo-item:hover img {
+    transform: scale(1.05);
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause animation on hover */
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .logo-carousel-section {
+      padding: 2rem 0;
+    }
+
+    .carousel-track {
+      gap: 3rem;
+      animation-duration: 20s;
+    }
+
+    .logo-item {
+      height: 60px;
+      min-width: 100px;
+    }
+
+    .logo-item img {
+      max-width: 120px;
+    }
+
+    .carousel-container::before,
+    .carousel-container::after {
+      width: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo-carousel-section {
+      padding: 1.5rem 0;
+    }
+
+    .carousel-track {
+      gap: 2rem;
+      animation-duration: 15s;
+    }
+
+    .logo-item {
+      height: 50px;
+      min-width: 80px;
+    }
+
+    .logo-item img {
+      max-width: 100px;
+    }
+  }
+</style>

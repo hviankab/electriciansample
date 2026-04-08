@@ -1,0 +1,146 @@
+---
+interface Plan {
+  title: string;
+  price: string;
+  period: string;
+  subtitle: string;
+  features: string[];
+  buttonText: string;
+  buttonHref: string;
+  featured?: boolean;
+  badge?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  plans: Plan[];
+  footerNote?: string;
+}
+
+const {
+  title,
+  description,
+  plans,
+  footerNote = "All plans include flexible payment options and can be customized to your needs"
+} = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-black mb-4">
+        {title}
+      </h2>
+      <p class="text-gray-600 text-base leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
+      {plans.map((plan) => (
+        <div class={`relative rounded-2xl p-8 transition-all ${
+          plan.featured 
+            ? 'bg-[#0f2942] text-white shadow-2xl scale-105' 
+            : 'bg-[#f0f4f8] text-black shadow-lg'
+        }`}>
+          
+          <!-- Badge -->
+          {plan.badge && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="bg-[#F7B32B] text-black px-4 py-1 rounded-full text-xs font-bold uppercase">
+                {plan.badge}
+              </span>
+            </div>
+          )}
+
+          <!-- Plan Title -->
+          <h3 class={`text-xl font-bold uppercase mb-6 ${
+            plan.featured ? 'text-white' : 'text-[#0f2942]'
+          }`}>
+            {plan.title}
+          </h3>
+
+          <!-- Price -->
+          <div class="mb-4">
+            <span class={`text-5xl font-bold ${
+              plan.featured ? 'text-[#F7B32B]' : 'text-[#4a90e2]'
+            }`}>
+              {plan.price}
+            </span>
+            <span class={`text-lg ${
+              plan.featured ? 'text-white/80' : 'text-gray-500'
+            }`}>
+              {plan.period}
+            </span>
+          </div>
+
+          <!-- Subtitle -->
+          <p class={`text-sm mb-6 pb-6 border-b ${
+            plan.featured ? 'text-white/80 border-white/20' : 'text-gray-600 border-gray-300'
+          }`}>
+            {plan.subtitle}
+          </p>
+
+          <!-- Features -->
+          <ul class="space-y-4 mb-8">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <svg 
+                  class={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                    plan.featured ? 'text-[#F7B32B]' : 'text-[#4a90e2]'
+                  }`} 
+                  fill="currentColor" 
+                  viewBox="0 0 20 20"
+                >
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class={`text-sm ${
+                  plan.featured ? 'text-white' : 'text-gray-700'
+                }`}>
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Button -->
+          <a
+            href={plan.buttonHref}
+            class={`pricing-button block w-full text-center px-6 py-3 rounded-lg font-semibold text-sm uppercase transition-all ${
+              plan.featured
+                ? 'bg-white text-[#0f2942]'
+                : 'bg-[#4a90e2] text-white'
+            }`}
+          >
+            {plan.buttonText} →
+          </a>
+
+          <!-- Payment Icons -->
+          <div class="flex items-center justify-center gap-6 mt-6">
+            <img src="/images/visa.png" alt="Visa" class="h-6 object-contain" />
+            <img src="/images/card.png" alt="Mastercard" class="h-6 object-contain" />
+            <img src="/images/paypal.png" alt="PayPal" class="h-6 object-contain" />
+            <img src="/images/jcb.png" alt="JCB" class="h-6 object-contain" />
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Footer Note -->
+    {footerNote && (
+      <p class="text-center text-gray-600 text-sm pt-8">
+        {footerNote}
+      </p>
+    )}
+  </div>
+</section>
+
+<style>
+  .pricing-button:hover {
+    background-color: #F7B32B !important;
+    color: #000000 !important;
+  }
+</style>

@@ -1,0 +1,159 @@
+---
+interface Props {
+  badge?: string;
+  title: string;
+  images?: string[];
+  links?: string[];
+  labels?: string[];
+  columns?: number;
+}
+
+const { badge = "Portfolio", title, images = [], links = [], labels = [], columns = 3 } = Astro.props;
+
+// Take only first 6 images for 2x3 grid
+const displayImages = images.slice(0, 6);
+const displayLinks = links.slice(0, 6);
+const displayLabels = labels.slice(0, 6);
+---
+
+<section class="pf-section py-20 md:py-28">
+  <div class="container mx-auto px-4">
+    <div class="pf-header" data-animate="fade-scale">
+      <div class="eyebrow justify-center">
+        <span>{badge}</span>
+      </div>
+      <h2 class="pf-title">{title}</h2>
+    </div>
+
+    {displayImages.length > 0 ? (
+      <div class="pf-gallery" data-animate-stagger>
+        {displayImages.map((img, i) => (
+          <a href={displayLinks[i] || '#'} class="pf-item" aria-label={displayLabels[i] || `View project ${i + 1}`}>
+            <img src={img} alt="" class="pf-img" width="400" height="300" loading="lazy" decoding="async" fetchpriority="low" />
+            <div class="pf-hover">
+              <div class="pf-hover-content">
+                <span class="pf-hover-label">{displayLabels[i] || `Project ${i + 1}`}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="pf-gallery" data-animate-stagger>
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div class="pf-item pf-item--placeholder">
+            <span>Project {i + 1}</span>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .pf-section {
+    background: #f7f7f7;
+  }
+
+  .pf-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .pf-title {
+    color: var(--foreground);
+    line-height: 1.15;
+  }
+
+  .pf-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  /* Items */
+  .pf-item {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.35s ease;
+    display: block;
+    text-decoration: none;
+  }
+  .pf-item:hover {
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--brand-secondary) 18%, transparent);
+  }
+
+  .pf-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .pf-item:hover .pf-img {
+    transform: scale(1.06);
+  }
+
+  /* Hover overlay */
+  .pf-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+  }
+  .pf-item:hover .pf-hover {
+    opacity: 1;
+  }
+
+  .pf-hover-content {
+    transform: scale(0.9);
+    transition: transform 0.35s ease;
+    text-align: center;
+  }
+  .pf-item:hover .pf-hover-content {
+    transform: scale(1);
+  }
+
+  .pf-hover-label {
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  /* Placeholder */
+  .pf-item--placeholder {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .pf-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pf-gallery {
+      grid-template-columns: 1fr;
+    }
+    .pf-item {
+      aspect-ratio: 16 / 10;
+    }
+  }
+</style>

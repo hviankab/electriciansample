@@ -1,0 +1,94 @@
+---
+// Floating offer button that triggers the popup modal
+// Only visible on desktop (md and up)
+---
+
+<div id="free-scan-wrapper" class="hidden md:block fixed bottom-8 right-8 z-40">
+  <button
+    id="free-scan-trigger"
+    class="fab-btn group"
+    aria-label="Claim your $50 voucher"
+  >
+    <span class="fab-text">Claim Voucher</span>
+    
+    <!-- Gift icon -->
+    <span class="fab-icon">🎁</span>
+  </button>
+</div>
+
+<style>
+  #free-scan-wrapper {
+    animation: fab-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.5s both;
+  }
+
+  .fab-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    cursor: pointer;
+    box-shadow: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+  }
+  
+  .fab-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+  
+  .fab-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: #0ea5e9;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .fab-btn:hover::before {
+    opacity: 0.8;
+  }
+  
+  .fab-btn:active {
+    transform: translateY(-1px) scale(1);
+  }
+
+  .fab-text {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .fab-icon {
+    font-size: 1.25rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s;
+  }
+  
+  .fab-btn:hover .fab-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  @keyframes fab-enter {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>

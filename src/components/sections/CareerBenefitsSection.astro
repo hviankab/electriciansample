@@ -1,0 +1,316 @@
+---
+import { getLocationText } from "@/config/site"
+
+interface Benefit {
+  text: string;
+}
+
+interface Step {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  badge?: string;
+  title: string;
+  description?: string;
+  positions?: string[];
+  benefits?: Benefit[];
+  requirements?: string;
+  applicationTitle?: string;
+  applicationSteps?: Step[];
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  badge = "JOIN OUR TEAM",
+  title: rawTitle,
+  description: rawDescription,
+  positions = [],
+  benefits = [],
+  requirements,
+  applicationTitle = "How to Apply",
+  applicationSteps = [],
+  buttonText = "APPLY NOW",
+  buttonHref = "/contact"
+} = Astro.props;
+
+const title = getLocationText(rawTitle);
+const description = rawDescription ? getLocationText(rawDescription) : undefined;
+---
+
+<section class="career-benefits-section">
+  <div class="container mx-auto px-4">
+    <!-- Why Join Us Section -->
+    <div class="benefits-content" data-animate="fade-up">
+      <div class="eyebrow">
+        <span>{badge}</span>
+      </div>
+      
+      <h2 class="section-title">{title}</h2>
+      
+      {description && <p class="section-description" set:html={description} />}
+
+      {positions.length > 0 && (
+        <div class="positions-list">
+          {positions.map((position) => (
+            <div class="position-item">
+              <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{position}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {benefits.length > 0 && (
+        <div class="benefits-section">
+          <h3 class="benefits-title">What We Offer:</h3>
+          <div class="benefits-list">
+            {benefits.map((benefit) => (
+              <div class="benefit-item">
+                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{benefit.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {requirements && (
+        <p class="requirements-text">{requirements}</p>
+      )}
+    </div>
+
+    <!-- How to Apply Section -->
+    {applicationSteps.length > 0 && (
+      <div class="application-section" data-animate="fade-up" data-animate-delay="200">
+        <h2 class="application-title">{applicationTitle}</h2>
+        <p class="application-intro">We'd love to hear from you! If you're interested in any of the positions listed above, please follow these simple steps to apply:</p>
+        
+        <div class="steps-grid">
+          {applicationSteps.map((step, index) => (
+            <div class="step-card">
+              <div class="step-number">{index + 1}</div>
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-description">{step.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="cta-wrapper">
+          <a href={buttonHref} class="apply-button">
+            {buttonText}
+          </a>
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .career-benefits-section {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .benefits-content {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000001;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .section-description {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #64748b;
+    margin: 0 0 2rem 0;
+  }
+
+  .positions-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .position-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: #1e293b;
+    font-weight: 500;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    color: #F7B32B;
+    flex-shrink: 0;
+  }
+
+  .benefits-section {
+    margin: 2rem 0;
+  }
+
+  .benefits-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000001;
+    margin: 0 0 1rem 0;
+  }
+
+  .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: #1e293b;
+    line-height: 1.6;
+  }
+
+  .requirements-text {
+    font-size: 0.9375rem;
+    color: #64748b;
+    font-style: italic;
+    margin: 2rem 0 0 0;
+    padding: 1rem;
+    background: #f7f7f7;
+    border-radius: 8px;
+  }
+
+  /* Application Section */
+  .application-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 3rem;
+    border-top: 2px solid #e5e7eb;
+  }
+
+  .application-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000001;
+    text-align: center;
+    margin: 0 0 1rem 0;
+  }
+
+  .application-intro {
+    font-size: 1.125rem;
+    color: #64748b;
+    text-align: center;
+    margin: 0 0 3rem 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .step-card {
+    text-align: center;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: #F7B32B;
+    color: #000001;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+  }
+
+  .step-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000001;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .step-description {
+    font-size: 0.9375rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cta-wrapper {
+    text-align: center;
+  }
+
+  .apply-button {
+    display: inline-block;
+    background: #000001;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+  }
+
+  .apply-button:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 1024px) {
+    .steps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .career-benefits-section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .application-title {
+      font-size: 1.75rem;
+    }
+
+    .positions-list {
+      grid-template-columns: 1fr;
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

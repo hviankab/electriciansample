@@ -1,0 +1,282 @@
+---
+import HeroPage from "@/components/sections/HeroPage.astro"
+import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro"
+import LocationIntroSection from "@/components/sections/LocationIntroSection.astro"
+import CouponsSection from "@/components/sections/CouponsSection.astro"
+import ServiceCardsGridSection from "@/components/sections/ServiceCardsGridSection.astro"
+import PortfolioSection from "@/components/sections/PortfolioSection.astro"
+import FAQSection from "@/components/sections/FAQSection.astro"
+
+interface Props {
+  cityName: string;
+  mapAddress: string;
+  backgroundImage?: string;
+}
+
+const { cityName, mapAddress, backgroundImage = "/images/download (73).avif" } = Astro.props;
+---
+
+<HeroPage
+  title={cityName}
+  subtitle={`Providing expert heating and cooling solutions to homes and businesses in ${cityName} — ensuring reliable and efficient HVAC services every time. Call us for expert assistance!`}
+  buttonText="SCHEDULE SERVICE"
+  buttonHref="/contact"
+  backgroundImage={backgroundImage}
+  trustIndicators={[
+    "Serving Our Community for 20 Years",
+    "Quality Service",
+    "24-Hour Emergency Service Available"
+  ]}
+/>
+
+<ServiceAreaSection
+  title="Heating & Cooling Solutions in Your Area"
+  description=""
+  areas={[
+    "Santa Monica", "Pasadena", "Glendale", "Downtown {city}", "Hollywood",
+    "Beverly Hills", "Venice", "Westwood", "Culver City", "San Fernando Valley",
+    "Studio City", "North Hollywood", "Sherman Oaks", "Encino", "Burbank",
+    "Torrance", "Long Beach", "Inglewood", "El Segundo", "Brentwood",
+    "Silver Lake", "Echo Park", "Hancock Park", "Marina del Rey", "Manhattan Beach"
+  ]}
+  mapAddress={mapAddress}
+  variant="full"
+/>
+
+<LocationIntroSection
+  badge="Residential & Commercial"
+  title={`RELIABLE HVAC SERVICES IN ${cityName.toUpperCase()}`}
+  description={`{business} is proud to provide top-tier heating, ventilation, and air conditioning (HVAC) services across ${cityName}. Whether you're in the coastal neighborhoods, downtown area, or residential districts, our expert technicians are here to ensure your comfort in every season. With a commitment to quality and efficiency, we're the trusted choice for ${cityName}'s residents and businesses.`}
+  highlights={["residential HVAC", "commercial HVAC", "emergency repairs", "maintenance plans"]}
+  serviceArea={`From system installations to emergency repairs, we offer a full range of heating, cooling, and air quality services.`}
+  guaranteeText="We prioritize your satisfaction with prompt responses, transparent pricing, and reliable service. When you need professional HVAC services, we guarantee to fix it right the first time or return at our expense - that's our satisfaction promise to you!"
+  infoBoxText={`We service the entirety of ${cityName} and all surrounding areas within a 50km radius. Our team of trusted master HVAC technicians has an impeccable reputation throughout the region. Contact our professional HVAC team today for expert service you can count on!`}
+  buttonText="TALK TO A TECHNICIAN NOW"
+  buttonHref="/contact"
+  image="/newimages/download - 2026-03-25T161755.081.avif"
+  imageAlt="HVAC Technician at Work"
+/>
+
+<CouponsSection
+  title="Specials and Offers"
+  coupons={[
+    { label: "First-Time Customers", discount: "$100 OFF", description: "Air Duct Cleaning for first-time customers only" },
+    { label: "Repair Special", discount: "$150 OFF", description: "Save $150 on Any Repair. Valid for repairs over $500" },
+    { label: "Maintenance", discount: "$25 OFF", description: "Your Furnace Tune-Up. Limited time offer" }
+  ]}
+/>
+
+<ServiceCardsGridSection
+  badge="OUR SERVICES"
+  title={`Complete HVAC Services for ${cityName}`}
+  description={`We provide comprehensive heating and cooling solutions for homes and businesses in ${cityName}. Our certified technicians are ready to handle all your HVAC needs.`}
+  tabs={[
+    {
+      id: "air-conditioning",
+      title: "Air Conditioning Services",
+      heading: "Professional Air Conditioning Services",
+      description: `Keep your ${cityName} home cool and comfortable with our comprehensive AC services.`,
+      image: "/newimages/download - 2026-03-25T161858.938.avif",
+      services: [
+        {
+          icon: "❄️",
+          title: "AC Repair",
+          href: "/air-conditioning/ac-repair"
+        },
+        {
+          icon: "🔧",
+          title: "AC Tune-Up/Maintenance",
+          href: "/air-conditioning"
+        },
+        {
+          icon: "🏠",
+          title: "AC Installation and Replacement",
+          href: "/air-conditioning/ac-installation-replacement"
+        },
+        {
+          icon: "🌡️",
+          title: "Thermostats",
+          href: "/air-conditioning"
+        }
+      ],
+      buttonText: "View AC Services",
+      buttonHref: "/air-conditioning"
+    },
+    {
+      id: "heating",
+      title: "Heating Services",
+      heading: "Heating Services",
+      description: `Reliable heating solutions to keep your ${cityName} home warm and cozy all winter.`,
+      image: "/newimages/download - 2026-03-25T161847.589.avif",
+      services: [
+        {
+          icon: "🔥",
+          title: "Furnace Repair",
+          href: "/heating"
+        },
+        {
+          icon: "⚙️",
+          title: "Furnace Tune Up/Maintenance",
+          href: "/heating"
+        },
+        {
+          icon: "🏠",
+          title: "Furnace Installation and Replacement",
+          href: "/heating"
+        },
+        {
+          icon: "💧",
+          title: "Boilers Installation and Replacement",
+          href: "/heating"
+        }
+      ],
+      buttonText: "View Heating Services",
+      buttonHref: "/heating"
+    },
+    {
+      id: "indoor-air-quality",
+      title: "Indoor Air Quality",
+      heading: "Indoor Air Quality Services",
+      description: `Breathe cleaner, healthier air with our comprehensive air quality solutions.`,
+      image: "/newimages/download - 2026-03-25T161755.081.avif",
+      services: [
+        {
+          icon: "🌬️",
+          title: "Air Filtration Systems",
+          href: "/indoor-air-quality"
+        },
+        {
+          icon: "🧹",
+          title: "Duct Cleaning and Sealing",
+          href: "/indoor-air-quality"
+        },
+        {
+          icon: "🛠️",
+          title: "Duct Repair and Replacement",
+          href: "/indoor-air-quality"
+        },
+        {
+          icon: "🏡",
+          title: "Attic Insulation and Ventilation",
+          href: "/indoor-air-quality"
+        }
+      ],
+      buttonText: "View Air Quality Services",
+      buttonHref: "/indoor-air-quality"
+    },
+    {
+      id: "emergency",
+      title: "Emergency HVAC",
+      heading: "24/7 Emergency HVAC Services",
+      description: "HVAC emergencies don't wait for business hours. Our emergency response team is available 24/7.",
+      image: "/newimages/download - 2026-03-25T161804.399.avif",
+      services: [
+        {
+          icon: "🚨",
+          title: "24/7 AC Repairs",
+          href: "/emergency/24-7-ac-repairs"
+        },
+        {
+          icon: "🔥",
+          title: "24/7 Heating and Cooling Repairs",
+          href: "/emergency"
+        },
+        {
+          icon: "⚡",
+          title: "24/7 Emergency Repairs",
+          href: "/emergency/24-7-emergency-repairs"
+        }
+      ],
+      buttonText: "Get Emergency Service",
+      buttonHref: "/emergency"
+    },
+    {
+      id: "commercial",
+      title: "Commercial",
+      heading: "Commercial HVAC Solutions",
+      description: `Reliable HVAC solutions for businesses of all sizes in ${cityName}.`,
+      image: "/newimages/download - 2026-03-25T161836.070.avif",
+      services: [
+        {
+          icon: "🔧",
+          title: "HVAC Repair",
+          href: "/commercial/hvac-repair"
+        },
+        {
+          icon: "⚙️",
+          title: "HVAC Maintenance",
+          href: "/commercial"
+        },
+        {
+          icon: "🏢",
+          title: "HVAC Installation",
+          href: "/commercial/hvac-installation"
+        },
+        {
+          icon: "✅",
+          title: "HVAC Warranty",
+          href: "/commercial"
+        }
+      ],
+      buttonText: "View Commercial Services",
+      buttonHref: "/commercial"
+    }
+  ]}
+/>
+
+<FAQSection
+  badge="FAQ"
+  title={`HVAC Questions for ${cityName} Residents`}
+  subtitle="Get answers to common HVAC questions"
+  faqs={[
+    {
+      question: `Do you provide same-day service in ${cityName}?`,
+      answer: `Yes! We offer same-day HVAC service throughout ${cityName} for most repairs and maintenance. Contact us early in the day for the best availability.`
+    },
+    {
+      question: "What HVAC brands do you work with?",
+      answer: "We work with all major HVAC brands including Carrier, Trane, Lennox, Rheem, Goodman, and more. Our technicians are trained to service and install any brand."
+    },
+    {
+      question: "How much does a new HVAC system cost?",
+      answer: "HVAC system costs vary based on size, efficiency rating, and installation complexity. We offer free estimates and can help you find a system that fits your budget and needs."
+    },
+    {
+      question: "Do you offer maintenance plans?",
+      answer: "Yes! Our maintenance plans include bi-annual tune-ups, priority scheduling, discounts on repairs, and extended warranties. Join today to keep your system running efficiently."
+    },
+    {
+      question: "What payment methods do you accept?",
+      answer: "We accept all major credit cards, checks, and cash. We also offer flexible financing options to make HVAC services affordable for everyone."
+    }
+  ]}
+/>
+
+<PortfolioSection
+  badge="GALLERY"
+  title="See Our Quality Work"
+  images={[
+    "/images/tekton-ndJlw4Bz-1Y-unsplash (1).jpg",
+    "/images/raymond-yeung--BWDRf_mG9Q-unsplash.jpg",
+    "/images/hvac.jpg",
+    "/images/hvac-hero.jpg",
+    "/images/compagnons-yZmHFF-g-W0-unsplash.jpg",
+    "/images/hvac-technician-refilling-freon.jpg"
+  ]}
+  links={[
+    "/air-conditioning/ac-repair",
+    "/air-conditioning/ac-installation-replacement",
+    "/commercial/hvac-repair",
+    "/commercial/hvac-installation",
+    "/emergency/24-7-ac-repairs",
+    "/emergency/24-7-emergency-repairs"
+  ]}
+  labels={[
+    "AC Repair",
+    "AC Installation & Replacement",
+    "Commercial HVAC Repair",
+    "Commercial HVAC Installation",
+    "24/7 AC Repairs",
+    "24/7 Emergency Repairs"
+  ]}
+/>

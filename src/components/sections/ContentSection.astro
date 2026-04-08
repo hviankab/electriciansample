@@ -1,0 +1,405 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  certificationBadge?: string;
+  features: string[];
+  buttonText?: string;
+  buttonHref?: string;
+  images: string[];
+  imagePosition?: "left" | "right";
+}
+
+const {
+  eyebrow = "ABOUT US",
+  title,
+  description,
+  certificationBadge,
+  features,
+  buttonText = "Learn More",
+  buttonHref = "/contact",
+  images,
+  imagePosition = "left"
+} = Astro.props;
+---
+
+<section class="content-section">
+  <div class="content-container">
+    <div class={`content-grid ${imagePosition === "right" ? "grid-reverse" : ""}`}>
+      <!-- Images Column -->
+      <div class="images-column">
+        <div class="images-wrapper">
+          <div class="image-main">
+            <img src={images[0]} alt={title} class="main-img" />
+            <div class="image-decoration"></div>
+          </div>
+          {images[1] && (
+            <div class="image-secondary">
+              <img src={images[1]} alt={title} class="secondary-img" />
+              <div class="experience-badge">
+                <div class="badge-number">15+</div>
+                <div class="badge-text">Years Experience</div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="text-column">
+        <div class="badge-wrapper">
+          <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <span>{eyebrow}</span>
+        </div>
+
+        <h2 class="content-title">{title}</h2>
+        
+        <div class="content-description" set:html={description} />
+
+        {certificationBadge && (
+          <div class="certification-badge">
+            <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <span>{certificationBadge}</span>
+          </div>
+        )}
+
+        <div class="features-list">
+          {features.map((feature, index) => (
+            <div class="feature-item" data-index={index}>
+              <div class="feature-icon-wrapper">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+              <span class="feature-text">{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        <a href={buttonHref} class="content-button">
+          <span>{buttonText}</span>
+          <svg class="button-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-section {
+    padding: 6rem 0;
+    background: white;
+    position: relative;
+  }
+
+  .content-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .grid-reverse {
+    direction: rtl;
+  }
+
+  .grid-reverse > * {
+    direction: ltr;
+  }
+
+  /* Images Column */
+  .images-column {
+    position: relative;
+  }
+
+  .images-wrapper {
+    position: relative;
+    height: 600px;
+  }
+
+  .image-main {
+    position: relative;
+    width: 85%;
+    height: 70%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-decoration {
+    position: absolute;
+    top: -1.5rem;
+    right: -1.5rem;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #F7B32B;
+    border-radius: 1.5rem;
+    z-index: -1;
+  }
+
+  .image-secondary {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    height: 50%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    border: 4px solid white;
+  }
+
+  .secondary-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .experience-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .badge-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #124E66;
+    line-height: 1;
+  }
+
+  .badge-text {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 0.25rem;
+  }
+
+  /* Content Column */
+  .text-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .badge-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: linear-gradient(135deg, rgba(247, 179, 43, 0.1), rgba(247, 179, 43, 0.05));
+    border: 1px solid rgba(247, 179, 43, 0.2);
+    border-radius: 50px;
+    width: fit-content;
+  }
+
+  .badge-icon {
+    width: 1rem;
+    height: 1rem;
+    stroke: #F7B32B;
+  }
+
+  .badge-wrapper span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #D97706;
+  }
+
+  .content-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+
+  .content-description {
+    font-size: 1.0625rem;
+    color: #64748b;
+    line-height: 1.8;
+  }
+
+  .certification-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 2px solid #86efac;
+    border-radius: 1rem;
+    width: fit-content;
+  }
+
+  .cert-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: #16a34a;
+  }
+
+  .certification-badge span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #166534;
+  }
+
+  .features-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: slideIn 0.5s ease forwards;
+  }
+
+  .feature-item[data-index="0"] { animation-delay: 0.1s; }
+  .feature-item[data-index="1"] { animation-delay: 0.2s; }
+  .feature-item[data-index="2"] { animation-delay: 0.3s; }
+  .feature-item[data-index="3"] { animation-delay: 0.4s; }
+  .feature-item[data-index="4"] { animation-delay: 0.5s; }
+  .feature-item[data-index="5"] { animation-delay: 0.6s; }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .feature-item:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateX(4px);
+  }
+
+  .feature-icon-wrapper {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .feature-icon {
+    width: 1rem;
+    height: 1rem;
+    stroke: white;
+  }
+
+  .feature-text {
+    font-size: 0.95rem;
+    color: #334155;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .content-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: #124E66;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: fit-content;
+    box-shadow: 0 4px 20px rgba(18, 78, 102, 0.2);
+    margin-top: 0.5rem;
+  }
+
+  .content-button:hover {
+    background: #0f3e52;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(18, 78, 102, 0.3);
+  }
+
+  .button-arrow {
+    width: 1.125rem;
+    height: 1.125rem;
+    transition: transform 0.3s ease;
+  }
+
+  .content-button:hover .button-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .grid-reverse {
+      direction: ltr;
+    }
+
+    .images-wrapper {
+      height: 500px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-section {
+      padding: 4rem 0;
+    }
+
+    .content-container {
+      padding: 0 1rem;
+    }
+
+    .images-wrapper {
+      height: 400px;
+    }
+
+    .image-main {
+      width: 100%;
+    }
+
+    .image-secondary {
+      width: 70%;
+    }
+  }
+</style>

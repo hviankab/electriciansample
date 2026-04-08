@@ -1,0 +1,200 @@
+---
+title: "Home"
+description: "{business} - Expert electrical services in {city} and surrounding areas"
+keywords: "electrical services {city}, electrician {city}, commercial electrical {city}"
+---
+
+import HeroSection from "@/components/sections/HeroSection.astro"
+import ServiceCardsGridSection from "@/components/sections/ServiceCardsGridSection.astro"
+import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection.astro"
+import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
+import CTABannerSection from "@/components/sections/CTABannerSection.astro"
+
+<HeroSection
+  eyebrow="Professional Electrical Services"
+  title="Powering Your"
+  titleEmphasis="Home & Business"
+  subtitle="Professional, safe, and affordable electrical solutions tailored to your needs."
+  buttonText="Book a Service"
+  buttonHref="/contact"
+/>
+
+<ServiceCardsGridSection
+  badge="OUR SERVICES"
+  title="Complete Electrical Services for Your Home & Business"
+  description="From residential repairs to commercial installations, we provide comprehensive electrical solutions with certified technicians and guaranteed quality workmanship."
+  tabs={[
+    {
+      id: "commercial",
+      title: "Commercial Electrical",
+      icon: "🏢",
+      heading: "Commercial Electrical Services",
+      description: "Professional electrical solutions for businesses of all sizes.",
+      image: "/images/compagnons-yZmHFF-g-W0-unsplash.jpg",
+      services: [
+        {
+          icon: "🏗️",
+          title: "Ground Up Construction",
+          href: "/commercial-electrical/ground-up-construction"
+        },
+        {
+          icon: "⚡",
+          title: "Electrical Panels",
+          href: "/commercial-electrical"
+        },
+        {
+          icon: "🔌",
+          title: "Emergency Standby Power",
+          href: "/commercial-electrical"
+        },
+        {
+          icon: "❄️",
+          title: "HVAC Electrical",
+          href: "/commercial-electrical"
+        }
+      ],
+      buttonText: "View Commercial Services",
+      buttonHref: "/commercial-electrical"
+    },
+    {
+      id: "residential",
+      title: "Residential Electrical",
+      icon: "🏠",
+      heading: "Residential Electrical Services",
+      description: "Safe and reliable electrical services for your home.",
+      image: "/images/raymond-yeung--BWDRf_mG9Q-unsplash.jpg",
+      services: [
+        {
+          icon: "🔌",
+          title: "Electrical Repairs",
+          href: "/residential-electrical"
+        },
+        {
+          icon: "💡",
+          title: "Lighting Installation",
+          href: "/residential-electrical"
+        },
+        {
+          icon: "🔋",
+          title: "Backup Generators",
+          href: "/residential-electrical"
+        },
+        {
+          icon: "🚗",
+          title: "EV Charging Stations",
+          href: "/residential-electrical"
+        }
+      ],
+      buttonText: "View Residential Services",
+      buttonHref: "/residential-electrical"
+    },
+    {
+      id: "emergency",
+      title: "Emergency Services",
+      icon: "🚨",
+      heading: "24/7 Emergency Electrical Services",
+      description: "Fast response for urgent electrical issues, available around the clock.",
+      image: "/images/joseph-menjivar-lPG-hWlvGYU-unsplash.jpg",
+      services: [
+        {
+          icon: "⚡",
+          title: "Power Outages",
+          href: "/emergency"
+        },
+        {
+          icon: "🔥",
+          title: "Electrical Fires",
+          href: "/emergency"
+        },
+        {
+          icon: "⚠️",
+          title: "Circuit Breaker Issues",
+          href: "/emergency"
+        },
+        {
+          icon: "🔌",
+          title: "Wiring Problems",
+          href: "/emergency"
+        }
+      ],
+      buttonText: "Get Emergency Service",
+      buttonHref: "/emergency"
+    }
+  ]}
+/>
+
+<WhyChooseUsSection
+  eyebrow="WHY CHOOSE US"
+  title="Licensed, Insured & Trusted Electrical Experts"
+  description="With years of experience serving {city} and surrounding areas, we deliver safe, reliable electrical services backed by our commitment to quality and customer satisfaction. Our certified electricians are available 24/7 for emergencies."
+  badgeText="Our Commitment to Excellence"
+  image="/images/hvac.jpg"
+  services={[
+    { text: "Licensed & Insured Electricians - All our technicians are fully certified and insured for your protection." },
+    { text: "24/7 Emergency Service - We're available around the clock for urgent electrical issues." },
+    { text: "Free Estimates - Get transparent pricing with no hidden fees before we start any work." },
+    { text: "Quality Workmanship Guaranteed - We stand behind our work with comprehensive warranties." },
+    { text: "Upfront Pricing - Know exactly what you'll pay before we begin." },
+    { text: "Same-Day Service Available - Fast response times when you need us most." }
+  ]}
+  ctaText="Experience the difference of working with true electrical professionals. Contact us today for a free estimate!"
+  buttonText="Get Free Estimate"
+  buttonHref="/contact"
+/>
+
+<TestimonialsSection
+  badge="TESTIMONIALS"
+  title="What Our Clients Say"
+  description="Don't just take our word for it - hear from our satisfied customers who trust us with their electrical needs."
+  testimonials={[
+    {
+      name: "Michael Rodriguez",
+      initials: "MR",
+      date: "2 weeks ago",
+      rating: 5,
+      content: "Excellent service! They rewired our entire office building on schedule and within budget. Professional team from start to finish."
+    },
+    {
+      name: "Sarah Johnson",
+      initials: "SJ",
+      date: "1 month ago",
+      rating: 5,
+      content: "Called them for an emergency at 11 PM and they were at my house within 45 minutes. Fixed the problem quickly and professionally."
+    },
+    {
+      name: "David Chen",
+      initials: "DC",
+      date: "3 weeks ago",
+      rating: 5,
+      content: "Installed EV charging station in my garage. Clean work, fair pricing, and they explained everything clearly. Highly recommend!"
+    },
+    {
+      name: "Lisa Martinez",
+      initials: "LM",
+      date: "1 week ago",
+      rating: 5,
+      content: "Best electrician I've worked with in {city}. They upgraded our electrical panel and added new circuits. Very knowledgeable and professional."
+    },
+    {
+      name: "Robert Thompson",
+      initials: "RT",
+      date: "2 months ago",
+      rating: 5,
+      content: "Used them for our restaurant's electrical work. They handled everything from permits to final inspection. Couldn't be happier!"
+    },
+    {
+      name: "Jennifer Lee",
+      initials: "JL",
+      date: "3 weeks ago",
+      rating: 5,
+      content: "Great experience! They installed recessed lighting throughout our home. The quality of work is outstanding and the price was very reasonable."
+    }
+  ]}
+/>
+
+<CTABannerSection
+  title="Need an Electrician? We're Here to Help!"
+  description="Contact us today for fast, reliable electrical services. Free estimates on all projects."
+  buttonText="Get Free Estimate"
+  buttonHref="/contact"
+/>

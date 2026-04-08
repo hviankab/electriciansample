@@ -1,0 +1,380 @@
+---
+import { getLocationText, siteConfig } from "@/config/site"
+
+interface Props {
+  variant?: "main" | "subpage";
+  buttonHref?: string;
+  buttonText?: string;
+  eyebrow?: string;
+  title?: string;
+  titleEmphasis?: string;
+  subtitle?: string;
+  showArrow?: boolean;
+  badge?: string;
+  image?: string;
+  imageAlt?: string;
+  trustIndicators?: string[];
+}
+
+const {
+  variant = "main",
+  buttonHref = "/contact",
+  buttonText = "Book a Service",
+  eyebrow = "Professional Electrical Services",
+  title = "Powering Your",
+  titleEmphasis = "Home & Business",
+  subtitle = "Professional, safe, and affordable electrical solutions tailored to your needs.",
+  showArrow = true,
+  badge,
+  image: subpageImage,
+  imageAlt = "Electrician service",
+  trustIndicators,
+} = Astro.props;
+---
+
+{variant === "main" ? (
+<section class="hero-main">
+
+  <!-- Background image -->
+  <div class="hero-bg">
+    <img src="/images/raze-solar-GXLPLG3_Vf4-unsplash.jpg" alt="" class="hero-bg-img" />
+    <div class="hero-overlay"></div>
+    <div class="hero-pattern"></div>
+  </div>
+
+  <div class="hero-container">
+    <!-- Left: content -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span>{eyebrow}</span>
+      </div>
+
+      <h1 class="hero-h1">
+        {title}<br />
+        <span class="hero-emphasis">{titleEmphasis}</span>
+      </h1>
+
+      <p class="hero-sub">{subtitle}</p>
+
+      <div class="hero-btns">
+        <a href={`tel:${siteConfig.contact.phone}`} class="hero-cta-btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.13 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.04 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+          Call {siteConfig.contact.phone}
+        </a>
+        <a href={buttonHref} class="hero-cta-btn btn-secondary">
+          {buttonText}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-features">
+        <div class="feature-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>Licensed & Insured</span>
+        </div>
+        <div class="feature-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span>24/7 Emergency</span>
+        </div>
+        <div class="feature-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Free Estimates</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+) : (
+<section class="hero-section py-12 md:py-20">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-6 max-w-[1400px] mx-auto relative">
+      <div class="hero-card left-card rounded-3xl p-8 md:p-10 relative overflow-hidden">
+        {badge && (
+          <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5 border-2 border-brand-secondary/50">
+            <span class="w-2 h-2 rounded-full bg-brand-secondary"></span>
+            <span class="text-sm font-semibold text-gray-700">{getLocationText(badge)}</span>
+          </div>
+        )}
+        <h1 class="hero-title text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+          {title && getLocationText(title)}
+        </h1>
+        {subtitle && (
+          <p class="text-base md:text-lg text-gray-600 mb-6 leading-relaxed max-w-lg">
+            {getLocationText(subtitle)}
+          </p>
+        )}
+        <div class="flex items-center gap-4 mb-6">
+          <a href={buttonHref} class="hero-cta-btn inline-flex items-center gap-2 bg-brand-secondary text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-all shadow-lg">
+            {buttonText}
+          </a>
+        </div>
+        {trustIndicators && trustIndicators.length > 0 && (
+          <div class="flex flex-wrap gap-3 mt-2">
+            {trustIndicators.map((indicator) => (
+              <span class="inline-flex items-center gap-1.5 text-sm text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-brand-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                {getLocationText(indicator)}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div class="hero-card right-card rounded-3xl relative overflow-hidden hidden md:block" style="min-height:280px; background:#212A31;">
+        {subpageImage && <img src={subpageImage} alt={imageAlt} class="w-full h-full object-cover" loading="eager" />}
+      </div>
+    </div>
+  </div>
+</section>
+)}
+
+<style>
+  .hero-main {
+    min-height: 90vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    position: relative;
+    padding: 8rem 0 8rem;
+  }
+
+  .hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 1;
+    position: relative;
+    max-width: 800px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.625rem 1.25rem;
+    border-radius: 50px;
+    width: fit-content;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .hero-badge svg {
+    color: #FFD700;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #ffffff;
+    margin: 0;
+    font-family: 'Barlow Condensed', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-emphasis {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #1a1a1a;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .hero-features {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .feature-item svg {
+    color: #FFD700;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-container {
+      padding: 0 1.5rem;
+    }
+    
+    .hero-main {
+      padding: 6rem 0 4rem;
+      min-height: auto;
+    }
+
+    .hero-left {
+      text-align: center;
+      align-items: center;
+    }
+
+    .hero-sub {
+      margin: 0 auto;
+    }
+
+    .hero-btns {
+      justify-content: center;
+    }
+
+    .hero-features {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-container {
+      padding: 0 1.25rem;
+    }
+
+    .hero-main {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-btns {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-cta-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, var(--brand-quaternary) 0%, color-mix(in srgb, var(--brand-tertiary) 50%, white) 100%);
+  }
+
+  .hero-card {
+    min-height: 280px;
+    border: 2px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .left-card {
+    background: linear-gradient(135deg, #e0f2ff 0%, #ddd6fe 50%, #fce7f3 100%);
+  }
+
+  .hero-title {
+    color: #1a1a1a;
+    line-height: 1.1;
+  }
+</style>

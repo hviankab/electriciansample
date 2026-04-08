@@ -1,0 +1,194 @@
+---
+title: "Miami Electrical Services | Licensed Electricians"
+description: "Professional electrical services in Miami, FL by {business}. Licensed & insured electricians for residential and commercial projects. 24/7 emergency service available."
+keywords: "electrician Miami, electrical services Miami, Miami electrician, emergency electrician Miami"
+---
+
+import HeroPage from "@/components/sections/HeroPage.astro"
+import ContentSection from "@/components/sections/ContentSection.astro"
+import ServiceCardsGridSection from "@/components/sections/ServiceCardsGridSection.astro"
+import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
+
+<HeroPage
+  title="Miami Electrical Services"
+  subtitle="Trusted electrical solutions for homes and businesses throughout Miami. Licensed, insured, and available 24/7 for emergencies."
+  buttonText="Get Free Estimate"
+  buttonHref="/contact"
+  backgroundImage="/images/raze-solar-GXLPLG3_Vf4-unsplash.jpg"
+/>
+
+<ContentSection
+  eyebrow="SERVING MIAMI"
+  title="Your Trusted Miami Electricians"
+  description="For over [X years], {business} has been Miami's go-to electrical service provider. Our team of licensed electricians serves residential and commercial clients throughout Miami-Dade County with professional electrical installations, repairs, and maintenance. Whether you need a simple outlet repair or a complete electrical system upgrade, we deliver quality workmanship and exceptional customer service on every job."
+  certificationBadge="Why Miami Trusts Us"
+  features={[
+    "Licensed & Insured Miami Electricians",
+    "Same-Day Service Available",
+    "24/7 Emergency Response",
+    "Upfront Pricing - No Hidden Fees",
+    "100% Satisfaction Guaranteed",
+    "Residential & Commercial Expertise"
+  ]}
+  buttonText="Call Us Today"
+  buttonHref="/contact"
+  images={[
+    "/images/compagnons-yZmHFF-g-W0-unsplash.jpg",
+    "/images/raymond-yeung--BWDRf_mG9Q-unsplash.jpg"
+  ]}
+  imagePosition="right"
+/>
+
+<ServiceCardsGridSection
+  badge="MIAMI ELECTRICAL SERVICES"
+  title="Complete Electrical Solutions for Miami Homes & Businesses"
+  description="From routine repairs to major installations, our Miami electricians handle all your electrical needs with professionalism and expertise."
+  tabs={[
+    {
+      id: "residential",
+      title: "Residential",
+      icon: "🏠",
+      heading: "Residential Electrical Services",
+      description: "Expert electrical services for Miami homeowners.",
+      image: "/images/raymond-yeung--BWDRf_mG9Q-unsplash.jpg",
+      services: [
+        {
+          icon: "💡",
+          title: "Lighting Installation & Repair",
+          href: "/residential-electrical"
+        },
+        {
+          icon: "🔌",
+          title: "Outlet & Switch Installation",
+          href: "/residential-electrical"
+        },
+        {
+          icon: "⚡",
+          title: "Electrical Panel Upgrades",
+          href: "/residential-electrical"
+        },
+        {
+          icon: "🚗",
+          title: "EV Charger Installation",
+          href: "/residential-electrical"
+        }
+      ],
+      buttonText: "View Residential Services",
+      buttonHref: "/residential-electrical"
+    },
+    {
+      id: "commercial",
+      title: "Commercial",
+      icon: "🏢",
+      heading: "Commercial Electrical Services",
+      description: "Reliable electrical solutions for Miami businesses.",
+      image: "/images/compagnons-yZmHFF-g-W0-unsplash.jpg",
+      services: [
+        {
+          icon: "🏗️",
+          title: "New Construction Electrical",
+          href: "/commercial-electrical/ground-up-construction"
+        },
+        {
+          icon: "🔧",
+          title: "Tenant Improvements",
+          href: "/commercial-electrical"
+        },
+        {
+          icon: "💡",
+          title: "Commercial Lighting",
+          href: "/commercial-electrical"
+        },
+        {
+          icon: "🔋",
+          title: "Emergency Power Systems",
+          href: "/commercial-electrical"
+        }
+      ],
+      buttonText: "View Commercial Services",
+      buttonHref: "/commercial-electrical"
+    },
+    {
+      id: "emergency",
+      title: "Emergency",
+      icon: "🚨",
+      heading: "24/7 Emergency Electrical Services",
+      description: "Fast response for urgent electrical issues in Miami.",
+      image: "/images/joseph-menjivar-lPG-hWlvGYU-unsplash.jpg",
+      services: [
+        {
+          icon: "⚡",
+          title: "Power Outage Repairs",
+          href: "/emergency"
+        },
+        {
+          icon: "🔥",
+          title: "Electrical Fire Prevention",
+          href: "/emergency"
+        },
+        {
+          icon: "⚠️",
+          title: "Circuit Breaker Issues",
+          href: "/emergency"
+        },
+        {
+          icon: "🔌",
+          title: "Emergency Wiring Repairs",
+          href: "/emergency"
+        }
+      ],
+      buttonText: "Call for Emergency Service",
+      buttonHref: "/contact"
+    }
+  ]}
+/>
+
+<TestimonialsSection
+  badge="MIAMI REVIEWS"
+  title="What Miami Customers Say"
+  description="See why Miami residents and businesses trust {business} for all their electrical needs."
+  testimonials={[
+    {
+      name: "Carlos Hernandez",
+      initials: "CH",
+      date: "1 week ago",
+      rating: 5,
+      content: "Best electrician in Miami! They upgraded our entire electrical panel and added new circuits for our home office. Professional, clean work, and fair pricing."
+    },
+    {
+      name: "Maria Santos",
+      initials: "MS",
+      date: "2 weeks ago",
+      rating: 5,
+      content: "Called them for an emergency at midnight and they were here within 30 minutes. Fixed our power issue quickly. Highly recommend for emergency electrical service in Miami!"
+    },
+    {
+      name: "James Wilson",
+      initials: "JW",
+      date: "3 weeks ago",
+      rating: 5,
+      content: "Used them for our restaurant's electrical work in Brickell. They handled everything professionally from permits to final inspection. Great communication throughout the project."
+    },
+    {
+      name: "Ana Rodriguez",
+      initials: "AR",
+      date: "1 month ago",
+      rating: 5,
+      content: "Installed EV charger in our garage. The electrician was knowledgeable, explained everything clearly, and the installation was perfect. Very happy with the service!"
+    },
+    {
+      name: "David Martinez",
+      initials: "DM",
+      date: "2 months ago",
+      rating: 5,
+      content: "We've used {business} for multiple projects in our Miami office building. Always reliable, professional, and their work is top-notch. Our go-to electricians!"
+    },
+    {
+      name: "Sofia Gomez",
+      initials: "SG",
+      date: "3 months ago",
+      rating: 5,
+      content: "Excellent service! They rewired our entire house in Coral Gables. The team was respectful, clean, and completed everything on schedule. Couldn't be happier!"
+    }
+  ]}
+/>

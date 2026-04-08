@@ -1,0 +1,351 @@
+---
+import { siteConfig } from "@/config/site"
+
+interface Props {
+  delay?: number;
+  showOnce?: boolean;
+  triggerId?: string;
+}
+
+const {
+  delay = 5000,
+  showOnce = true,
+  triggerId = "free-scan-trigger",
+} = Astro.props;
+---
+
+<div
+  id="popup-modal"
+  class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/70 backdrop-blur-sm overflow-y-auto"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="popup-title"
+  data-delay={delay}
+  data-show-once={showOnce}
+  data-trigger-id={triggerId}
+>
+  <div class="popup-wrapper animate-scale-in">
+    <div class="popup-container">
+      
+      <!-- Black Background -->
+      <div class="popup-bg-black"></div>
+
+      <!-- Close button -->
+      <button
+        id="close-popup"
+        class="popup-close"
+        aria-label="Close popup"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Content -->
+      <div class="popup-content">
+        <h2 id="popup-title" class="popup-title">
+          EXCLUSIVE HVAC OFFER
+        </h2>
+        
+        <div class="popup-divider"></div>
+        
+        <p class="popup-description">
+          Sign up for our newsletter and receive exclusive<br/>
+          HVAC service deals, maintenance tips, and
+        </p>
+        
+        <div class="popup-offer-section">
+          <span class="popup-enjoy">SAVE</span>
+          <div class="popup-discount-large">
+            $50
+          </div>
+          <span class="popup-off-text">OFF</span>
+          <p class="popup-purchase-text">YOUR NEXT SERVICE*</p>
+        </div>
+
+        <!-- Email Input -->
+        <form class="popup-form">
+          <input
+            type="email"
+            placeholder="Your Email Address"
+            class="popup-email-input"
+            required
+          />
+          
+          <button type="submit" class="popup-submit-btn">
+            CLAIM YOUR DISCOUNT
+          </button>
+        </form>
+
+        <button id="close-popup-bottom" class="popup-continue">
+          CONTINUE TO SITE
+        </button>
+
+        <p class="popup-disclaimer">
+          *Valid for new customers on services over $200
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPopup(force = false) {
+    const popup = document.getElementById("popup-modal");
+    if (!popup) return;
+    if (!force && sessionStorage.getItem("popup-shown") === "true") return;
+    popup.classList.remove("hidden");
+    popup.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    sessionStorage.setItem("popup-shown", "true");
+  }
+
+  function closePopup() {
+    const popup = document.getElementById("popup-modal");
+    if (!popup) return;
+    popup.classList.add("hidden");
+    popup.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+
+  function initPopup() {
+    const popup = document.getElementById("popup-modal");
+    if (!popup) return;
+
+    const alreadyShown = sessionStorage.getItem("popup-shown") === "true";
+    const triggerId = popup.getAttribute("data-trigger-id");
+
+    document.getElementById("close-popup")?.addEventListener("click", closePopup);
+    document.getElementById("close-popup-bottom")?.addEventListener("click", closePopup);
+    popup.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !popup.classList.contains("hidden")) closePopup();
+    });
+
+    if (triggerId) {
+      document.getElementById(triggerId)?.addEventListener("click", (e) => {
+        e.preventDefault();
+        showPopup(true);
+      });
+    }
+
+    const delay = parseInt(popup.getAttribute("data-delay") || "0") || 0;
+    if (delay > 0 && window.innerWidth >= 768 && !alreadyShown) {
+      setTimeout(() => { if (window.innerWidth >= 768) showPopup(); }, delay);
+    }
+  }
+
+  document.addEventListener("astro:page-load", initPopup);
+</script>
+
+<style>
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-scale-in {
+    animation: scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .popup-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 1rem;
+  }
+
+  .popup-container {
+    position: relative;
+    width: 100%;
+    min-height: 550px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  }
+
+  .popup-bg-black {
+    position: absolute;
+    inset: 0;
+    background: #000000;
+    z-index: 0;
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 30;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .popup-close:hover {
+    transform: scale(1.1);
+  }
+
+  .popup-content {
+    position: relative;
+    z-index: 2;
+    padding: 2.5rem 2.5rem 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  .popup-title {
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    color: white;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .popup-divider {
+    width: 70px;
+    height: 2px;
+    background: white;
+    margin: 0 auto 1.25rem;
+  }
+
+  .popup-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: white;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .popup-offer-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .popup-enjoy {
+    display: block;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.25rem;
+    font-weight: 300;
+  }
+
+  .popup-discount-large {
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 5.5rem;
+    line-height: 1;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+
+  .popup-off-text {
+    display: block;
+    font-size: 1.75rem;
+    letter-spacing: 0.2em;
+    margin-top: -0.5rem;
+    margin-bottom: 0.25rem;
+    font-weight: 300;
+  }
+
+  .popup-purchase-text {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    font-weight: 300;
+  }
+
+  .popup-form {
+    max-width: 420px;
+    margin: 0 auto 1.25rem;
+  }
+
+  .popup-email-input {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    background: white;
+    border: none;
+    border-radius: 0;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 0.875rem;
+    color: #6b7280;
+  }
+  .popup-email-input::placeholder {
+    color: #9ca3af;
+  }
+  .popup-email-input:focus {
+    outline: 2px solid #1e3a8a;
+  }
+
+  .popup-submit-btn {
+    width: 100%;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .popup-submit-btn:hover {
+    background: white;
+    color: #1a1a1a;
+  }
+
+  .popup-continue {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    padding: 0.625rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.2s;
+    margin-bottom: 1rem;
+  }
+  .popup-continue:hover {
+    opacity: 0.8;
+  }
+
+  .popup-disclaimer {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+  }
+
+  @media (max-width: 640px) {
+    .popup-container {
+      min-height: 500px;
+      border-width: 2px;
+    }
+    .popup-content {
+      padding: 2rem 1.5rem 1.75rem;
+    }
+    .popup-title {
+      font-size: 1.75rem;
+    }
+    .popup-description {
+      font-size: 0.85rem;
+    }
+    .popup-discount-large {
+      font-size: 4.5rem;
+    }
+    .popup-off-text {
+      font-size: 1.5rem;
+    }
+  }
+</style>
