@@ -7,10 +7,10 @@
 export const siteConfig = {
   // Business Information
   business: {
-    name: "HVAC Template",
-    fullName: "ABC Company Heating and Cooling",
-    tagline: "Heating and Cooling",
-    description: "Professional HVAC Services",
+    name: "Electrician Sample",
+    fullName: "ABC Company Electrical Services",
+    tagline: "Electrical Services",
+    description: "Professional Electrical Services",
   },
 
   // Location
@@ -40,7 +40,7 @@ export const siteConfig = {
 
   // Logo
   logo: {
-    src: "/images/AdobeStock_840240236-removebg-preview.png",
+    src: "/electricianimgs/AdobeStock_840240236-removebg-preview.png",
     alt: "Electrician Logo",
   },
 
@@ -55,9 +55,9 @@ export const siteConfig = {
 
   // SEO
   seo: {
-    siteName: "HVAC Template 2",
-    defaultTitle: "Acme Inc. | Digital Marketing in Denver",
-    defaultDescription: "Denver's trusted digital marketing agency. Indoor billboard ads, web design, PPC, social media & Connected TV. Free consultation!",
+    siteName: "Electrician Sample",
+    defaultTitle: "Professional Electrical Services | Licensed Electricians",
+    defaultDescription: "Trusted electrical services for residential and commercial properties. Licensed electricians available 24/7 for installations, repairs, and emergency service.",
     keywords: "digital marketing Denver, local advertising Denver, indoor billboard advertising, website design Denver, PPC advertising, social media management, Connected TV advertising, OTT ads, geofencing, local SEO Denver",
     siteUrl: "https://acmeinc.com", // Update with actual domain
     ogImage: "https://acmeinc.com/og-image.jpg", // Update with actual OG image

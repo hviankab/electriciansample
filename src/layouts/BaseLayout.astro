@@ -5,8 +5,6 @@ import { Navbar } from "@/components/Navbar"
 import Footer from "@/components/Footer.astro"
 import ThemeProvider from "@/components/ThemeProvider.astro"
 import { siteConfig, getLocationText } from "@/config/site"
-import PopupModal from "@/components/ui/PopupModal.astro"
-import FreeScanButton from "@/components/ui/FreeScanButton.astro"
 
 interface Props {
   title: string
@@ -96,8 +94,6 @@ const canonical = new URL(Astro.url.pathname, siteConfig.seo.siteUrl).href
     </main>
     
     <Footer />
-    <FreeScanButton />
-    <PopupModal />
 
     <script>
       // Optimize scroll animations for mobile

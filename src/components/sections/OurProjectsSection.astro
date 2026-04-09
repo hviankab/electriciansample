@@ -1,0 +1,297 @@
+---
+interface Project {
+  title: string;
+  category: string;
+  image: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  projects?: Project[];
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  eyebrow = "Our Projects",
+  title = "Recent Work & Completed Projects",
+  description = "Explore our portfolio of successful electrical installations and renovations across residential and commercial properties.",
+  projects = [
+    {
+      title: "Commercial Office Rewiring",
+      category: "Commercial",
+      image: "/images/compagnons-yZmHFF-g-W0-unsplash.jpg",
+      href: "/projects/commercial-office"
+    },
+    {
+      title: "Residential Smart Home",
+      category: "Residential",
+      image: "/images/raze-solar-GXLPLG3_Vf4-unsplash.jpg",
+      href: "/projects/smart-home"
+    },
+    {
+      title: "Industrial Facility Upgrade",
+      category: "Industrial",
+      image: "/images/joseph-menjivar-lPG-hWlvGYU-unsplash.jpg",
+      href: "/projects/industrial"
+    },
+    {
+      title: "Restaurant Lighting Design",
+      category: "Commercial",
+      image: "/images/raymond-yeung--BWDRf_mG9Q-unsplash.jpg",
+      href: "/projects/restaurant"
+    }
+  ],
+  buttonText = "View All Projects",
+  buttonHref = "/projects"
+} = Astro.props;
+---
+
+<section class="our-projects-section">
+  <div class="projects-container">
+    <!-- Header -->
+    <div class="projects-header">
+      <div class="header-content">
+        <p class="projects-eyebrow">{eyebrow}</p>
+        <h2 class="projects-title">{title}</h2>
+        <p class="projects-description">{description}</p>
+      </div>
+      <a href={buttonHref} class="view-all-btn">
+        {buttonText}
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <a href={project.href} class="project-card">
+          <div class="project-image">
+            <img src={project.image} alt={project.title} loading="lazy" />
+            <div class="project-overlay">
+              <span class="project-category">{project.category}</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">{project.title}</h3>
+            <div class="project-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .our-projects-section {
+    padding: 8rem 2rem;
+    background: #ffffff;
+  }
+
+  .projects-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    gap: 2rem;
+  }
+
+  .header-content {
+    flex: 1;
+  }
+
+  .projects-eyebrow {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 1rem 0;
+  }
+
+  .projects-title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.1;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  .projects-description {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 600px;
+    font-weight: 400;
+  }
+
+  .view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: #0f172a;
+    color: #ffffff;
+    border: 2px solid #0f172a;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .view-all-btn:hover {
+    background: #1e293b;
+    border-color: #1e293b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: #FFD700;
+  }
+
+  .project-image {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+  }
+
+  .project-category {
+    background: #FFD700;
+    color: #000000;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .project-info {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .project-arrow {
+    width: 40px;
+    height: 40px;
+    background: #f9fafb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    border: 2px solid #e5e7eb;
+  }
+
+  .project-arrow svg {
+    color: #374151;
+  }
+
+  .project-card:hover .project-arrow {
+    background: #FFD700;
+    border-color: #FFD700;
+  }
+
+  .project-card:hover .project-arrow svg {
+    color: #000000;
+  }
+
+  @media (max-width: 1024px) {
+    .projects-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .view-all-btn {
+      align-self: flex-start;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .our-projects-section {
+      padding: 5rem 1.5rem;
+    }
+
+    .projects-header {
+      margin-bottom: 3rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .project-image {
+      height: 240px;
+    }
+  }
+</style>

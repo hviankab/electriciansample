@@ -5,10 +5,13 @@ keywords: "electrical services {city}, electrician {city}, commercial electrical
 ---
 
 import HeroSection from "@/components/sections/HeroSection.astro"
-import ServiceCardsGridSection from "@/components/sections/ServiceCardsGridSection.astro"
-import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection.astro"
-import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
-import CTABannerSection from "@/components/sections/CTABannerSection.astro"
+import TrustBadgesSection from "@/components/sections/TrustBadgesSection.astro"
+import WhyChooseSection from "@/components/sections/WhyChooseSection.astro"
+import ServicesGridSection from "@/components/sections/ServicesGridSection.astro"
+import OurCreativeTeamSection from "@/components/sections/OurCreativeTeamSection.astro"
+import OurProjectsSection from "@/components/sections/OurProjectsSection.astro"
+import FAQAccordionSection from "@/components/sections/FAQAccordionSection.astro"
+import ContactCTASection from "@/components/sections/ContactCTASection.astro"
 
 <HeroSection
   eyebrow="Professional Electrical Services"
@@ -19,182 +22,179 @@ import CTABannerSection from "@/components/sections/CTABannerSection.astro"
   buttonHref="/contact"
 />
 
-<ServiceCardsGridSection
-  badge="OUR SERVICES"
-  title="Complete Electrical Services for Your Home & Business"
-  description="From residential repairs to commercial installations, we provide comprehensive electrical solutions with certified technicians and guaranteed quality workmanship."
-  tabs={[
-    {
-      id: "commercial",
-      title: "Commercial Electrical",
-      icon: "🏢",
-      heading: "Commercial Electrical Services",
-      description: "Professional electrical solutions for businesses of all sizes.",
-      image: "/images/compagnons-yZmHFF-g-W0-unsplash.jpg",
-      services: [
-        {
-          icon: "🏗️",
-          title: "Ground Up Construction",
-          href: "/commercial-electrical/ground-up-construction"
-        },
-        {
-          icon: "⚡",
-          title: "Electrical Panels",
-          href: "/commercial-electrical"
-        },
-        {
-          icon: "🔌",
-          title: "Emergency Standby Power",
-          href: "/commercial-electrical"
-        },
-        {
-          icon: "❄️",
-          title: "HVAC Electrical",
-          href: "/commercial-electrical"
-        }
-      ],
-      buttonText: "View Commercial Services",
-      buttonHref: "/commercial-electrical"
-    },
-    {
-      id: "residential",
-      title: "Residential Electrical",
-      icon: "🏠",
-      heading: "Residential Electrical Services",
-      description: "Safe and reliable electrical services for your home.",
-      image: "/images/raymond-yeung--BWDRf_mG9Q-unsplash.jpg",
-      services: [
-        {
-          icon: "🔌",
-          title: "Electrical Repairs",
-          href: "/residential-electrical"
-        },
-        {
-          icon: "💡",
-          title: "Lighting Installation",
-          href: "/residential-electrical"
-        },
-        {
-          icon: "🔋",
-          title: "Backup Generators",
-          href: "/residential-electrical"
-        },
-        {
-          icon: "🚗",
-          title: "EV Charging Stations",
-          href: "/residential-electrical"
-        }
-      ],
-      buttonText: "View Residential Services",
-      buttonHref: "/residential-electrical"
-    },
-    {
-      id: "emergency",
-      title: "Emergency Services",
-      icon: "🚨",
-      heading: "24/7 Emergency Electrical Services",
-      description: "Fast response for urgent electrical issues, available around the clock.",
-      image: "/images/joseph-menjivar-lPG-hWlvGYU-unsplash.jpg",
-      services: [
-        {
-          icon: "⚡",
-          title: "Power Outages",
-          href: "/emergency"
-        },
-        {
-          icon: "🔥",
-          title: "Electrical Fires",
-          href: "/emergency"
-        },
-        {
-          icon: "⚠️",
-          title: "Circuit Breaker Issues",
-          href: "/emergency"
-        },
-        {
-          icon: "🔌",
-          title: "Wiring Problems",
-          href: "/emergency"
-        }
-      ],
-      buttonText: "Get Emergency Service",
-      buttonHref: "/emergency"
-    }
-  ]}
+<TrustBadgesSection
+  title="Trusted by Businesses & Homeowners"
+  subtitle="Across Northern Nevada"
+  description="From small tenant improvements ground-up developments, Roofora Unlimited partners with Nevada property owners who expect quality without compromise."
 />
 
-<WhyChooseUsSection
-  eyebrow="WHY CHOOSE US"
-  title="Licensed, Insured & Trusted Electrical Experts"
-  description="With years of experience serving {city} and surrounding areas, we deliver safe, reliable electrical services backed by our commitment to quality and customer satisfaction. Our certified electricians are available 24/7 for emergencies."
-  badgeText="Our Commitment to Excellence"
-  image="/images/hvac.jpg"
+<WhyChooseSection
+  eyebrow="Why Choose Us"
+  title="The Electrical Experts"
+  subtitle="You Can Rely On"
+  description="We Build Relationships - Not Just Structures."
+  image="/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg"
+  yearsOfExperience="27+"
+  features={[
+    {
+      title: "Veteran-Owned Integrity:",
+      description: "Discipline, accountability, and service are built into everything we do."
+    },
+    {
+      title: "End-to-End Solutions:",
+      description: "From concept to completion, we manage every detail."
+    },
+    {
+      title: "Local Knowledge:",
+      description: "Born and raised in Reno — we know Nevada's codes, climate, and challenges."
+    },
+    {
+      title: "Quality Without Shortcuts:",
+      description: "We do it right the first time - every time."
+    },
+    {
+      title: "Transparent Communication:",
+      description: "Clear estimates, realistic timelines, no surprises."
+    }
+  ]}
+  closingText="When you work with us, you get more than a contractor you get a partner invested in your project's success."
+  buttonText="Request Your Quote Today"
+  buttonHref="/contact"
+/>
+
+<ServicesGridSection
+  title="Delivering Every Project"
+  subtitle="With Precision"
+  description="Industry-standard services for safety, functionality, and long-lasting reliability."
   services={[
-    { text: "Licensed & Insured Electricians - All our technicians are fully certified and insured for your protection." },
-    { text: "24/7 Emergency Service - We're available around the clock for urgent electrical issues." },
-    { text: "Free Estimates - Get transparent pricing with no hidden fees before we start any work." },
-    { text: "Quality Workmanship Guaranteed - We stand behind our work with comprehensive warranties." },
-    { text: "Upfront Pricing - Know exactly what you'll pay before we begin." },
-    { text: "Same-Day Service Available - Fast response times when you need us most." }
-  ]}
-  ctaText="Experience the difference of working with true electrical professionals. Contact us today for a free estimate!"
-  buttonText="Get Free Estimate"
-  buttonHref="/contact"
-/>
-
-<TestimonialsSection
-  badge="TESTIMONIALS"
-  title="What Our Clients Say"
-  description="Don't just take our word for it - hear from our satisfied customers who trust us with their electrical needs."
-  testimonials={[
     {
-      name: "Michael Rodriguez",
-      initials: "MR",
-      date: "2 weeks ago",
-      rating: 5,
-      content: "Excellent service! They rewired our entire office building on schedule and within budget. Professional team from start to finish."
+      title: "Electrical Wiring & Repair",
+      description: "Expert rewiring, updates, and troubleshooting for residential and commercial properties.",
+      image: "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+      icon: "⚡",
+      href: "/services/wiring-repair"
     },
     {
-      name: "Sarah Johnson",
-      initials: "SJ",
-      date: "1 month ago",
-      rating: 5,
-      content: "Called them for an emergency at 11 PM and they were at my house within 45 minutes. Fixed the problem quickly and professionally."
+      title: "Commercial Installation",
+      description: "Power distribution and lighting systems for medium to large-scale facilities.",
+      image: "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+      icon: "🏢",
+      href: "/services/commercial"
     },
     {
-      name: "David Chen",
-      initials: "DC",
-      date: "3 weeks ago",
-      rating: 5,
-      content: "Installed EV charging station in my garage. Clean work, fair pricing, and they explained everything clearly. Highly recommend!"
+      title: "Lighting Design & Setup",
+      description: "Energy-saving LED lighting that transforms your space.",
+      image: "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+      icon: "💡",
+      href: "/services/lighting"
     },
     {
-      name: "Lisa Martinez",
-      initials: "LM",
-      date: "1 week ago",
-      rating: 5,
-      content: "Best electrician I've worked with in {city}. They upgraded our electrical panel and added new circuits. Very knowledgeable and professional."
-    },
-    {
-      name: "Robert Thompson",
-      initials: "RT",
-      date: "2 months ago",
-      rating: 5,
-      content: "Used them for our restaurant's electrical work. They handled everything from permits to final inspection. Couldn't be happier!"
-    },
-    {
-      name: "Jennifer Lee",
-      initials: "JL",
-      date: "3 weeks ago",
-      rating: 5,
-      content: "Great experience! They installed recessed lighting throughout our home. The quality of work is outstanding and the price was very reasonable."
+      title: "Electrical Maintenance",
+      description: "Regular check-ups to keep your systems running safely.",
+      image: "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg",
+      icon: "🔧",
+      href: "/services/maintenance"
     }
   ]}
 />
 
-<CTABannerSection
-  title="Need an Electrician? We're Here to Help!"
-  description="Contact us today for fast, reliable electrical services. Free estimates on all projects."
-  buttonText="Get Free Estimate"
-  buttonHref="/contact"
+<OurCreativeTeamSection
+  eyebrow="Our Team"
+  title="Our Creative people"
+  description="We are our best in every project. The value we provide to clients, business owners are based on our level of commitment, in-depth skills, knowledge and expertise. Rest assured, we take every project we take on."
+  teamMembers={[
+    {
+      name: "Juan Patrik",
+      role: "Lead Electrician",
+      image: "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg"
+    },
+    {
+      name: "Helly Estrin",
+      role: "Senior Technician",
+      image: "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg"
+    },
+    {
+      name: "Michel Jordan",
+      role: "Project Manager",
+      image: "/electricianimgs/raze-solar-GXLPLG3_Vf4-unsplash.jpg"
+    }
+  ]}
+/>
+
+<OurProjectsSection
+  eyebrow="Our Projects"
+  title="Recent Work & Completed Projects"
+  description="Explore our portfolio of successful electrical installations and renovations across residential and commercial properties."
+  buttonText="View All Projects"
+  buttonHref="/projects"
+  projects={[
+    {
+      title: "Commercial Office Rewiring",
+      category: "Commercial",
+      image: "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+      href: "/projects/commercial-office"
+    },
+    {
+      title: "Residential Smart Home",
+      category: "Residential",
+      image: "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+      href: "/projects/smart-home"
+    },
+    {
+      title: "Industrial Facility Upgrade",
+      category: "Industrial",
+      image: "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+      href: "/projects/industrial"
+    },
+    {
+      title: "Restaurant Lighting Design",
+      category: "Commercial",
+      image: "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+      href: "/projects/restaurant"
+    }
+  ]}
+/>
+
+<FAQAccordionSection
+  eyebrow="Frequently Asked Question"
+  title="Common Construction"
+  subtitle="Questions And Answer"
+  ctaText="Call us - we answer all questions, big or small!"
+  ctaHref="/contact"
+  faqs={[
+    {
+      question: "Do you do your own finish carpentry?",
+      answer: "Yes, we have experienced carpenters on our team who handle all finish carpentry work to ensure quality and consistency throughout your project."
+    },
+    {
+      question: "Do you take credit cards?",
+      answer: "Yes, we accept all major credit cards including Visa, Mastercard, American Express, and Discover for your convenience."
+    },
+    {
+      question: "Do you do insurance work?",
+      answer: "Absolutely. We work directly with insurance companies and can help you navigate the claims process for electrical repairs and installations."
+    },
+    {
+      question: "Do you help with design?",
+      answer: "Absolutely. We can assist with layout and material selections before construction begins."
+    }
+  ]}
+/>
+
+<ContactCTASection
+  title="Your Electrical needs is our Top"
+  titleEmphasis="PRIORITY"
+  description="Professional electrical services available 24/7. Contact us today for a free consultation and let us handle all your electrical needs."
+  primaryButtonText="Contact Us"
+  primaryButtonHref="/contact"
+  secondaryButtonText="Request a Call"
+  secondaryButtonHref="/request-call"
+  cardTitle="Let's"
+  cardSubtitle="Grow Together"
+  cardButtonText="Partner With Us"
+  cardButtonHref="/partnership"
+  cardImage="/electricianimgs/raze-solar-GXLPLG3_Vf4-unsplash.jpg"
+  backgroundImage="/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg"
+  newsletterTitle="Subscribe to our newsletter"
+  newsletterDescription="Stay updated with our latest news"
 />

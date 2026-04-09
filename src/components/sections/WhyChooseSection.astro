@@ -1,0 +1,291 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  image?: string;
+  yearsOfExperience?: string;
+  features?: Array<{
+    title: string;
+    description: string;
+  }>;
+  closingText?: string;
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  eyebrow = "Why Choose Us",
+  title = "The Roofing Experts",
+  subtitle = "You Can Rely On",
+  description = "We Build Relationships - Not Just Structures.",
+  image = "/images/raze-solar-GXLPLG3_Vf4-unsplash.jpg",
+  yearsOfExperience = "27+",
+  features = [
+    {
+      title: "Veteran-Owned Integrity:",
+      description: "Discipline, accountability, and service are built into everything we do."
+    },
+    {
+      title: "End-to-End Solutions:",
+      description: "From concept to completion, we manage every detail."
+    },
+    {
+      title: "Local Knowledge:",
+      description: "Born and raised in Reno — we know Nevada's codes, climate, and challenges."
+    },
+    {
+      title: "Quality Without Shortcuts:",
+      description: "We do it right the first time - every time."
+    },
+    {
+      title: "Transparent Communication:",
+      description: "Clear estimates, realistic timelines, no surprises."
+    }
+  ],
+  closingText = "When you work with us, you get more than a contractor you get a partner invested in your project's success.",
+  buttonText = "Request Your Quote Today",
+  buttonHref = "/contact"
+} = Astro.props;
+---
+
+<section class="why-choose-section">
+  <div class="why-choose-container">
+    <div class="content-grid">
+      <!-- Left: Image -->
+      <div class="image-wrapper">
+        <div class="image-card">
+          <img src={image} alt="Professional roofing work" loading="lazy" />
+          <div class="experience-badge">
+            <div class="badge-number">{yearsOfExperience}</div>
+            <div class="badge-text">Years Of Experience</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="content-wrapper">
+        <h2 class="section-title">
+          {title}<br />
+          {subtitle}
+        </h2>
+
+        <p class="section-description">{description}</p>
+
+        <p class="intro-text">Our company was founded on integrity, reliability, genuine respect for our clients. Here's why builders, business owners, and homeowners trust us:</p>
+
+        <ul class="features-list">
+          {features.map((feature) => (
+            <li class="feature-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+              </svg>
+              <div>
+                <strong>{feature.title}</strong> {feature.description}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <p class="closing-text">{closingText}</p>
+
+        <a href={buttonHref} class="cta-button">
+          {buttonText}
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-choose-section {
+    padding: 6rem 2rem;
+    background: #f5f5f5;
+  }
+
+  .why-choose-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .image-wrapper {
+    position: relative;
+  }
+
+  .image-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    transform: perspective(1000px) rotateY(-5deg);
+    border: 1px solid #e5e7eb;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .experience-badge {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(15, 23, 42, 0.98);
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .badge-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .badge-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .content-wrapper {
+    padding: 2rem 0;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.1;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .section-description {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #000000;
+    margin: 0 0 1rem 0;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.6;
+  }
+
+  .feature-item svg {
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    color: #0f172a;
+  }
+
+  .feature-item strong {
+    color: #000000;
+    font-weight: 600;
+  }
+
+  .closing-text {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background: #0f172a;
+    color: #ffffff;
+    border: 2px solid #0f172a;
+  }
+
+  .cta-button:hover {
+    background: #1e293b;
+    border-color: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+  }
+
+  @media (max-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .image-card {
+      transform: none;
+    }
+
+    .image-card img {
+      height: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .why-choose-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .image-card img {
+      height: 300px;
+    }
+
+    .experience-badge {
+      bottom: 20px;
+      right: 20px;
+      padding: 1.5rem 2rem;
+    }
+
+    .badge-number {
+      font-size: 2.5rem;
+    }
+  }
+</style>

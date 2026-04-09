@@ -59,7 +59,7 @@ export const mainNavItems: MegaMenuItem[] = [
         items: [
           { title: "Ground-up Electrical Construction", href: "/commercial-electrical/ground-up-construction" },
           { title: "Emergency & Standby Power Generating Systems", href: "/commercial-electrical/emergency-standby-power" },
-          { title: "Commercial HVAC Electrical", href: "/commercial-electrical/hvac-electrical" },
+          { title: "Commercial Electrical Systems", href: "/commercial-electrical/electrical-systems" },
           { title: "Commercial Electrical Panels", href: "/commercial-electrical/electrical-panels" },
         ],
       },
@@ -106,9 +106,9 @@ export const mainNavItems: MegaMenuItem[] = [
         icon: "alert",
         items: [
           { title: "24-hour Emergency Service", href: "/emergency/24-hour-service" },
-          { title: "HVAC", href: "/emergency/hvac" },
-          { title: "Heating", href: "/emergency/heating" },
-          { title: "Water Heater", href: "/emergency/water-heater" },
+          { title: "Power Outages", href: "/emergency/power-outages" },
+          { title: "Electrical Fires", href: "/emergency/electrical-fires" },
+          { title: "Circuit Breaker Issues", href: "/emergency/circuit-breakers" },
         ],
       },
     ],

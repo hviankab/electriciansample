@@ -1,0 +1,127 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  badges?: Array<{
+    image: string;
+    alt: string;
+  }>;
+}
+
+const {
+  title = "Trusted by Businesses & Homeowners",
+  subtitle = "Across Northern Nevada",
+  description = "From small tenant improvements ground-up developments, Roofora Unlimited partners with Nevada property owners who expect quality without compromise.",
+  badges = [
+    { image: "/newimages/Licensed.webp", alt: "Licensed & Insured" },
+    { image: "/newimages/Certified.webp", alt: "Nevada State Contractors Board" },
+    { image: "/newimages/BBB-Logo.webp", alt: "Best Plumber Vegas 2025 Winner" },
+    { image: "/newimages/Google-Reviews-Logo.webp", alt: "Master Plumber of the Year" },
+    { image: "/newimages/Home-Advisor-Logo.webp", alt: "Google Reviews" }
+  ]
+} = Astro.props;
+---
+
+<section class="trust-badges-section">
+  <div class="trust-container">
+    <div class="trust-header">
+      <h2 class="trust-title">
+        {title}<br />
+        <span class="trust-subtitle">{subtitle}</span>
+      </h2>
+      <p class="trust-description">{description}</p>
+    </div>
+    
+    <div class="badges-grid">
+      {badges.map((badge) => (
+        <div class="badge-item">
+          <img src={badge.image} alt={badge.alt} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-badges-section {
+    padding: 10rem 2rem 8rem;
+    background: #ffffff;
+  }
+
+  .trust-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .trust-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .trust-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .trust-subtitle {
+    color: #000000;
+    font-weight: 700;
+  }
+
+  .trust-description {
+    font-size: 1.125rem;
+    color: #000000;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .badges-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .badge-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .badge-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .badge-item img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(0%);
+    transition: filter 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .trust-badges-section {
+      padding: 6rem 1.5rem 5rem;
+    }
+
+    .trust-header {
+      margin-bottom: 3rem;
+    }
+
+    .badges-grid {
+      gap: 2rem;
+    }
+
+    .badge-item img {
+      height: 60px;
+    }
+  }
+</style>

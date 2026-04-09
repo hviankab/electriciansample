@@ -1,0 +1,293 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  faqs?: FAQ[];
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  eyebrow = "Frequently Asked Question",
+  title = "Common Construction",
+  subtitle = "Questions And Answer",
+  faqs = [
+    {
+      question: "Do you do your own finish carpentry?",
+      answer: "Yes, we have experienced carpenters on our team who handle all finish carpentry work to ensure quality and consistency throughout your project."
+    },
+    {
+      question: "Do you take credit cards?",
+      answer: "Yes, we accept all major credit cards including Visa, Mastercard, American Express, and Discover for your convenience."
+    },
+    {
+      question: "Do you do insurance work?",
+      answer: "Absolutely. We work directly with insurance companies and can help you navigate the claims process for electrical repairs and installations."
+    },
+    {
+      question: "Do you help with design?",
+      answer: "Absolutely. We can assist with layout and material selections before construction begins."
+    }
+  ],
+  ctaText = "Call us - we answer all questions, big or small!",
+  ctaHref = "tel:+1234567890"
+} = Astro.props;
+---
+
+<section class="faq-section">
+  <div class="faq-container">
+    <div class="faq-layout">
+      <!-- Left: FAQ Items -->
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 3}>
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <div class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path class="icon-minus" d="M8 12h8"/>
+                  <path class="icon-plus" d="M12 8v8"/>
+                </svg>
+              </div>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <!-- Right: Header & CTA -->
+      <div class="faq-header">
+        <p class="faq-eyebrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <path d="M12 17h.01"/>
+          </svg>
+          <span>{eyebrow}</span>
+        </p>
+        <h2 class="faq-title">
+          {title}<br />
+          {subtitle}
+        </h2>
+        <a href={ctaHref} class="faq-cta-btn">
+          {ctaText}
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: 8rem 2rem;
+    background: #f5f5f5;
+  }
+
+  .faq-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+
+  .faq-item:hover {
+    border-color: #d1d5db;
+  }
+
+  .faq-item[open] {
+    background: #0f172a;
+    border-color: #0f172a;
+  }
+
+  .faq-question {
+    padding: 1.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000000;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item[open] .faq-question {
+    color: #ffffff;
+  }
+
+  .faq-icon {
+    width: 32px;
+    height: 32px;
+    background: #0f172a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .faq-icon svg {
+    color: #ffffff;
+  }
+
+  .faq-item[open] .faq-icon {
+    background: #ffffff;
+  }
+
+  .faq-item[open] .faq-icon svg {
+    color: #0f172a;
+  }
+
+  .faq-item[open] .icon-plus {
+    display: none;
+  }
+
+  .faq-item:not([open]) .icon-minus {
+    display: none;
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.6;
+    animation: slideDown 0.3s ease;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .faq-header {
+    position: sticky;
+    top: 120px;
+  }
+
+  .faq-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .faq-eyebrow svg {
+    color: #6b7280;
+  }
+
+  .faq-title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.1;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  .faq-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 1rem 2rem;
+    background: #ff6b35;
+    color: #ffffff;
+    border: 2px solid #ff6b35;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  }
+
+  .faq-cta-btn:hover {
+    background: #e55a2b;
+    border-color: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+  }
+
+  @media (max-width: 1024px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .faq-header {
+      position: static;
+      order: -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 5rem 1.5rem;
+    }
+
+    .faq-question {
+      font-size: 1rem;
+      padding: 1.25rem;
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      font-size: 0.95rem;
+    }
+  }
+</style>
