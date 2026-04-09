@@ -1,0 +1,312 @@
+---
+interface PricingPlan {
+  name: string;
+  description: string;
+  price: string;
+  features: string[];
+  highlighted?: boolean;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  plans?: PricingPlan[];
+}
+
+const {
+  eyebrow = "OUR PRICING",
+  title = "Flexible Pricing Plans Designed for Every Electrical Need",
+  description = "Choose the right plan for your home or business with transparent pricing, reliable service, and no hidden costs.",
+  plans = [
+    {
+      name: "Basic Plan",
+      description: "Perfect for small fixes and quick electrical tasks.",
+      price: "$89",
+      features: [
+        "Basic electrical inspection",
+        "Priority support",
+        "Safety compliance check",
+        "Wiring & minor upgrades",
+        "Quick service support"
+      ]
+    },
+    {
+      name: "Standard Plan",
+      description: "Ideal for regular maintenance and common electrical work.",
+      price: "$199",
+      features: [
+        "Full system inspection",
+        "Priority support",
+        "Safety compliance check",
+        "Wiring & minor upgrades",
+        "Quick service support",
+        "Panel upgrades",
+        "Priority emergency support",
+        "Complete electrical setup"
+      ],
+      highlighted: true
+    },
+    {
+      name: "Premium Plan",
+      description: "Best for complete electrical solutions and upgrades.",
+      price: "$350",
+      features: [
+        "Complete electrical setup",
+        "Panel upgrades",
+        "Advanced diagnostics",
+        "Priority emergency support",
+        "Wiring & minor upgrades"
+      ]
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="pricing-section">
+  <div class="pricing-container">
+    <!-- Header -->
+    <div class="pricing-header">
+      <p class="pricing-eyebrow">{eyebrow}</p>
+      <h2 class="pricing-title">{title}</h2>
+      <p class="pricing-description">{description}</p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="pricing-grid">
+      {plans.map((plan) => (
+        <div class={`pricing-card ${plan.highlighted ? 'pricing-card-highlighted' : ''}`}>
+          <div class="card-header">
+            <h3 class="plan-name">{plan.name}</h3>
+            <p class="plan-description">{plan.description}</p>
+          </div>
+          
+          <div class="plan-price">
+            <span class="price-amount">{plan.price}</span>
+            <span class="price-period">/ Service</span>
+          </div>
+          
+          <ul class="plan-features">
+            {plan.features.map((feature) => (
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <button class="plan-button">GET STARTED TODAY</button>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-section {
+    padding: 5rem 2rem;
+    background: #f7f7f7;
+  }
+
+  .pricing-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .pricing-eyebrow {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 1rem 0;
+  }
+
+  .pricing-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricing-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .pricing-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid #e5e7eb;
+    border-top: 4px solid #FFD700;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .pricing-card-highlighted {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-top: 4px solid #FFD700;
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .pricing-card-highlighted:hover {
+    transform: scale(1.05) translateY(-8px);
+  }
+
+  .card-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .plan-name {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #000000;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .plan-description {
+    font-size: 0.9375rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .plan-price {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #f3f4f6;
+  }
+
+  .price-amount {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #FF6B35;
+    line-height: 1;
+  }
+
+  .price-period {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-left: 0.5rem;
+  }
+
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    flex: 1;
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .plan-features svg {
+    color: #000000;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .plan-features span {
+    font-size: 0.9375rem;
+    color: #4b5563;
+    line-height: 1.6;
+  }
+
+  .plan-button {
+    width: 100%;
+    padding: 1rem;
+    background: #FF6B35;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .plan-button:hover {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .pricing-card-highlighted .plan-button {
+    background: #1a2332;
+    color: #ffffff;
+  }
+
+  .pricing-card-highlighted .plan-button:hover {
+    background: #FF6B35;
+  }
+
+  @media (max-width: 1024px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .pricing-card-highlighted {
+      transform: scale(1);
+    }
+
+    .pricing-card-highlighted:hover {
+      transform: translateY(-8px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pricing-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .pricing-header {
+      margin-bottom: 3rem;
+    }
+
+    .pricing-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .price-amount {
+      font-size: 2.5rem;
+    }
+  }
+</style>

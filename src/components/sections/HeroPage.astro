@@ -1,6 +1,4 @@
 ---
-import { siteConfig, getLocationText } from "@/config/site"
-
 interface Props {
   eyebrow?: string;
   title: string;
@@ -11,16 +9,13 @@ interface Props {
 }
 
 const {
-  eyebrow = "Professional HVAC Services",
-  title: rawTitle,
-  subtitle: rawSubtitle,
+  eyebrow = "Professional Electrical Services",
+  title,
+  subtitle,
   buttonText = "Get a Free Quote",
   buttonHref = "/contact",
-  backgroundImage = "/images/hvac-hero.jpg",
+  backgroundImage = "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg",
 } = Astro.props;
-
-const title = getLocationText(rawTitle);
-const subtitle = rawSubtitle ? getLocationText(rawSubtitle) : undefined;
 ---
 
 <section class="hero-page relative w-full min-h-[60vh] flex items-center overflow-hidden">
@@ -40,40 +35,41 @@ const subtitle = rawSubtitle ? getLocationText(rawSubtitle) : undefined;
   </div>
 
   <!-- Content (full width, no form on right) -->
-  <div class="relative z-10 w-full py-16 md:py-20">
+  <div class="relative z-10 w-full pt-40 pb-24 md:pt-48 md:pb-32">
     <div class="container mx-auto px-4">
 
       <!-- Centered content -->
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="eyebrow justify-center">
-          <img src="/images/download - 2026-03-26T110112.696.avif" alt="" aria-hidden="true" width="20" height="20" />
-          <p class="text-white">
+      <div class="max-w-5xl mx-auto text-center">
+        {eyebrow && (
+          <p class="hero-eyebrow text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-white mb-6 opacity-90">
             {eyebrow}
           </p>
-        </div>
+        )}
 
-        <h1 class="hero-h1 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white mb-7">
+        <h1 class="hero-h1 text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6 px-4">
           {title}
         </h1>
 
         {subtitle && (
-          <p class="hero-sub text-base md:text-xl text-white/80 mb-9 max-w-2xl mx-auto leading-relaxed">
+          <p class="hero-sub text-sm md:text-lg text-white/85 mb-8 max-w-3xl mx-auto leading-relaxed px-4">
             {subtitle}
           </p>
         )}
 
-        <p class="text-sm font-semibold uppercase tracking-widest text-white mb-5">
-          Let's Talk About Your Project
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-          <a
-            href={buttonHref}
-            class="hero-cta-btn inline-flex items-center gap-2 bg-brand-secondary text-white px-7 py-3.5 rounded-full font-semibold text-sm transition-all shadow-lg"
-          >
-            {buttonText}
-          </a>
-        </div>
+        {buttonText && buttonHref && (
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <a
+              href={buttonHref}
+              class="hero-cta-btn inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm transition-all shadow-lg"
+              style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #000000;"
+            >
+              {buttonText}
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        )}
       </div>
 
     </div>
@@ -82,7 +78,7 @@ const subtitle = rawSubtitle ? getLocationText(rawSubtitle) : undefined;
 
 <style>
   .hero-page {
-    min-height: 60vh;
+    min-height: 75vh;
   }
 
   .hero-bg {
@@ -102,18 +98,31 @@ const subtitle = rawSubtitle ? getLocationText(rawSubtitle) : undefined;
     }
     
     .hero-page {
-      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+      background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
     }
   }
 
-  .eyebrow {
+  .hero-eyebrow {
     animation: fadeUp 0.6s ease both;
+    letter-spacing: 0.2em;
   }
+  
   .hero-h1 {
     animation: fadeUp 0.7s ease 0.1s both;
+    line-height: 1.2;
   }
+  
   .hero-sub {
     animation: fadeUp 0.7s ease 0.2s both;
+  }
+
+  .hero-cta-btn {
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .hero-cta-btn:hover {
+    background: #000000 !important;
+    color: #ffffff !important;
   }
 
   @keyframes fadeUp {
@@ -121,11 +130,7 @@ const subtitle = rawSubtitle ? getLocationText(rawSubtitle) : undefined;
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-cta-btn:hover {
-    color: #ffffff !important;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .eyebrow, .hero-h1, .hero-sub { animation: none; }
+    .hero-eyebrow, .hero-h1, .hero-sub, .hero-cta-btn { animation: none; }
   }
 </style>

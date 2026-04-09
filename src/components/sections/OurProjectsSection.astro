@@ -2,6 +2,7 @@
 interface Project {
   title: string;
   category: string;
+  description: string;
   image: string;
   href: string;
 }
@@ -16,37 +17,55 @@ interface Props {
 }
 
 const {
-  eyebrow = "Our Projects",
-  title = "Recent Work & Completed Projects",
-  description = "Explore our portfolio of successful electrical installations and renovations across residential and commercial properties.",
+  eyebrow = "EXPLORE SERVICES",
+  title = "Our Electrical Services",
+  description = "Comprehensive solutions for homes and businesses, delivered with safety, efficiency, and precision.",
   projects = [
     {
-      title: "Commercial Office Rewiring",
-      category: "Commercial",
-      image: "/images/compagnons-yZmHFF-g-W0-unsplash.jpg",
-      href: "/projects/commercial-office"
+      title: "Electrical Installation",
+      category: "Installation",
+      description: "Complete electrical setups for new homes and businesses, ensuring safe [...]",
+      image: "/electricianimgs/AdobeStock_136089970.jpeg",
+      href: "/services/electrical-installation"
     },
     {
-      title: "Residential Smart Home",
-      category: "Residential",
-      image: "/images/raze-solar-GXLPLG3_Vf4-unsplash.jpg",
-      href: "/projects/smart-home"
+      title: "Wiring & Rewiring",
+      category: "Wiring",
+      description: "Upgrade or repair outdated wiring with modern solutions that improve safety [...]",
+      image: "/electricianimgs/AdobeStock_187924476.jpeg",
+      href: "/services/wiring-rewiring"
     },
     {
-      title: "Industrial Facility Upgrade",
-      category: "Industrial",
-      image: "/images/joseph-menjivar-lPG-hWlvGYU-unsplash.jpg",
-      href: "/projects/industrial"
+      title: "Lighting Solutions",
+      category: "Lighting",
+      description: "Design and install indoor, outdoor, and smart lighting systems to enhance [...]",
+      image: "/electricianimgs/AdobeStock_208314515.jpeg",
+      href: "/services/lighting-solutions"
     },
     {
-      title: "Restaurant Lighting Design",
-      category: "Commercial",
-      image: "/images/raymond-yeung--BWDRf_mG9Q-unsplash.jpg",
-      href: "/projects/restaurant"
+      title: "Panel Upgrades",
+      category: "Upgrades",
+      description: "Modernize your electrical panel to handle increased power demands [...]",
+      image: "/electricianimgs/AdobeStock_327681318.jpeg",
+      href: "/services/panel-upgrades"
+    },
+    {
+      title: "Emergency Repairs",
+      category: "Emergency",
+      description: "24/7 emergency electrical services to address urgent issues [...]",
+      image: "/electricianimgs/AdobeStock_439136266.jpeg",
+      href: "/services/emergency-repairs"
+    },
+    {
+      title: "Safety Inspections",
+      category: "Inspection",
+      description: "Comprehensive electrical safety inspections for residential and commercial [...]",
+      image: "/electricianimgs/AdobeStock_543922851.jpeg",
+      href: "/services/safety-inspections"
     }
   ],
-  buttonText = "View All Projects",
-  buttonHref = "/projects"
+  buttonText = "VIEW ALL SERVICES",
+  buttonHref = "/services"
 } = Astro.props;
 ---
 
@@ -73,14 +92,12 @@ const {
         <a href={project.href} class="project-card">
           <div class="project-image">
             <img src={project.image} alt={project.title} loading="lazy" />
-            <div class="project-overlay">
-              <span class="project-category">{project.category}</span>
-            </div>
           </div>
           <div class="project-info">
             <h3 class="project-title">{project.title}</h3>
+            <p class="project-description">{project.description}</p>
             <div class="project-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M7 17L17 7M17 7H7M17 7v10"/>
               </svg>
             </div>
@@ -93,8 +110,8 @@ const {
 
 <style>
   .our-projects-section {
-    padding: 8rem 2rem;
-    background: #ffffff;
+    padding: 5rem 2rem;
+    background: #f8f9fa;
   }
 
   .projects-container {
@@ -105,8 +122,8 @@ const {
   .projects-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 4rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
     gap: 2rem;
   }
 
@@ -117,24 +134,24 @@ const {
   .projects-eyebrow {
     font-size: 0.875rem;
     font-weight: 700;
-    color: #FFD700;
+    color: #000000;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.75rem 0;
   }
 
   .projects-title {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 2.75rem);
     font-weight: 800;
     color: #000000;
-    line-height: 1.1;
-    margin: 0 0 1rem 0;
+    line-height: 1.2;
+    margin: 0 0 0.75rem 0;
     letter-spacing: -0.02em;
   }
 
   .projects-description {
     font-size: 1rem;
-    color: #4b5563;
+    color: #6b7280;
     line-height: 1.6;
     margin: 0;
     max-width: 600px;
@@ -145,50 +162,53 @@ const {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: #0f172a;
-    color: #ffffff;
-    border: 2px solid #0f172a;
-    border-radius: 8px;
+    padding: 0.875rem 1.75rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
+    border: none;
+    border-radius: 6px;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.875rem;
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     transition: all 0.2s ease;
     white-space: nowrap;
   }
 
   .view-all-btn:hover {
-    background: #1e293b;
-    border-color: #1e293b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .view-all-btn svg {
+    display: none;
   }
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
 
   .project-card {
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 2px solid #e5e7eb;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
   }
 
   .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    border-color: #FFD700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
 
   .project-image {
     position: relative;
-    height: 320px;
+    height: 240px;
     overflow: hidden;
   }
 
@@ -196,39 +216,15 @@ const {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .project-card:hover .project-image img {
-    transform: scale(1.05);
-  }
-
-  .project-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
-    display: flex;
-    align-items: flex-end;
-    padding: 1.5rem;
-  }
-
-  .project-category {
-    background: #FFD700;
-    color: #000000;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 
   .project-info {
     padding: 1.5rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+    position: relative;
   }
 
   .project-title {
@@ -239,30 +235,38 @@ const {
     line-height: 1.3;
   }
 
+  .project-description {
+    font-size: 0.9375rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
   .project-arrow {
-    width: 40px;
-    height: 40px;
-    background: #f9fafb;
-    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     transition: all 0.2s ease;
-    border: 2px solid #e5e7eb;
+    border: none;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
   }
 
   .project-arrow svg {
-    color: #374151;
-  }
-
-  .project-card:hover .project-arrow {
-    background: #FFD700;
-    border-color: #FFD700;
+    color: #9ca3af;
+    transition: all 0.2s ease;
   }
 
   .project-card:hover .project-arrow svg {
     color: #000000;
+    transform: translate(2px, -2px);
   }
 
   @media (max-width: 1024px) {
@@ -274,15 +278,19 @@ const {
     .view-all-btn {
       align-self: flex-start;
     }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 768px) {
     .our-projects-section {
-      padding: 5rem 1.5rem;
+      padding: 4rem 1.5rem;
     }
 
     .projects-header {
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .projects-grid {
@@ -291,7 +299,7 @@ const {
     }
 
     .project-image {
-      height: 240px;
+      height: 220px;
     }
   }
 </style>

@@ -7,53 +7,68 @@ interface FAQ {
 interface Props {
   eyebrow?: string;
   title?: string;
-  subtitle?: string;
+  description?: string;
+  image?: string;
   faqs?: FAQ[];
-  ctaText?: string;
-  ctaHref?: string;
 }
 
 const {
-  eyebrow = "Frequently Asked Question",
-  title = "Common Construction",
-  subtitle = "Questions And Answer",
+  eyebrow = "FAQ'S",
+  title = "Frequently Asked Questions About Our Services and Process",
+  description = "Find clear answers to common questions about our services, pricing, safety standards, and how we handle your electrical projects.",
+  image = "/electricianimgs/AdobeStock_136089970.jpeg",
   faqs = [
     {
-      question: "Do you do your own finish carpentry?",
-      answer: "Yes, we have experienced carpenters on our team who handle all finish carpentry work to ensure quality and consistency throughout your project."
+      question: "Do you provide emergency electrical services?",
+      answer: "Yes, we offer fast and reliable emergency services to handle urgent electrical issues and restore safety as quickly as possible. Pricing depends on the project scope, but we always provide clear, upfront quotes with no hidden charges. We provide complete electrical solutions for homes, offices, and commercial spaces of all sizes."
     },
     {
-      question: "Do you take credit cards?",
-      answer: "Yes, we accept all major credit cards including Visa, Mastercard, American Express, and Discover for your convenience."
+      question: "Are your electricians certified and insured?",
+      answer: "Yes, all our electricians are fully licensed, certified, and insured to provide safe and professional electrical services."
     },
     {
-      question: "Do you do insurance work?",
-      answer: "Absolutely. We work directly with insurance companies and can help you navigate the claims process for electrical repairs and installations."
+      question: "How much do your services cost?",
+      answer: "Our pricing varies based on the scope of work. We provide transparent quotes with no hidden fees after assessing your project."
     },
     {
-      question: "Do you help with design?",
-      answer: "Absolutely. We can assist with layout and material selections before construction begins."
+      question: "Do you handle both residential and commercial projects?",
+      answer: "Yes, we work on both residential and commercial electrical projects of all sizes, from small repairs to large installations."
+    },
+    {
+      question: "How quickly can I schedule a service?",
+      answer: "We offer flexible scheduling and can often accommodate same-day or next-day appointments depending on availability."
+    },
+    {
+      question: "When Should You Upgrade Your Electrical Panel?",
+      answer: "You should upgrade your electrical panel if you're experiencing frequent breaker trips, adding new appliances, or if your panel is over 25 years old."
     }
-  ],
-  ctaText = "Call us - we answer all questions, big or small!",
-  ctaHref = "tel:+1234567890"
+  ]
 } = Astro.props;
 ---
 
 <section class="faq-section">
   <div class="faq-container">
     <div class="faq-layout">
-      <!-- Left: FAQ Items -->
+      <!-- Left: Header & Image -->
+      <div class="faq-header">
+        <p class="faq-eyebrow">{eyebrow}</p>
+        <h2 class="faq-title">{title}</h2>
+        <p class="faq-description">{description}</p>
+        <div class="faq-image">
+          <img src={image} alt="Electrician at work" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Right: FAQ Items -->
       <div class="faq-list">
         {faqs.map((faq, index) => (
-          <details class="faq-item" open={index === 3}>
+          <details class="faq-item" open={index === 0}>
             <summary class="faq-question">
               <span>{faq.question}</span>
               <div class="faq-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path class="icon-minus" d="M8 12h8"/>
-                  <path class="icon-plus" d="M12 8v8"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path class="icon-minus" d="M5 12h14"/>
+                  <path class="icon-plus" d="M12 5v14"/>
                 </svg>
               </div>
             </summary>
@@ -63,36 +78,14 @@ const {
           </details>
         ))}
       </div>
-
-      <!-- Right: Header & CTA -->
-      <div class="faq-header">
-        <p class="faq-eyebrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <path d="M12 17h.01"/>
-          </svg>
-          <span>{eyebrow}</span>
-        </p>
-        <h2 class="faq-title">
-          {title}<br />
-          {subtitle}
-        </h2>
-        <a href={ctaHref} class="faq-cta-btn">
-          {ctaText}
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
     </div>
   </div>
 </section>
 
 <style>
   .faq-section {
-    padding: 8rem 2rem;
-    background: #f5f5f5;
+    padding: 5rem 2rem;
+    background: #ffffff;
   }
 
   .faq-container {
@@ -102,44 +95,85 @@ const {
 
   .faq-layout {
     display: grid;
-    grid-template-columns: 1fr 500px;
+    grid-template-columns: 450px 1fr;
     gap: 4rem;
     align-items: start;
+  }
+
+  .faq-header {
+    position: sticky;
+    top: 120px;
+  }
+
+  .faq-eyebrow {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 1rem 0;
+    display: block;
+  }
+
+  .faq-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  .faq-description {
+    font-size: 0.9375rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+  }
+
+  .faq-image {
+    width: 100%;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0;
   }
 
   .faq-item {
     background: #ffffff;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
-    overflow: hidden;
+    border-bottom: 1px solid #e5e7eb;
     transition: all 0.2s ease;
   }
 
-  .faq-item:hover {
-    border-color: #d1d5db;
+  .faq-item:first-child {
+    border-top: 1px solid #e5e7eb;
   }
 
   .faq-item[open] {
-    background: #0f172a;
-    border-color: #0f172a;
+    background: #ffffff;
   }
 
   .faq-question {
-    padding: 1.5rem;
+    padding: 1.5rem 0;
     font-size: 1.125rem;
-    font-weight: 700;
+    font-weight: 600;
     color: #000000;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     list-style: none;
     user-select: none;
     transition: all 0.2s ease;
@@ -149,15 +183,17 @@ const {
     display: none;
   }
 
+  .faq-question:hover {
+    color: #FFD700;
+  }
+
   .faq-item[open] .faq-question {
-    color: #ffffff;
+    color: #FFD700;
   }
 
   .faq-icon {
-    width: 32px;
-    height: 32px;
-    background: #0f172a;
-    border-radius: 50%;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,15 +202,12 @@ const {
   }
 
   .faq-icon svg {
-    color: #ffffff;
-  }
-
-  .faq-item[open] .faq-icon {
-    background: #ffffff;
+    color: #9ca3af;
+    transition: all 0.2s ease;
   }
 
   .faq-item[open] .faq-icon svg {
-    color: #0f172a;
+    color: #FFD700;
   }
 
   .faq-item[open] .icon-plus {
@@ -186,10 +219,10 @@ const {
   }
 
   .faq-answer {
-    padding: 0 1.5rem 1.5rem 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1rem;
-    line-height: 1.6;
+    padding: 0 0 1.5rem 0;
+    color: #6b7280;
+    font-size: 0.9375rem;
+    line-height: 1.7;
     animation: slideDown 0.3s ease;
   }
 
@@ -208,61 +241,6 @@ const {
     }
   }
 
-  .faq-header {
-    position: sticky;
-    top: 120px;
-  }
-
-  .faq-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: white;
-    border: 2px solid #e5e7eb;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #374151;
-    margin: 0 0 1.5rem 0;
-  }
-
-  .faq-eyebrow svg {
-    color: #6b7280;
-  }
-
-  .faq-title {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 800;
-    color: #000000;
-    line-height: 1.1;
-    margin: 0 0 2rem 0;
-    letter-spacing: -0.02em;
-  }
-
-  .faq-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    padding: 1rem 2rem;
-    background: #ff6b35;
-    color: #ffffff;
-    border: 2px solid #ff6b35;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
-  }
-
-  .faq-cta-btn:hover {
-    background: #e55a2b;
-    border-color: #e55a2b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-  }
-
   @media (max-width: 1024px) {
     .faq-layout {
       grid-template-columns: 1fr;
@@ -271,23 +249,26 @@ const {
 
     .faq-header {
       position: static;
-      order: -1;
     }
   }
 
   @media (max-width: 768px) {
     .faq-section {
-      padding: 5rem 1.5rem;
+      padding: 4rem 1.5rem;
     }
 
     .faq-question {
       font-size: 1rem;
-      padding: 1.25rem;
+      padding: 1.25rem 0;
     }
 
     .faq-answer {
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.95rem;
+      padding: 0 0 1.25rem 0;
+      font-size: 0.9rem;
+    }
+
+    .faq-image {
+      height: 220px;
     }
   }
 </style>

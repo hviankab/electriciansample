@@ -1,0 +1,233 @@
+{
+  "title": "Commercial Electrical Services",
+  "description": "Professional commercial electrical services by Electrician Sample. Licensed & insured electricians for businesses of all sizes.",
+  "keywords": "commercial electrician, commercial electrical services, business electrician",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "eyebrow": "COMMERCIAL ELECTRICAL SERVICES",
+        "title": "Powering Your Business with Professional Electrical Solutions",
+        "subtitle": "Reliable, code-compliant electrical services for offices, retail spaces, restaurants, and industrial facilities.",
+        "buttonText": "Request Free Estimate",
+        "buttonHref": "/contact",
+        "backgroundImage": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
+      }
+    },
+    {
+      "component": "CommercialIntroSection",
+      "props": {
+        "eyebrow": "COMMERCIAL ELECTRICAL EXPERTS",
+        "title": "Powering Businesses Across the Region",
+        "subtitle": "Professional electrical solutions for commercial properties of all sizes",
+        "description": "From small tenant improvements to ground-up developments, we partner with business owners who expect quality without compromise. Our licensed commercial electricians deliver reliable, code-compliant electrical services that keep your business running smoothly.",
+        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+        "stats": [
+          { "number": "500+", "label": "Commercial Projects" },
+          { "number": "27+", "label": "Years Experience" },
+          { "number": "100%", "label": "Licensed & Insured" }
+        ]
+      }
+    },
+    {
+      "component": "WhyChooseSection",
+      "props": {
+        "eyebrow": "Why Choose Us",
+        "title": "Commercial Electrical",
+        "subtitle": "Experts You Can Trust",
+        "description": "We Build Relationships - Not Just Electrical Systems.",
+        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+        "yearsOfExperience": "27+",
+        "features": [
+          {
+            "title": "Licensed & Certified:",
+            "description": "Fully licensed commercial electricians with extensive experience."
+          },
+          {
+            "title": "Code Compliance:",
+            "description": "All work meets current electrical codes and regulations."
+          },
+          {
+            "title": "Minimal Disruption:",
+            "description": "We work around your business hours to keep operations running."
+          },
+          {
+            "title": "Project Management:",
+            "description": "Single point of contact from estimate to completion."
+          },
+          {
+            "title": "24/7 Emergency Service:",
+            "description": "Available anytime for urgent commercial electrical issues."
+          }
+        ],
+        "closingText": "When you work with us, you get more than an electrician - you get a partner invested in your business success.",
+        "buttonText": "Request Your Quote Today",
+        "buttonHref": "/contact"
+      }
+    },
+    {
+      "component": "ServicesGridSection",
+      "props": {
+        "title": "Commercial Electrical",
+        "subtitle": "Services We Offer",
+        "description": "Comprehensive electrical solutions for businesses of all sizes.",
+        "services": [
+          {
+            "title": "New Construction",
+            "description": "Complete electrical systems for new commercial buildings from design to final inspection.",
+            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+            "icon": "🏗️",
+            "href": "/commercial-electrical/ground-up-construction"
+          },
+          {
+            "title": "Electrical Upgrades",
+            "description": "Panel upgrades, circuit additions, and system modernization for growing businesses.",
+            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+            "icon": "⚡",
+            "href": "/commercial-electrical"
+          },
+          {
+            "title": "Lighting Solutions",
+            "description": "Energy-efficient LED lighting retrofits and commercial lighting design.",
+            "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+            "icon": "💡",
+            "href": "/commercial-electrical"
+          },
+          {
+            "title": "Emergency Power",
+            "description": "Generator installation, UPS systems, and backup power solutions.",
+            "image": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg",
+            "icon": "🔋",
+            "href": "/commercial-electrical"
+          }
+        ]
+      }
+    },
+    {
+      "component": "OurProjectsSection",
+      "props": {
+        "eyebrow": "RECENT PROJECTS",
+        "title": "Commercial Projects We've Completed",
+        "description": "See examples of our commercial electrical work across various industries and business types.",
+        "buttonText": "VIEW ALL PROJECTS",
+        "buttonHref": "/projects",
+        "projects": [
+          {
+            "title": "Office Building Rewiring",
+            "category": "Commercial",
+            "description": "Complete electrical system upgrade for a 10,000 sq ft office building [...]",
+            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+            "href": "/projects/office-rewiring"
+          },
+          {
+            "title": "Restaurant Electrical",
+            "category": "Commercial",
+            "description": "New electrical installation for restaurant including kitchen equipment [...]",
+            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+            "href": "/projects/restaurant"
+          },
+          {
+            "title": "Retail Store Lighting",
+            "category": "Commercial",
+            "description": "LED lighting retrofit and electrical upgrades for retail space [...]",
+            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+            "href": "/projects/retail"
+          },
+          {
+            "title": "Warehouse Power Systems",
+            "category": "Industrial",
+            "description": "High-voltage power distribution for industrial warehouse facility [...]",
+            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
+            "href": "/projects/warehouse"
+          },
+          {
+            "title": "Medical Office Electrical",
+            "category": "Commercial",
+            "description": "Specialized electrical systems for medical office with backup power [...]",
+            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
+            "href": "/projects/medical"
+          },
+          {
+            "title": "Hotel Renovation",
+            "category": "Commercial",
+            "description": "Complete electrical renovation for boutique hotel property [...]",
+            "image": "/electricianimgs/AdobeStock_543922851.jpeg",
+            "href": "/projects/hotel"
+          }
+        ]
+      }
+    },
+    {
+      "component": "TestimonialsSection",
+      "props": {
+        "eyebrow": "TESTIMONIALS",
+        "title": "What Our Commercial Clients Say",
+        "description": "Hear from business owners who trust us with their commercial electrical needs.",
+        "mainImage": "/electricianimgs/AdobeStock_136089970.jpeg",
+        "testimonials": [
+          {
+            "name": "David M.",
+            "role": "Restaurant Owner",
+            "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+            "rating": 5,
+            "content": "They handled our restaurant's electrical installation professionally and on schedule. The team worked efficiently and ensured all kitchen equipment was properly wired. Excellent communication throughout the project and competitive pricing."
+          },
+          {
+            "name": "Sarah K.",
+            "role": "Office Manager",
+            "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg",
+            "rating": 5,
+            "content": "Our office building needed a complete electrical upgrade. They completed the work with minimal disruption to our business operations. Professional team, quality workmanship, and great customer service from start to finish."
+          }
+        ]
+      }
+    },
+    {
+      "component": "ContactCTASection",
+      "props": {
+        "eyebrow": "GET A FREE QUOTE",
+        "title": "Ready to Start Your Commercial Electrical Project?",
+        "description": "Contact us today for a free consultation and detailed project estimate. Our commercial electricians are ready to help with projects of any size.",
+        "contactInfo": "We will get back to you within 24 hours, or you can call us everyday at 09.00 AM - 11.00 PM",
+        "phoneLabel": "Call Us For Commercial Projects",
+        "phoneNumber": "+1 (555) 987-6543",
+        "backgroundImage": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg"
+      }
+    },
+    {
+      "component": "FAQAccordionSection",
+      "props": {
+        "eyebrow": "FAQ'S",
+        "title": "Commercial Electrical Services FAQ",
+        "description": "Common questions about our commercial electrical services and project process.",
+        "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+        "faqs": [
+          {
+            "question": "What types of commercial properties do you service?",
+            "answer": "We service all types of commercial properties including offices, retail stores, restaurants, warehouses, medical facilities, hotels, and industrial buildings."
+          },
+          {
+            "question": "Do you work on weekends or after hours?",
+            "answer": "Yes, we offer flexible scheduling including evenings and weekends to minimize disruption to your business operations."
+          },
+          {
+            "question": "Are you licensed for commercial electrical work?",
+            "answer": "Yes, all our electricians are fully licensed and insured for commercial electrical work with extensive experience in commercial projects."
+          },
+          {
+            "question": "Do you provide free estimates?",
+            "answer": "Yes, we provide free, detailed estimates for all commercial electrical projects with no obligation."
+          },
+          {
+            "question": "How long does a typical commercial project take?",
+            "answer": "Project timelines vary based on scope and complexity. We provide detailed schedules during the estimate phase and work efficiently to meet deadlines."
+          },
+          {
+            "question": "Do you offer maintenance contracts?",
+            "answer": "Yes, we offer preventive maintenance programs to keep your commercial electrical systems running safely and efficiently."
+          }
+        ]
+      }
+    }
+  ]
+}

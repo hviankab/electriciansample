@@ -1,10 +1,32 @@
 ---
 import { getEntry } from "astro:content"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import HeroSection from "@/components/sections/HeroSection.astro"
+import TrustBadgesSection from "@/components/sections/TrustBadgesSection.astro"
+import WhyChooseSection from "@/components/sections/WhyChooseSection.astro"
+import PricingSection from "@/components/sections/PricingSection.astro"
+import ServicesGridSection from "@/components/sections/ServicesGridSection.astro"
+import OurCreativeTeamSection from "@/components/sections/OurCreativeTeamSection.astro"
+import OurProjectsSection from "@/components/sections/OurProjectsSection.astro"
+import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
+import FAQAccordionSection from "@/components/sections/FAQAccordionSection.astro"
+import ContactCTASection from "@/components/sections/ContactCTASection.astro"
 
 const page = await getEntry("pages", "index")
-if (!page) throw new Error("index.mdx not found in src/content/pages/")
-const { Content } = await page.render()
+if (!page) throw new Error("index.json not found in src/content/pages/")
+
+const componentMap = {
+  HeroSection,
+  TrustBadgesSection,
+  WhyChooseSection,
+  PricingSection,
+  ServicesGridSection,
+  OurCreativeTeamSection,
+  OurProjectsSection,
+  TestimonialsSection,
+  FAQAccordionSection,
+  ContactCTASection,
+}
 ---
 
 <BaseLayout 
@@ -13,5 +35,8 @@ const { Content } = await page.render()
   keywords={page.data.keywords}
   ogImage={page.data.ogImage}
 >
-  <Content />
+  {page.data.sections.map((section) => {
+    const Component = componentMap[section.component as keyof typeof componentMap]
+    return Component ? <Component {...section.props} /> : null
+  })}
 </BaseLayout>

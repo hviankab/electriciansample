@@ -1,0 +1,301 @@
+{
+  "title": "Home",
+  "description": "{business} - Expert electrical services in {city} and surrounding areas",
+  "keywords": "electrical services {city}, electrician {city}, commercial electrical {city}",
+  "sections": [
+    {
+      "component": "HeroSection",
+      "props": {
+        "eyebrow": "Professional Electrical Services",
+        "title": "Powering Your",
+        "titleEmphasis": "Home & Business",
+        "subtitle": "Professional, safe, and affordable electrical solutions tailored to your needs.",
+        "buttonText": "Book a Service",
+        "buttonHref": "/contact"
+      }
+    },
+    {
+      "component": "TrustBadgesSection",
+      "props": {
+        "title": "Trusted by Businesses & Homeowners",
+        "subtitle": "Across Northern Nevada",
+        "description": "From small tenant improvements ground-up developments, Roofora Unlimited partners with Nevada property owners who expect quality without compromise."
+      }
+    },
+    {
+      "component": "PricingSection",
+      "props": {
+        "eyebrow": "OUR PRICING",
+        "title": "Flexible Pricing Plans Designed for Every Electrical Need",
+        "description": "Choose the right plan for your home or business with transparent pricing, reliable service, and no hidden costs.",
+        "plans": [
+          {
+            "name": "Basic Plan",
+            "description": "Perfect for small fixes and quick electrical tasks.",
+            "price": "$89",
+            "features": [
+              "Basic electrical inspection",
+              "Priority support",
+              "Safety compliance check",
+              "Wiring & minor upgrades",
+              "Quick service support"
+            ]
+          },
+          {
+            "name": "Standard Plan",
+            "description": "Ideal for regular maintenance and common electrical work.",
+            "price": "$199",
+            "features": [
+              "Full system inspection",
+              "Priority support",
+              "Safety compliance check",
+              "Wiring & minor upgrades",
+              "Quick service support",
+              "Panel upgrades",
+              "Priority emergency support",
+              "Complete electrical setup"
+            ],
+            "highlighted": true
+          },
+          {
+            "name": "Premium Plan",
+            "description": "Best for complete electrical solutions and upgrades.",
+            "price": "$350",
+            "features": [
+              "Complete electrical setup",
+              "Panel upgrades",
+              "Advanced diagnostics",
+              "Priority emergency support",
+              "Wiring & minor upgrades"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "component": "WhyChooseSection",
+      "props": {
+        "eyebrow": "Why Choose Us",
+        "title": "The Electrical Experts",
+        "subtitle": "You Can Rely On",
+        "description": "We Build Relationships - Not Just Structures.",
+        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+        "yearsOfExperience": "27+",
+        "features": [
+          {
+            "title": "Veteran-Owned Integrity:",
+            "description": "Discipline, accountability, and service are built into everything we do."
+          },
+          {
+            "title": "End-to-End Solutions:",
+            "description": "From concept to completion, we manage every detail."
+          },
+          {
+            "title": "Local Knowledge:",
+            "description": "Born and raised in Reno — we know Nevada's codes, climate, and challenges."
+          },
+          {
+            "title": "Quality Without Shortcuts:",
+            "description": "We do it right the first time - every time."
+          },
+          {
+            "title": "Transparent Communication:",
+            "description": "Clear estimates, realistic timelines, no surprises."
+          }
+        ],
+        "closingText": "When you work with us, you get more than a contractor you get a partner invested in your project's success.",
+        "buttonText": "Request Your Quote Today",
+        "buttonHref": "/contact"
+      }
+    },
+    {
+      "component": "ServicesGridSection",
+      "props": {
+        "title": "Delivering Every Project",
+        "subtitle": "With Precision",
+        "description": "Industry-standard services for safety, functionality, and long-lasting reliability.",
+        "services": [
+          {
+            "title": "Electrical Wiring & Repair",
+            "description": "Expert rewiring, updates, and troubleshooting for residential and commercial properties.",
+            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+            "icon": "⚡",
+            "href": "/services/wiring-repair"
+          },
+          {
+            "title": "Commercial Installation",
+            "description": "Power distribution and lighting systems for medium to large-scale facilities.",
+            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+            "icon": "🏢",
+            "href": "/services/commercial"
+          },
+          {
+            "title": "Lighting Design & Setup",
+            "description": "Energy-saving LED lighting that transforms your space.",
+            "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+            "icon": "💡",
+            "href": "/services/lighting"
+          },
+          {
+            "title": "Electrical Maintenance",
+            "description": "Regular check-ups to keep your systems running safely.",
+            "image": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg",
+            "icon": "🔧",
+            "href": "/services/maintenance"
+          }
+        ]
+      }
+    },
+    {
+      "component": "OurCreativeTeamSection",
+      "props": {
+        "eyebrow": "Our Team",
+        "title": "Our Creative people",
+        "description": "We are our best in every project. The value we provide to clients, business owners are based on our level of commitment, in-depth skills, knowledge and expertise. Rest assured, we take every project we take on.",
+        "teamMembers": [
+          {
+            "name": "Juan Patrik",
+            "role": "Lead Electrician",
+            "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg"
+          },
+          {
+            "name": "Helly Estrin",
+            "role": "Senior Technician",
+            "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg"
+          },
+          {
+            "name": "Michel Jordan",
+            "role": "Project Manager",
+            "image": "/electricianimgs/raze-solar-GXLPLG3_Vf4-unsplash.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "component": "OurProjectsSection",
+      "props": {
+        "eyebrow": "EXPLORE SERVICES",
+        "title": "Our Electrical Services",
+        "description": "Comprehensive solutions for homes and businesses, delivered with safety, efficiency, and precision.",
+        "buttonText": "VIEW ALL SERVICES",
+        "buttonHref": "/services",
+        "projects": [
+          {
+            "title": "Electrical Installation",
+            "category": "Installation",
+            "description": "Complete electrical setups for new homes and businesses, ensuring safe [...]",
+            "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+            "href": "/services/electrical-installation"
+          },
+          {
+            "title": "Wiring & Rewiring",
+            "category": "Wiring",
+            "description": "Upgrade or repair outdated wiring with modern solutions that improve safety [...]",
+            "image": "/electricianimgs/AdobeStock_187924476.jpeg",
+            "href": "/services/wiring-rewiring"
+          },
+          {
+            "title": "Lighting Solutions",
+            "category": "Lighting",
+            "description": "Design and install indoor, outdoor, and smart lighting systems to enhance [...]",
+            "image": "/electricianimgs/AdobeStock_208314515.jpeg",
+            "href": "/services/lighting-solutions"
+          },
+          {
+            "title": "Panel Upgrades",
+            "category": "Upgrades",
+            "description": "Modernize your electrical panel to handle increased power demands [...]",
+            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
+            "href": "/services/panel-upgrades"
+          },
+          {
+            "title": "Emergency Repairs",
+            "category": "Emergency",
+            "description": "24/7 emergency electrical services to address urgent issues [...]",
+            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
+            "href": "/services/emergency-repairs"
+          },
+          {
+            "title": "Safety Inspections",
+            "category": "Inspection",
+            "description": "Comprehensive electrical safety inspections for residential and commercial [...]",
+            "image": "/electricianimgs/AdobeStock_543922851.jpeg",
+            "href": "/services/safety-inspections"
+          }
+        ]
+      }
+    },
+    {
+      "component": "TestimonialsSection",
+      "props": {
+        "eyebrow": "TESTIMONIALS",
+        "title": "Trusted by Clients for Quality Electrical Work and Reliable Service",
+        "description": "See what our clients say about our professionalism, fast response, and high quality electrical solutions delivered with safety and care.",
+        "mainImage": "/electricianimgs/AdobeStock_136089970.jpeg",
+        "testimonials": [
+          {
+            "name": "William S.",
+            "role": "Happy Client",
+            "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+            "rating": 5,
+            "content": "Highly professional and quick service. They fixed our wiring issue fast and ensured everything was safe. Very reliable team and great experience overall. The team upgraded our electrical panel smoothly. Transparent pricing and no hidden costs. Solved everything efficiently and professionally."
+          },
+          {
+            "name": "Michael R.",
+            "role": "Happy Client",
+            "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg",
+            "rating": 5,
+            "content": "Highly professional and quick service. They fixed our wiring issue fast and ensured everything was safe. Very reliable team and great experience overall. The team upgraded our electrical panel smoothly. Transparent pricing and no hidden costs. Solved everything efficiently and professionally."
+          }
+        ]
+      }
+    },
+    {
+      "component": "ContactCTASection",
+      "props": {
+        "eyebrow": "GET A FREE QUOTE",
+        "title": "Looking for Reliable Electrical Maintenance Services?",
+        "description": "Donec vel habitant montes at pharetra hac pellentesque proin ut. Mollis tenderit phasellus curabitur arcu massa ultricies. Massa pharetra velit uctus molestie erat eleifend mi.",
+        "contactInfo": "We will get back to you within 24 hours, or you can call us everyday at 09.00 AM - 11.00 PM",
+        "phoneLabel": "Call Us For Electrical Problems",
+        "phoneNumber": "+1 (555) 987-6543",
+        "backgroundImage": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg"
+      }
+    },
+    {
+      "component": "FAQAccordionSection",
+      "props": {
+        "eyebrow": "FAQ'S",
+        "title": "Frequently Asked Questions About Our Services and Process",
+        "description": "Find clear answers to common questions about our services, pricing, safety standards, and how we handle your electrical projects.",
+        "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+        "faqs": [
+          {
+            "question": "Do you provide emergency electrical services?",
+            "answer": "Yes, we offer fast and reliable emergency services to handle urgent electrical issues and restore safety as quickly as possible. Pricing depends on the project scope, but we always provide clear, upfront quotes with no hidden charges. We provide complete electrical solutions for homes, offices, and commercial spaces of all sizes."
+          },
+          {
+            "question": "Are your electricians certified and insured?",
+            "answer": "Yes, all our electricians are fully licensed, certified, and insured to provide safe and professional electrical services."
+          },
+          {
+            "question": "How much do your services cost?",
+            "answer": "Our pricing varies based on the scope of work. We provide transparent quotes with no hidden fees after assessing your project."
+          },
+          {
+            "question": "Do you handle both residential and commercial projects?",
+            "answer": "Yes, we work on both residential and commercial electrical projects of all sizes, from small repairs to large installations."
+          },
+          {
+            "question": "How quickly can I schedule a service?",
+            "answer": "We offer flexible scheduling and can often accommodate same-day or next-day appointments depending on availability."
+          },
+          {
+            "question": "When Should You Upgrade Your Electrical Panel?",
+            "answer": "You should upgrade your electrical panel if you're experiencing frequent breaker trips, adding new appliances, or if your panel is over 25 years old."
+          }
+        ]
+      }
+    }
+  ]
+}

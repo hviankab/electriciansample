@@ -1,0 +1,237 @@
+{
+  "title": "Ground-Up Electrical Construction",
+  "description": "Expert ground-up electrical construction services by Electrician Sample. Complete electrical systems for new commercial buildings from design to inspection.",
+  "keywords": "ground-up electrical construction, commercial electrical construction, new construction electrician",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "eyebrow": "GROUND-UP ELECTRICAL CONSTRUCTION",
+        "title": "Complete Electrical Systems for New Construction",
+        "subtitle": "From initial design to final inspection, we deliver code-compliant electrical installations on time and on budget.",
+        "buttonText": "Request Project Consultation",
+        "buttonHref": "/contact",
+        "backgroundImage": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg"
+      }
+    },
+    {
+      "component": "ServiceIntroSection",
+      "props": {
+        "eyebrow": "NEW CONSTRUCTION EXPERTS",
+        "title": "Building Electrical Systems from the Ground Up",
+        "description": "We specialize in complete electrical installations for new commercial construction projects. Our experienced team works closely with general contractors, architects, and project managers to deliver electrical systems that meet your specifications, timeline, and budget.",
+        "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+        "features": [
+          "Complete Electrical Design & Engineering",
+          "Power Distribution & Panel Installation",
+          "Commercial Lighting Systems",
+          "Data & Communication Wiring",
+          "Emergency Power & Generator Systems",
+          "Code Compliance & Permit Management"
+        ],
+        "buttonText": "Discuss Your Project",
+        "buttonHref": "/contact"
+      }
+    },
+    {
+      "component": "WhyChooseSection",
+      "props": {
+        "eyebrow": "Why Choose Us",
+        "title": "Ground-Up Construction",
+        "subtitle": "Expertise You Can Trust",
+        "description": "Delivering Complete Electrical Solutions for New Buildings.",
+        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+        "yearsOfExperience": "27+",
+        "features": [
+          {
+            "title": "Comprehensive Planning:",
+            "description": "Detailed electrical design and load calculations for optimal system performance."
+          },
+          {
+            "title": "Licensed Professionals:",
+            "description": "Fully licensed commercial electricians with new construction expertise."
+          },
+          {
+            "title": "On-Time Delivery:",
+            "description": "We coordinate with all trades to keep your project on schedule."
+          },
+          {
+            "title": "Code Compliance:",
+            "description": "All installations meet or exceed current NEC and local codes."
+          },
+          {
+            "title": "Quality Materials:",
+            "description": "We use only premium electrical components for long-lasting reliability."
+          }
+        ],
+        "closingText": "From office buildings to industrial facilities, we have the expertise to handle ground-up electrical construction projects of any scale.",
+        "buttonText": "Get Project Estimate",
+        "buttonHref": "/contact"
+      }
+    },
+    {
+      "component": "ServicesGridSection",
+      "props": {
+        "title": "Ground-Up Construction",
+        "subtitle": "Services Included",
+        "description": "Comprehensive electrical solutions for your new building project.",
+        "services": [
+          {
+            "title": "Electrical Design",
+            "description": "Complete system design, load calculations, and engineering for new construction.",
+            "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+            "icon": "📋",
+            "href": "/commercial-electrical/ground-up-construction"
+          },
+          {
+            "title": "Power Distribution",
+            "description": "Main service installation, panel boards, and complete power distribution systems.",
+            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+            "icon": "⚡",
+            "href": "/commercial-electrical/ground-up-construction"
+          },
+          {
+            "title": "Lighting Systems",
+            "description": "Interior, exterior, and emergency lighting installation for commercial buildings.",
+            "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+            "icon": "💡",
+            "href": "/commercial-electrical/ground-up-construction"
+          },
+          {
+            "title": "Data & Communications",
+            "description": "Structured cabling and telecommunications infrastructure for modern businesses.",
+            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
+            "icon": "🔌",
+            "href": "/commercial-electrical/ground-up-construction"
+          }
+        ]
+      }
+    },
+    {
+      "component": "OurProjectsSection",
+      "props": {
+        "eyebrow": "OUR PROCESS",
+        "title": "How We Execute Ground-Up Projects",
+        "description": "Our proven three-phase approach ensures your electrical construction is completed safely, efficiently, and to the highest standards.",
+        "buttonText": "Start Your Project",
+        "buttonHref": "/contact",
+        "projects": [
+          {
+            "title": "Phase 1: Design & Planning",
+            "category": "Planning",
+            "description": "We review plans, calculate loads, design distribution systems, and obtain permits [...]",
+            "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+            "href": "/commercial-electrical/ground-up-construction"
+          },
+          {
+            "title": "Phase 2: Rough-In Installation",
+            "category": "Installation",
+            "description": "Install conduit, boxes, panels, and run all wiring throughout the structure [...]",
+            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+            "href": "/commercial-electrical/ground-up-construction"
+          },
+          {
+            "title": "Phase 3: Finish & Inspection",
+            "category": "Completion",
+            "description": "Install fixtures, test systems, coordinate inspections, and energize facility [...]",
+            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+            "href": "/commercial-electrical/ground-up-construction"
+          },
+          {
+            "title": "Emergency Power Systems",
+            "category": "Specialty",
+            "description": "Generator installation and backup power solutions for critical operations [...]",
+            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
+            "href": "/commercial-electrical"
+          },
+          {
+            "title": "Fire Alarm Systems",
+            "category": "Safety",
+            "description": "Complete fire alarm system wiring and integration for code compliance [...]",
+            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
+            "href": "/commercial-electrical"
+          },
+          {
+            "title": "EV Charging Stations",
+            "category": "Modern",
+            "description": "Electric vehicle charging infrastructure for commercial properties [...]",
+            "image": "/electricianimgs/AdobeStock_543922851.jpeg",
+            "href": "/commercial-electrical"
+          }
+        ]
+      }
+    },
+    {
+      "component": "TestimonialsSection",
+      "props": {
+        "eyebrow": "TESTIMONIALS",
+        "title": "What Our Construction Clients Say",
+        "description": "Hear from contractors and developers who trust us with their ground-up electrical projects.",
+        "mainImage": "/electricianimgs/AdobeStock_136089970.jpeg",
+        "testimonials": [
+          {
+            "name": "James T.",
+            "role": "General Contractor",
+            "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+            "rating": 5,
+            "content": "We've worked with them on multiple ground-up commercial projects. Their team is professional, always on schedule, and delivers quality work. They coordinate seamlessly with other trades and handle all inspections smoothly. Highly recommend for new construction."
+          },
+          {
+            "name": "Maria L.",
+            "role": "Property Developer",
+            "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg",
+            "rating": 5,
+            "content": "Excellent electrical contractor for our new office building project. From design phase through final inspection, they were responsive and professional. The electrical system works flawlessly and passed all inspections on the first try."
+          }
+        ]
+      }
+    },
+    {
+      "component": "ContactCTASection",
+      "props": {
+        "eyebrow": "GET A FREE QUOTE",
+        "title": "Planning a New Construction Project?",
+        "description": "Get expert electrical construction services from licensed professionals. Contact us for a detailed project consultation and competitive quote.",
+        "contactInfo": "We will get back to you within 24 hours, or you can call us everyday at 09.00 AM - 11.00 PM",
+        "phoneLabel": "Call Us For Construction Projects",
+        "phoneNumber": "+1 (555) 987-6543",
+        "backgroundImage": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg"
+      }
+    },
+    {
+      "component": "FAQAccordionSection",
+      "props": {
+        "eyebrow": "FAQ'S",
+        "title": "Ground-Up Construction FAQ",
+        "description": "Common questions about our ground-up electrical construction services.",
+        "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+        "faqs": [
+          {
+            "question": "What is included in ground-up electrical construction?",
+            "answer": "Ground-up electrical construction includes complete electrical system design, permit acquisition, main service installation, power distribution, all wiring, lighting systems, data infrastructure, emergency power, and final inspections."
+          },
+          {
+            "question": "How long does electrical installation take for new construction?",
+            "answer": "Timeline varies based on building size and complexity. We provide detailed schedules during the planning phase and coordinate with your construction timeline to ensure on-time completion."
+          },
+          {
+            "question": "Do you handle electrical permits and inspections?",
+            "answer": "Yes, we handle all permit applications and coordinate all required electrical inspections with local authorities throughout the construction process."
+          },
+          {
+            "question": "Can you work with our architect and general contractor?",
+            "answer": "Absolutely. We regularly collaborate with architects, engineers, and general contractors to ensure seamless project coordination and successful outcomes."
+          },
+          {
+            "question": "What types of buildings do you wire?",
+            "answer": "We handle all types of commercial construction including office buildings, retail spaces, restaurants, warehouses, medical facilities, and industrial buildings."
+          },
+          {
+            "question": "Do you provide as-built documentation?",
+            "answer": "Yes, we provide complete as-built electrical drawings and documentation upon project completion for your records and future reference."
+          }
+        ]
+      }
+    }
+  ]
+}

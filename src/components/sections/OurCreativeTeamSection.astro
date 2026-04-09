@@ -44,25 +44,6 @@ const {
         <p class="team-eyebrow">{eyebrow}</p>
         <h2 class="team-title">{title}</h2>
         <p class="team-description">{description}</p>
-        
-        <div class="team-navigation">
-          <button class="nav-btn prev-btn" aria-label="Previous">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 18l-6-6 6-6"/>
-            </svg>
-          </button>
-          <div class="nav-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-          <button class="nav-btn next-btn" aria-label="Next">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 18l6-6-6-6"/>
-            </svg>
-          </button>
-        </div>
       </div>
 
       <!-- Right: Team Cards -->
@@ -77,6 +58,27 @@ const {
               <div class="card-info">
                 <h3 class="member-name">{member.name}</h3>
                 {member.role && <p class="member-role">{member.role}</p>}
+                <div class="social-links">
+                  <a href="#" class="social-link" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                  </a>
+                  <a href="#" class="social-link" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                      <rect width="4" height="12" x="2" y="9"/>
+                      <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                  </a>
+                  <a href="#" class="social-link" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect width="20" height="20" x="2" y="2" rx="5"/>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           ))}
@@ -88,7 +90,7 @@ const {
 
 <style>
   .our-team-section {
-    padding: 8rem 2rem;
+    padding: 5rem 2rem;
     background: #f5f5f5;
   }
 
@@ -98,22 +100,25 @@ const {
   }
 
   .team-layout {
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 4rem;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
   }
 
   .team-content {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    text-align: center;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
   .team-eyebrow {
     font-size: 1rem;
     font-weight: 600;
-    color: #FFD700;
+    color: #000000;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin: 0;
@@ -136,69 +141,10 @@ const {
     font-weight: 400;
   }
 
-  .team-navigation {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .nav-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 8px;
-    border: 2px solid #e5e7eb;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .nav-btn:hover {
-    background: #f9fafb;
-    border-color: #d1d5db;
-  }
-
-  .next-btn {
-    background: #d4f4dd;
-    border-color: #d4f4dd;
-  }
-
-  .next-btn:hover {
-    background: #c0eacc;
-    border-color: #c0eacc;
-  }
-
-  .nav-btn svg {
-    color: #374151;
-  }
-
-  .nav-dots {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #d1d5db;
-    transition: all 0.2s ease;
-  }
-
-  .dot.active {
-    background: #374151;
-    width: 24px;
-    border-radius: 4px;
-  }
-
   .team-cards-wrapper {
     position: relative;
-    background: #FFD700;
-    padding: 2rem 0;
+    background: transparent;
+    padding: 0;
   }
 
   .yellow-bar {
@@ -210,36 +156,39 @@ const {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .team-card {
-    background: #1a1a1a;
-    border-radius: 0;
+    background: transparent;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border: none;
     transition: all 0.3s ease;
     position: relative;
+    cursor: pointer;
   }
 
   .team-card:first-child {
-    margin-left: -2rem;
+    margin-left: 0;
   }
 
   .team-card:last-child {
-    margin-right: -2rem;
+    margin-right: 0;
   }
 
   .team-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   }
 
   .card-image {
     width: 100%;
-    height: 400px;
+    height: 450px;
     overflow: hidden;
-    background: #0a0a0a;
+    position: relative;
   }
 
   .card-image img {
@@ -254,38 +203,70 @@ const {
   }
 
   .card-info {
-    padding: 1.5rem;
-    text-align: center;
-    background: #1a1a1a;
+    position: absolute;
+    inset: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(33, 42, 49, 0.92);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    gap: 1.5rem;
+  }
+
+  .team-card:hover .card-info {
+    opacity: 1;
   }
 
   .member-name {
-    font-size: 1.125rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
-    margin: 0 0 0.25rem 0;
+    margin: 0;
+    text-align: center;
   }
 
   .member-role {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
     margin: 0;
     font-weight: 400;
+    text-align: center;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+  }
+
+  .social-link:hover {
+    transform: scale(1.1);
+  }
+
+  .social-link svg {
+    width: 24px;
+    height: 24px;
+    color: #212A31;
   }
 
   @media (max-width: 1200px) {
     .team-layout {
-      grid-template-columns: 1fr;
       gap: 3rem;
-    }
-
-    .team-content {
-      text-align: center;
-      align-items: center;
-    }
-
-    .team-navigation {
-      justify-content: center;
     }
   }
 

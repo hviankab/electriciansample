@@ -27,12 +27,9 @@ function GlassDropdown({ children }: { children: React.ReactNode }) {
   return (
     <div className="absolute top-full left-0 pt-3 z-[90]">
       <div
-        className="rounded-xl overflow-hidden min-w-[220px] border border-white/20"
+        className="rounded-xl overflow-hidden min-w-[220px] border border-gray-200 bg-white"
         style={{
-          background: "rgba(15, 20, 40, 0.75)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
         }}
       >
         {children}
@@ -55,28 +52,20 @@ function ServicesDropdown({ isActive, onHover, onLeave }: { isActive: boolean; o
 
   return (
     <div className="relative flex items-center" onMouseEnter={onHover} onMouseLeave={onLeave}>
-      <button className="flex items-center gap-1 px-4 py-2 text-sm font-bold text-white hover:text-brand-secondary transition-colors whitespace-nowrap">
+      <button className="flex items-center gap-1 px-4 py-2 text-sm font-bold text-white hover:text-brand-secondary transition-colors whitespace-nowrap border-0">
         Services
         <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isActive ? "rotate-180" : ""}`} />
       </button>
       {isActive && (
         <div className="absolute top-full left-0 pt-3 z-[90] flex">
           {/* Parent list */}
-          <div
-            className="rounded-xl overflow-hidden min-w-[280px] border border-white/20"
-            style={{
-              background: "rgba(15, 20, 40, 0.75)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
-            }}
-          >
-            {mainNavItems.map((item, i) => (
+          <div className="min-w-[280px] bg-white rounded-xl shadow-lg border border-gray-200">
+            {mainNavItems.map((item) => (
               <div
                 key={item.href}
                 className={`flex items-center justify-between px-5 py-3 text-sm cursor-pointer transition-colors ${
-                  activeItem === item.href ? "bg-white/10 text-white" : "text-white/80 hover:bg-white/10 hover:text-white"
-                } ${i !== 0 ? "border-t border-white/10" : ""}`}
+                  activeItem === item.href ? "bg-gray-100 text-gray-900" : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                }`}
                 onMouseEnter={() => setActiveItem(item.href)}
               >
                 <a href={item.href} className="flex-1 flex items-center gap-2">
@@ -84,7 +73,7 @@ function ServicesDropdown({ isActive, onHover, onLeave }: { isActive: boolean; o
                   <span>{item.title}</span>
                 </a>
                 {item.categories[0]?.items.length > 0 && (
-                  <ChevronRight className="h-3.5 w-3.5 text-white/40 flex-shrink-0" />
+                  <ChevronRight className="h-3.5 w-3.5 text-gray-400 flex-shrink-0" />
                 )}
               </div>
             ))}
@@ -94,25 +83,30 @@ function ServicesDropdown({ isActive, onHover, onLeave }: { isActive: boolean; o
             const active = mainNavItems.find(i => i.href === activeItem)
             if (!active) return null
             const items = active.categories.flatMap(c => c.items)
+            const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
             return (
-              <div
-                className="rounded-xl overflow-hidden min-w-[240px] ml-1 border border-white/20"
-                style={{
-                  background: "rgba(15, 20, 40, 0.75)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
-                }}
-              >
-                {items.map((child, i) => (
-                  <a
-                    key={child.href}
-                    href={child.href}
-                    className={`block px-5 py-3 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors ${i !== 0 ? "border-t border-white/10" : ""}`}
-                  >
-                    {child.title}
-                  </a>
-                ))}
+              <div className="ml-1 min-w-[240px] bg-white rounded-xl shadow-lg border border-gray-200">
+                {items.map((child, i) => {
+                  const isActive = currentPath === child.href
+                  return (
+                    <a
+                      key={child.href}
+                      href={child.href}
+                      className={`block px-5 py-3 text-sm transition-colors relative ${
+                        isActive 
+                          ? "bg-gray-100 text-gray-900 font-semibold" 
+                          : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      }`}
+                      style={isActive ? {
+                        borderBottom: "3px solid transparent",
+                        borderImage: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%) 1",
+                        borderImageSlice: "0 0 1 0"
+                      } : {}}
+                    >
+                      {child.title}
+                    </a>
+                  )
+                })}
               </div>
             )
           })()}
@@ -141,7 +135,7 @@ function AboutUsDropdown({ isActive, onHover, onLeave }: { isActive: boolean; on
             <a
               key={item.href}
               href={item.href}
-              className={`block px-5 py-3 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors ${i !== 0 ? "border-t border-white/10" : ""}`}
+              className={`block px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors ${i !== 0 ? "border-t border-gray-100" : ""}`}
             >
               {item.title}
             </a>
@@ -160,24 +154,39 @@ function ServiceAreasDropdown({ isActive, onHover, onLeave }: { isActive: boolea
     { title: "Boca Raton", href: "/boca-raton" },
     { title: "Hialeah", href: "/hialeah" },
   ]
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
   return (
     <div className="relative flex items-center" onMouseEnter={onHover} onMouseLeave={onLeave}>
-      <button className="flex items-center gap-1 px-4 py-2 text-sm font-bold text-white hover:text-brand-secondary transition-colors whitespace-nowrap">
+      <button className="flex items-center gap-1 px-4 py-2 text-sm font-bold text-white hover:text-brand-secondary transition-colors whitespace-nowrap border-0">
         Service Areas
         <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isActive ? "rotate-180" : ""}`} />
       </button>
       {isActive && (
-        <GlassDropdown>
-          {areas.map((area, i) => (
-            <a
-              key={area.href}
-              href={area.href}
-              className={`block px-5 py-3 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors ${i !== 0 ? "border-t border-white/10" : ""}`}
-            >
-              {area.title}
-            </a>
-          ))}
-        </GlassDropdown>
+        <div className="absolute top-full left-0 pt-3 z-[90]">
+          <div className="min-w-[220px] bg-white rounded-xl shadow-lg border border-gray-200">
+            {areas.map((area) => {
+              const isAreaActive = currentPath === area.href
+              return (
+                <a
+                  key={area.href}
+                  href={area.href}
+                  className={`block px-5 py-3 text-sm transition-colors ${
+                    isAreaActive 
+                      ? "bg-gray-100 text-gray-900 font-semibold" 
+                      : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                  }`}
+                  style={isAreaActive ? {
+                    borderBottom: "3px solid transparent",
+                    borderImage: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%) 1",
+                    borderImageSlice: "0 0 1 0"
+                  } : {}}
+                >
+                  {area.title}
+                </a>
+              )
+            })}
+          </div>
+        </div>
       )}
     </div>
   )
@@ -400,8 +409,8 @@ export function Navbar() {
                   </div>
                   <a
                     href="/contact"
-                    className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-gray-900 transition-all hover:opacity-90"
-                    style={{ background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)", borderRadius: "4px" }}
+                    className="book-now-btn flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-gray-900 transition-all"
+                    style={{ background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)", borderRadius: "4px", border: "none" }}
                   >
                     Book Now
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

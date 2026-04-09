@@ -1,0 +1,234 @@
+{
+  "title": "Miami Electrical Services | Licensed Electricians",
+  "description": "Professional electrical services in Miami, FL by Electrician Sample. Licensed & insured electricians for residential and commercial projects. 24/7 emergency service available.",
+  "keywords": "electrician Miami, electrical services Miami, Miami electrician, emergency electrician Miami",
+  "sections": [
+    {
+      "component": "HeroPage",
+      "props": {
+        "eyebrow": "MIAMI ELECTRICAL SERVICES",
+        "title": "Professional Electricians Serving Miami",
+        "subtitle": "Trusted electrical solutions for homes and businesses throughout Miami. Licensed, insured, and available 24/7 for emergencies.",
+        "buttonText": "Get Free Estimate",
+        "buttonHref": "/contact",
+        "backgroundImage": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
+      }
+    },
+    {
+      "component": "LocationIntroSection",
+      "props": {
+        "eyebrow": "SERVING MIAMI",
+        "title": "Your Trusted Miami Electricians",
+        "location": "Miami & Surrounding Areas",
+        "description": "For over 27 years, we've been Miami's go-to electrical service provider. Our team of licensed electricians serves residential and commercial clients throughout Miami-Dade County with professional electrical installations, repairs, and maintenance.",
+        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+        "features": [
+          { "icon": "⚡", "title": "Same-Day Service", "description": "Fast response times throughout Miami" },
+          { "icon": "🏆", "title": "Licensed & Insured", "description": "Fully certified Miami electricians" },
+          { "icon": "🕐", "title": "24/7 Emergency", "description": "Available anytime for urgent issues" }
+        ],
+        "serviceAreas": ["Downtown Miami", "Brickell", "Coral Gables", "Coconut Grove", "Wynwood", "Miami Beach", "Little Havana", "Kendall"]
+      }
+    },
+    {
+      "component": "ServicesGridSection",
+      "props": {
+        "title": "Complete Electrical Services",
+        "subtitle": "for Miami Homes & Businesses",
+        "description": "From routine repairs to major installations, our Miami electricians handle all your electrical needs.",
+        "services": [
+          {
+            "title": "Residential Electrical",
+            "description": "Complete electrical services for Miami homeowners including repairs, upgrades, and installations.",
+            "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+            "icon": "🏠",
+            "href": "/residential-electrical"
+          },
+          {
+            "title": "Commercial Electrical",
+            "description": "Professional electrical solutions for Miami businesses, offices, and commercial properties.",
+            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+            "icon": "🏢",
+            "href": "/commercial-electrical"
+          },
+          {
+            "title": "Emergency Services",
+            "description": "24/7 emergency electrical services for urgent issues throughout Miami.",
+            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+            "icon": "🚨",
+            "href": "/contact"
+          },
+          {
+            "title": "Panel Upgrades",
+            "description": "Electrical panel upgrades and replacements for Miami homes and businesses.",
+            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
+            "icon": "⚡",
+            "href": "/services/panel-upgrades"
+          }
+        ]
+      }
+    },
+    {
+      "component": "WhyChooseSection",
+      "props": {
+        "eyebrow": "Why Choose Us",
+        "title": "Miami's Most Trusted",
+        "subtitle": "Electrical Service Provider",
+        "description": "Delivering Excellence to Miami Homes and Businesses.",
+        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+        "yearsOfExperience": "27+",
+        "features": [
+          {
+            "title": "Local Miami Experts:",
+            "description": "Deep knowledge of Miami building codes and electrical requirements."
+          },
+          {
+            "title": "Fast Response Times:",
+            "description": "Same-day service available throughout Miami-Dade County."
+          },
+          {
+            "title": "Licensed & Insured:",
+            "description": "Fully certified electricians you can trust with your property."
+          },
+          {
+            "title": "Upfront Pricing:",
+            "description": "Transparent quotes with no hidden fees or surprises."
+          },
+          {
+            "title": "100% Satisfaction:",
+            "description": "We stand behind our work with comprehensive guarantees."
+          }
+        ],
+        "closingText": "Whether you need a simple repair or a complete electrical system upgrade, our Miami electricians deliver quality workmanship and exceptional service.",
+        "buttonText": "Schedule Service Today",
+        "buttonHref": "/contact"
+      }
+    },
+    {
+      "component": "OurProjectsSection",
+      "props": {
+        "eyebrow": "MIAMI PROJECTS",
+        "title": "Recent Projects in Miami",
+        "description": "See examples of our electrical work throughout Miami neighborhoods and commercial districts.",
+        "buttonText": "VIEW ALL PROJECTS",
+        "buttonHref": "/projects",
+        "projects": [
+          {
+            "title": "Brickell Office Building",
+            "category": "Commercial",
+            "description": "Complete electrical upgrade for modern office space in Brickell [...]",
+            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+            "href": "/projects/brickell-office"
+          },
+          {
+            "title": "Coral Gables Home Rewiring",
+            "category": "Residential",
+            "description": "Full home rewiring and panel upgrade in historic Coral Gables [...]",
+            "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+            "href": "/projects/coral-gables-home"
+          },
+          {
+            "title": "Wynwood Restaurant",
+            "category": "Commercial",
+            "description": "New electrical installation for trendy Wynwood restaurant [...]",
+            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+            "href": "/projects/wynwood-restaurant"
+          },
+          {
+            "title": "Miami Beach Condo",
+            "category": "Residential",
+            "description": "Electrical upgrades and smart home integration for beachfront condo [...]",
+            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
+            "href": "/projects/miami-beach-condo"
+          },
+          {
+            "title": "Downtown Retail Space",
+            "category": "Commercial",
+            "description": "LED lighting retrofit and electrical upgrades for downtown retail [...]",
+            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
+            "href": "/projects/downtown-retail"
+          },
+          {
+            "title": "Kendall Medical Office",
+            "category": "Commercial",
+            "description": "Specialized electrical systems for medical facility in Kendall [...]",
+            "image": "/electricianimgs/AdobeStock_543922851.jpeg",
+            "href": "/projects/kendall-medical"
+          }
+        ]
+      }
+    },
+    {
+      "component": "TestimonialsSection",
+      "props": {
+        "eyebrow": "TESTIMONIALS",
+        "title": "What Miami Customers Say About Our Service",
+        "description": "See why Miami residents and businesses trust us for all their electrical needs.",
+        "mainImage": "/electricianimgs/AdobeStock_136089970.jpeg",
+        "testimonials": [
+          {
+            "name": "Carlos Hernandez",
+            "role": "Homeowner - Coral Gables",
+            "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+            "rating": 5,
+            "content": "Best electrician in Miami! They upgraded our entire electrical panel and added new circuits for our home office. Professional, clean work, and fair pricing. Highly recommend for any electrical work in the Coral Gables area."
+          },
+          {
+            "name": "Maria Santos",
+            "role": "Business Owner - Brickell",
+            "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg",
+            "rating": 5,
+            "content": "Called them for an emergency at our Brickell office and they were here within 30 minutes. Fixed our power issue quickly and professionally. Excellent emergency electrical service in Miami. Will definitely use them again."
+          }
+        ]
+      }
+    },
+    {
+      "component": "ContactCTASection",
+      "props": {
+        "eyebrow": "GET A FREE QUOTE",
+        "title": "Need Electrical Services in Miami?",
+        "description": "Contact us today for fast, reliable electrical service throughout Miami. Our licensed electricians are ready to help with any project, big or small.",
+        "contactInfo": "We will get back to you within 24 hours, or you can call us everyday at 09.00 AM - 11.00 PM",
+        "phoneLabel": "Call Us For Miami Electrical Service",
+        "phoneNumber": "+1 (555) 987-6543",
+        "backgroundImage": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg"
+      }
+    },
+    {
+      "component": "FAQAccordionSection",
+      "props": {
+        "eyebrow": "FAQ'S",
+        "title": "Miami Electrical Services FAQ",
+        "description": "Common questions about our electrical services in Miami.",
+        "image": "/electricianimgs/AdobeStock_136089970.jpeg",
+        "faqs": [
+          {
+            "question": "Do you provide same-day electrical service in Miami?",
+            "answer": "Yes, we offer same-day service throughout Miami-Dade County for most electrical repairs and installations, subject to availability."
+          },
+          {
+            "question": "Are you available for emergency electrical service?",
+            "answer": "Absolutely. We provide 24/7 emergency electrical service throughout Miami for urgent issues like power outages, electrical fires, and safety hazards."
+          },
+          {
+            "question": "What areas of Miami do you serve?",
+            "answer": "We serve all of Miami-Dade County including Downtown Miami, Brickell, Coral Gables, Coconut Grove, Wynwood, Miami Beach, Little Havana, Kendall, and surrounding areas."
+          },
+          {
+            "question": "Are your electricians licensed in Miami?",
+            "answer": "Yes, all our electricians are fully licensed and insured to work in Miami and throughout Florida. We comply with all local electrical codes and regulations."
+          },
+          {
+            "question": "Do you offer free estimates?",
+            "answer": "Yes, we provide free, no-obligation estimates for all electrical projects in Miami. Contact us to schedule your free estimate."
+          },
+          {
+            "question": "What types of electrical services do you provide?",
+            "answer": "We provide complete electrical services including repairs, installations, upgrades, panel replacements, lighting, wiring, emergency services, and more for both residential and commercial properties."
+          }
+        ]
+      }
+    }
+  ]
+}

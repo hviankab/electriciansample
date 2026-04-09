@@ -288,7 +288,7 @@
   }
   
   /* Crisp borders */
-  button, input, select, textarea, .card, .badge {
+  button:not(.nav-link button):not([class*="nav"]), input, select, textarea, .card, .badge {
     border-width: 1px;
     border-style: solid;
   }
@@ -556,41 +556,17 @@
   }
 }
 
-/* ── Left-to-right slide wipe hover animation for all CTA buttons ── */
+/* ── Black hover effect for all CTA buttons ── */
 .cta-button,
 .hero-cta-btn,
 .service-cta-button,
 .apply-button,
 .sa-btn,
-.book-now-btn {
+.book-now-btn,
+a[href*="/contact"]:not(.nav-link),
+button[type="submit"] {
   position: relative;
-  overflow: hidden;
-  transition: color 0.35s ease !important;
-  isolation: isolate;
-}
-
-.cta-button::before,
-.hero-cta-btn::before,
-.service-cta-button::before,
-.apply-button::before,
-.sa-btn::before,
-.book-now-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: #748D92;
-  z-index: -1;
-  transform: translateX(-100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cta-button:hover::before,
-.hero-cta-btn:hover::before,
-.service-cta-button:hover::before,
-.apply-button:hover::before,
-.sa-btn:hover::before,
-.book-now-btn:hover::before {
-  transform: translateX(0);
+  transition: background 0.3s ease, color 0.3s ease !important;
 }
 
 .cta-button:hover,
@@ -598,9 +574,26 @@
 .service-cta-button:hover,
 .apply-button:hover,
 .sa-btn:hover,
-.book-now-btn:hover {
+.book-now-btn:hover,
+a[href*="/contact"]:not(.nav-link):hover,
+button[type="submit"]:hover {
+  background: #000000 !important;
   color: #ffffff !important;
+  border-color: transparent !important;
 }
+
+.cta-button:hover *,
+.hero-cta-btn:hover *,
+.service-cta-button:hover *,
+.apply-button:hover *,
+.sa-btn:hover *,
+.book-now-btn:hover *,
+a[href*="/contact"]:not(.nav-link):hover *,
+button[type="submit"]:hover * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
 a:hover,
 button:hover {
   color: #F7B32B;
@@ -609,22 +602,6 @@ button:hover {
 a:hover *,
 button:hover * {
   color: inherit;
-}
-
-/* CTA buttons always keep white text on hover */
-.cta-button:hover,
-.hero-cta-btn:hover,
-.service-cta-button:hover,
-.apply-button:hover,
-.sa-btn:hover,
-.book-now-btn:hover,
-.cta-button:hover *,
-.hero-cta-btn:hover *,
-.service-cta-button:hover *,
-.apply-button:hover *,
-.sa-btn:hover *,
-.book-now-btn:hover * {
-  color: #ffffff !important;
 }
 
 /* Nav pill links and dropdowns — black text on mint green */

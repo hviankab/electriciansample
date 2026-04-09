@@ -1,127 +1,333 @@
 ---
 interface Props {
+  eyebrow?: string;
   title?: string;
-  subtitle?: string;
   description?: string;
-  badges?: Array<{
-    image: string;
-    alt: string;
+  mainImage?: string;
+  secondaryImage?: string;
+  features?: Array<{
+    title: string;
+    description: string;
   }>;
+  carouselLogos?: string[];
 }
 
 const {
-  title = "Trusted by Businesses & Homeowners",
-  subtitle = "Across Northern Nevada",
-  description = "From small tenant improvements ground-up developments, Roofora Unlimited partners with Nevada property owners who expect quality without compromise.",
-  badges = [
-    { image: "/newimages/Licensed.webp", alt: "Licensed & Insured" },
-    { image: "/newimages/Certified.webp", alt: "Nevada State Contractors Board" },
-    { image: "/newimages/BBB-Logo.webp", alt: "Best Plumber Vegas 2025 Winner" },
-    { image: "/newimages/Google-Reviews-Logo.webp", alt: "Master Plumber of the Year" },
-    { image: "/newimages/Home-Advisor-Logo.webp", alt: "Google Reviews" }
+  eyebrow = "WELCOME TO ELECTRICIAN SAMPLE",
+  title = "Reliable Electrical Solutions You Can Trust.",
+  description = "We specialize in delivering safe, efficient, and high-quality electrical services for homes and businesses. From installations to repairs, our experienced team ensures every project is completed with precision and care. We focus on reliability, safety, and long-term performance you can depend on.",
+  mainImage = "/electricianimgs/AdobeStock_1886509888.jpeg",
+  secondaryImage = "/electricianimgs/AdobeStock_543922851.jpeg",
+  features = [
+    {
+      title: "Certified Professionals",
+      description: "Our skilled electricians are licensed and trained for safe, reliable work."
+    },
+    {
+      title: "Fast & Reliable",
+      description: "Quick response times and efficient solutions for every project."
+    },
+    {
+      title: "Safety First",
+      description: "We follow strict safety standards to protect your home or business."
+    },
+    {
+      title: "Transparent Pricing",
+      description: "Clear, honest pricing with no hidden fees, giving you peace of mind and trust in every service."
+    }
+  ],
+  carouselLogos = [
+    "/newimages/Licensed.webp",
+    "/newimages/Certified.webp",
+    "/newimages/BBB-Logo.webp",
+    "/newimages/Google-Reviews-Logo.webp",
+    "/newimages/Home-Advisor-Logo.webp",
+    "/newimages/Angies-List-Award.webp"
   ]
 } = Astro.props;
 ---
 
-<section class="trust-badges-section">
+<section class="trust-section">
   <div class="trust-container">
-    <div class="trust-header">
-      <h2 class="trust-title">
-        {title}<br />
-        <span class="trust-subtitle">{subtitle}</span>
-      </h2>
-      <p class="trust-description">{description}</p>
+    <!-- Eyebrow -->
+    <div class="eyebrow-badge">
+      <span>{eyebrow}</span>
     </div>
-    
-    <div class="badges-grid">
-      {badges.map((badge) => (
-        <div class="badge-item">
-          <img src={badge.image} alt={badge.alt} loading="lazy" />
+
+    <!-- Main Content Grid -->
+    <div class="content-grid">
+      <!-- Left: Title -->
+      <div class="title-column">
+        <h2 class="section-title">{title}</h2>
+      </div>
+
+      <!-- Right: Description -->
+      <div class="description-column">
+        <p class="section-description">{description}</p>
+      </div>
+    </div>
+
+    <!-- Images and Features Grid -->
+    <div class="features-grid">
+      <!-- Main Image with Play Button -->
+      <div class="image-card main-image">
+        <img src={mainImage} alt="Electrician at work" loading="lazy" />
+        <button class="play-button" aria-label="Play video">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Middle: Description and Secondary Image -->
+      <div class="middle-content">
+        <p class="middle-description">
+          We are dedicated to providing professional, safe, and reliable electrical services for homes and businesses. Our team of licensed electricians combines years of experience with modern tools and techniques to ensure every project is completed efficiently and to the highest standards.
+        </p>
+        <div class="image-card secondary-image">
+          <img src={secondaryImage} alt="Electrician working" loading="lazy" />
         </div>
-      ))}
+      </div>
+
+      <!-- Right: Features List -->
+      <div class="features-list">
+        {features.map((feature) => (
+          <div class="feature-item">
+            <h3 class="feature-title">{feature.title}</h3>
+            <p class="feature-description">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Logo Carousel -->
+    <div class="logo-carousel">
+      <div class="carousel-track">
+        {[...carouselLogos, ...carouselLogos].map((logo, index) => (
+          <div class="logo-item">
+            <img src={logo} alt={`Partner logo ${index + 1}`} loading="lazy" />
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .trust-badges-section {
-    padding: 10rem 2rem 8rem;
+  .trust-section {
+    padding: 5rem 2rem;
     background: #ffffff;
   }
 
   .trust-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
-  .trust-header {
-    text-align: center;
-    margin-bottom: 5rem;
+  .eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
-  .trust-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  .eyebrow-badge span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #000000;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     color: #000000;
     line-height: 1.2;
-    margin: 0 0 1.5rem 0;
+    margin: 0;
   }
 
-  .trust-subtitle {
-    color: #000000;
-    font-weight: 700;
+  .section-description {
+    font-size: 1rem;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin: 0;
   }
 
-  .trust-description {
-    font-size: 1.125rem;
-    color: #000000;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
   }
 
-  .badges-grid {
+  .image-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .main-image {
+    grid-column: 1;
+    aspect-ratio: 4/5;
+  }
+
+  .secondary-image {
+    aspect-ratio: 16/9;
+  }
+
+  .play-button {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-  }
-
-  .badge-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
     transition: transform 0.3s ease;
   }
 
-  .badge-item:hover {
-    transform: translateY(-5px);
+  .play-button:hover {
+    transform: scale(1.1);
   }
 
-  .badge-item img {
-    height: 80px;
-    width: auto;
-    object-fit: contain;
+  .middle-content {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .middle-description {
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .secondary-image {
+    flex: 1;
+  }
+
+  .features-list {
+    grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .feature-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+  }
+
+  .feature-description {
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Logo Carousel */
+  .logo-carousel {
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 30s linear infinite;
+  }
+
+  .logo-item {
+    flex-shrink: 0;
+    width: 120px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
+
+  .logo-item:hover {
     filter: grayscale(0%);
-    transition: filter 0.3s ease;
+    opacity: 1;
   }
 
-  @media (max-width: 768px) {
-    .trust-badges-section {
-      padding: 6rem 1.5rem 5rem;
-    }
+  .logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
 
-    .trust-header {
-      margin-bottom: 3rem;
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
     }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 
-    .badges-grid {
+  @media (max-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 1fr;
       gap: 2rem;
     }
 
-    .badge-item img {
-      height: 60px;
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .main-image,
+    .middle-content,
+    .features-list {
+      grid-column: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .trust-section {
+      padding: 5rem 1.5rem;
+    }
+
+    .features-grid {
+      margin-bottom: 4rem;
+    }
+
+    .logo-item {
+      width: 100px;
+      height: 50px;
     }
   }
 </style>
