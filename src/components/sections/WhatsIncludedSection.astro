@@ -1,0 +1,248 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  points?: string[];
+  offerBadge?: string;
+  offerLabel?: string;
+  offerTitle?: string;
+  offerDescription?: string;
+  offerExpiry?: string;
+  offerButtonText?: string;
+  offerButtonHref?: string;
+}
+
+const {
+  eyebrow = "WHAT WE OFFER",
+  title = "What's Included?",
+  points = [
+    "Straightforward pricing through an in-home diagnosis",
+    "1-year labor warranty",
+    "100% satisfaction guarantee",
+    "Flexible financing available"
+  ],
+  offerBadge = "-$100 OFF",
+  offerLabel = "SPECIAL OFFER",
+  offerTitle = "Any Electrical Project",
+  offerDescription = "Grand Opening Special! We are offering $100 OFF to any new customers!",
+  offerExpiry = "* Limited time offer",
+  offerButtonText = "Claim Offer",
+  offerButtonHref = "/contact"
+} = Astro.props;
+---
+
+<section class="whats-included-section">
+  <div class="whats-included-container">
+
+    <!-- Left: What's Included -->
+    <div class="included-left">
+      <p class="included-eyebrow">
+        <span class="eyebrow-line"></span>
+        {eyebrow}
+      </p>
+      <h2 class="included-title">{title}</h2>
+      <ul class="included-points">
+        {points.map((point) => (
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span>{point}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Right: Special Offer Card -->
+    <div class="offer-card">
+      <div class="offer-top">
+        <div class="offer-badge">{offerBadge}</div>
+        <p class="offer-label">{offerLabel}</p>
+      </div>
+      <div class="offer-content">
+        <h3 class="offer-title">{offerTitle}</h3>
+        <p class="offer-description">{offerDescription}</p>
+        <p class="offer-expiry">{offerExpiry}</p>
+        <a href={offerButtonHref} class="offer-btn">
+          {offerButtonText}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .whats-included-section {
+    padding: 8rem 2rem;
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .whats-included-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* Left */
+  .included-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 1rem 0;
+  }
+
+  .eyebrow-line {
+    display: inline-block;
+    width: 2rem;
+    height: 2px;
+    background: #FFD700;
+    flex-shrink: 0;
+  }
+
+  .included-title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+  }
+
+  .included-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .included-points li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #374151;
+    font-weight: 500;
+  }
+
+  .included-points svg {
+    color: #FFD700;
+    flex-shrink: 0;
+  }
+
+  /* Right: Offer card */
+  .offer-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .offer-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .offer-badge {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
+    font-weight: 800;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .offer-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  .offer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .offer-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #000000;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .offer-description {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .offer-expiry {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin: 0;
+  }
+
+  .offer-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin-top: 0.5rem;
+  }
+
+  .offer-btn:hover {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  @media (max-width: 1024px) {
+    .whats-included-container { grid-template-columns: 1fr; gap: 2.5rem; }
+    .offer-card { padding: 2.5rem 2rem; }
+  }
+
+  @media (max-width: 768px) {
+    .whats-included-section { padding: 5rem 1.5rem; }
+    .offer-card { padding: 2rem 1.5rem; min-height: auto; }
+    .included-title { font-size: 1.75rem; }
+    .offer-title { font-size: 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .whats-included-section { padding: 3rem 1rem; }
+    .offer-top { flex-wrap: wrap; gap: 0.5rem; }
+  }
+</style>

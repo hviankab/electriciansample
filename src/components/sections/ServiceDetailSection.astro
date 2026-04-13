@@ -384,15 +384,20 @@ const descriptionParagraphs = description.split('\n\n').filter(p => p.trim());
   }
 
   @media (max-width: 1024px) {
-    .service-detail-container {
-      grid-template-columns: 1fr;
-    }
+    .service-detail-container { grid-template-columns: 1fr; }
     .sidebar { position: static; }
+    .why-images { grid-template-columns: 1fr 1fr; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  @media (max-width: 640px) {
-    .service-detail-section { padding: 3rem 1.5rem; }
+  @media (max-width: 768px) {
+    .service-detail-section { padding: 4rem 1.5rem; }
     .why-images { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
+    .main-image { aspect-ratio: 16/9; }
+  }
+
+  @media (max-width: 480px) {
+    .service-detail-section { padding: 3rem 1rem; }
   }
 </style>

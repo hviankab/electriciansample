@@ -300,27 +300,19 @@ const {
   }
 
   @media (max-width: 1024px) {
-    .contact-layout {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
+    .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 768px) {
-    .contact-cta-section {
-      padding: 4rem 1.5rem;
-    }
+    .contact-cta-section { padding: 4rem 1.5rem; }
+    .contact-form-wrapper { padding: 1.5rem; }
+    .phone-number { font-size: 1.25rem; }
+    .contact-title { font-size: 1.75rem; }
+  }
 
-    .form-row {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-form-wrapper {
-      padding: 2rem 1.5rem;
-    }
-
-    .phone-number {
-      font-size: 1.25rem;
-    }
+  @media (max-width: 480px) {
+    .contact-cta-section { padding: 3rem 1rem; }
+    .phone-icon { width: 44px; height: 44px; }
   }
 </style>

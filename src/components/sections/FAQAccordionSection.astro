@@ -244,31 +244,23 @@ const {
   @media (max-width: 1024px) {
     .faq-layout {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2.5rem;
     }
-
     .faq-header {
       position: static;
     }
+    .faq-image { height: 240px; }
   }
 
   @media (max-width: 768px) {
-    .faq-section {
-      padding: 4rem 1.5rem;
-    }
+    .faq-section { padding: 4rem 1.5rem; }
+    .faq-question { font-size: 1rem; padding: 1.25rem 0; gap: 1rem; }
+    .faq-answer { padding: 0 0 1.25rem 0; font-size: 0.9rem; }
+    .faq-image { height: 200px; }
+  }
 
-    .faq-question {
-      font-size: 1rem;
-      padding: 1.25rem 0;
-    }
-
-    .faq-answer {
-      padding: 0 0 1.25rem 0;
-      font-size: 0.9rem;
-    }
-
-    .faq-image {
-      height: 220px;
-    }
+  @media (max-width: 480px) {
+    .faq-section { padding: 3rem 1rem; }
+    .faq-question { font-size: 0.9rem; }
   }
 </style>

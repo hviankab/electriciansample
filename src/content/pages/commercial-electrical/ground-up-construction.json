@@ -15,6 +15,69 @@
       }
     },
     {
+      "component": "ServiceTabsSection",
+      "props": {
+        "eyebrow": "OUR SERVICES",
+        "title": "Commercial Electrical",
+        "subtitle": "Services We Offer",
+        "description": "Explore our full range of commercial electrical services. Each service is delivered by licensed professionals with years of experience.",
+        "tabs": [
+          {
+            "title": "Ground-Up Construction",
+            "description": "Complete electrical systems for new commercial buildings from initial design to final inspection. We handle every phase of the electrical installation process.",
+            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+            "points": [
+              "Complete Electrical Design & Engineering",
+              "Power Distribution & Panel Installation",
+              "Commercial Lighting Systems",
+              "Code Compliance & Permit Management"
+            ],
+            "buttonText": "Learn More",
+            "buttonHref": "/commercial-electrical/ground-up-construction"
+          },
+          {
+            "title": "Emergency & Standby Power",
+            "description": "Generator installation and backup power systems to ensure your business never loses power during critical operations.",
+            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+            "points": [
+              "Generator Installation & Commissioning",
+              "Automatic Transfer Switches",
+              "UPS Systems & Battery Backup",
+              "24/7 Emergency Response"
+            ],
+            "buttonText": "Learn More",
+            "buttonHref": "/commercial-electrical/emergency-standby-power"
+          },
+          {
+            "title": "Commercial Electrical Systems",
+            "description": "Full electrical system design, installation, and upgrades for commercial properties of all sizes and types.",
+            "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+            "points": [
+              "Electrical System Design & Engineering",
+              "Wiring & Circuit Installation",
+              "Energy-Efficient Lighting Solutions",
+              "System Upgrades & Modernization"
+            ],
+            "buttonText": "Learn More",
+            "buttonHref": "/commercial-electrical/electrical-systems"
+          },
+          {
+            "title": "Commercial Electrical Panels",
+            "description": "Panel upgrades, replacements, and new installations to handle the electrical demands of your growing business.",
+            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+            "points": [
+              "Panel Upgrades & Replacements",
+              "Load Balancing & Circuit Additions",
+              "Safety Inspections & Code Compliance",
+              "Commercial-Grade Panel Installation"
+            ],
+            "buttonText": "Learn More",
+            "buttonHref": "/commercial-electrical/electrical-panels"
+          }
+        ]
+      }
+    },
+    {
       "component": "ServiceIntroSection",
       "props": {
         "eyebrow": "NEW CONSTRUCTION EXPERTS",
@@ -34,39 +97,24 @@
       }
     },
     {
-      "component": "WhyChooseSection",
+      "component": "WhatsIncludedSection",
       "props": {
-        "eyebrow": "Why Choose Us",
-        "title": "Ground-Up Construction",
-        "subtitle": "Expertise You Can Trust",
-        "description": "Delivering Complete Electrical Solutions for New Buildings.",
-        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-        "yearsOfExperience": "27+",
-        "features": [
-          {
-            "title": "Comprehensive Planning:",
-            "description": "Detailed electrical design and load calculations for optimal system performance."
-          },
-          {
-            "title": "Licensed Professionals:",
-            "description": "Fully licensed commercial electricians with new construction expertise."
-          },
-          {
-            "title": "On-Time Delivery:",
-            "description": "We coordinate with all trades to keep your project on schedule."
-          },
-          {
-            "title": "Code Compliance:",
-            "description": "All installations meet or exceed current NEC and local codes."
-          },
-          {
-            "title": "Quality Materials:",
-            "description": "We use only premium electrical components for long-lasting reliability."
-          }
+        "eyebrow": "WHAT WE OFFER",
+        "title": "What's Included?",
+        "points": [
+          "Complete electrical design and engineering",
+          "1-year labor warranty on all installations",
+          "100% satisfaction guarantee",
+          "Code compliance and permit management",
+          "Flexible financing available"
         ],
-        "closingText": "From office buildings to industrial facilities, we have the expertise to handle ground-up electrical construction projects of any scale.",
-        "buttonText": "Get Project Estimate",
-        "buttonHref": "/contact"
+        "offerBadge": "-$100 OFF",
+        "offerLabel": "SPECIAL OFFER",
+        "offerTitle": "Any New Construction Project",
+        "offerDescription": "New customer special! We are offering $100 OFF to any new commercial construction clients.",
+        "offerExpiry": "* Limited time offer. Contact us for details.",
+        "offerButtonText": "Claim Offer",
+        "offerButtonHref": "/contact"
       }
     },
     {

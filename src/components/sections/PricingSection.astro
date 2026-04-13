@@ -3,54 +3,72 @@ interface PricingPlan {
   name: string;
   description: string;
   price: string;
+  period?: string;
   features: string[];
   highlighted?: boolean;
+  buttonText?: string;
+  buttonHref?: string;
+  bgImage?: string;
 }
 
 interface Props {
   eyebrow?: string;
   title?: string;
-  description?: string;
+  ctaText?: string;
+  ctaDescription?: string;
+  ctaButtonText?: string;
+  ctaButtonHref?: string;
   plans?: PricingPlan[];
 }
 
 const {
-  eyebrow = "OUR PRICING",
-  title = "Flexible Pricing Plans Designed for Every Electrical Need",
-  description = "Choose the right plan for your home or business with transparent pricing, reliable service, and no hidden costs.",
+  eyebrow = "PRICING YOU CAN TRUST",
+  title = "Affordable Pricing Plan",
+  ctaText = "Contact Our Support Team",
+  ctaDescription = "Have questions about pricing? Our team is ready to help you find the right plan for your needs.",
+  ctaButtonText = "Get Custom Pricing",
+  ctaButtonHref = "/contact",
   plans = [
     {
-      name: "Basic Plan",
+      name: "Basic Service",
       description: "Perfect for small fixes and quick electrical tasks.",
       price: "$89",
+      period: "Per Service",
+      buttonText: "Get This Plan",
+      buttonHref: "/contact",
+      bgImage: "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
       features: [
         "Basic electrical inspection",
-        "Priority support",
         "Safety compliance check",
         "Wiring & minor upgrades",
         "Quick service support"
       ]
     },
     {
-      name: "Standard Plan",
+      name: "Standard Service",
       description: "Ideal for regular maintenance and common electrical work.",
       price: "$199",
+      period: "Per Service",
+      buttonText: "Get This Plan",
+      buttonHref: "/contact",
+      highlighted: true,
+      bgImage: "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
       features: [
         "Full system inspection",
         "Priority support",
-        "Safety compliance check",
-        "Wiring & minor upgrades",
-        "Quick service support",
         "Panel upgrades",
         "Priority emergency support",
         "Complete electrical setup"
-      ],
-      highlighted: true
+      ]
     },
     {
-      name: "Premium Plan",
+      name: "Premium Service",
       description: "Best for complete electrical solutions and upgrades.",
       price: "$350",
+      period: "Per Service",
+      buttonText: "Get This Plan",
+      buttonHref: "/contact",
+      bgImage: "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
       features: [
         "Complete electrical setup",
         "Panel upgrades",
@@ -67,46 +85,82 @@ const {
   <div class="pricing-container">
     <!-- Header -->
     <div class="pricing-header">
-      <p class="pricing-eyebrow">{eyebrow}</p>
+      <div class="eyebrow" style="justify-content: center;">
+        <span style="color: #000000;">{eyebrow}</span>
+      </div>
       <h2 class="pricing-title">{title}</h2>
-      <p class="pricing-description">{description}</p>
     </div>
 
-    <!-- Pricing Cards -->
+    <!-- Cards -->
     <div class="pricing-grid">
       {plans.map((plan) => (
-        <div class={`pricing-card ${plan.highlighted ? 'pricing-card-highlighted' : ''}`}>
-          <div class="card-header">
+        <div
+          class={`pricing-card ${plan.highlighted ? 'highlighted' : ''}`}
+        >
+          <!-- BG layer (shown on hover or if highlighted) -->
+          <div class="card-bg" style={plan.bgImage ? `background-image: url('${plan.bgImage}')` : ''}></div>
+          <div class="card-overlay"></div>
+          <!-- Content -->
+          <div class="card-content">
+            <div class="plan-icon">
+              {plan.highlighted ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              ) : plan.name.includes("Basic") ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              )}
+            </div>
             <h3 class="plan-name">{plan.name}</h3>
             <p class="plan-description">{plan.description}</p>
+            <div class="plan-price">
+              <span class="price-amount">{plan.price}</span>
+              <span class="price-period">/ {plan.period || "Per Service"}</span>
+            </div>
+            <a href={plan.buttonHref || "/contact"} class="plan-button">
+              {plan.buttonText || "Get This Plan"}
+            </a>
+            <div class="plan-features-label">Plan Features :</div>
+            <ul class="plan-features">
+              {plan.features.map((feature) => (
+                <li>
+                  <span class="check-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          
-          <div class="plan-price">
-            <span class="price-amount">{plan.price}</span>
-            <span class="price-period">/ Service</span>
-          </div>
-          
-          <ul class="plan-features">
-            {plan.features.map((feature) => (
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-          
-          <button class="plan-button">GET STARTED TODAY</button>
         </div>
       ))}
+    </div>
+
+    <!-- Bottom CTA Bar -->
+    <div class="pricing-cta-bar">
+      <div class="cta-bar-text">
+        <h3 class="cta-bar-title">{ctaText}</h3>
+        <p class="cta-bar-desc">{ctaDescription}</p>
+      </div>
+      <a href={ctaButtonHref} class="cta-bar-btn">
+        {ctaButtonText}
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
 <style>
   .pricing-section {
-    padding: 5rem 2rem;
+    padding: 6rem 2rem;
     background: #f7f7f7;
   }
 
@@ -117,197 +171,288 @@ const {
 
   .pricing-header {
     text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .pricing-eyebrow {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #000000;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0 0 1rem 0;
+    margin-bottom: 3.5rem;
   }
 
   .pricing-title {
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
     color: #000000;
     line-height: 1.2;
-    margin: 0 0 1rem 0;
-    letter-spacing: -0.02em;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
   }
 
-  .pricing-description {
-    font-size: 1rem;
-    color: #6b7280;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
+  /* Grid */
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    align-items: stretch;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 2rem;
   }
 
+  /* Card base — white by default */
   .pricing-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
     position: relative;
-    border: 1px solid #e5e7eb;
-    border-top: 4px solid #FFD700;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid #e5e7eb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
   }
 
   .pricing-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    border-color: #FFD700;
   }
 
-  .pricing-card-highlighted {
+  /* BG image layer — hidden by default, shown on hover */
+  .card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+  }
+
+  /* Yellow overlay — separate layer on top of image */
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,215,0,0.88) 0%, rgba(255,165,0,0.88) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+
+  /* Yellow overlay on top of bg image */
+  .card-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,215,0,0.88) 0%, rgba(255,165,0,0.88) 100%);
+  }
+
+  .pricing-card:hover .card-bg,
+  .pricing-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  /* Content sits above bg */
+  .card-content {
+    position: relative;
+    z-index: 2;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-top: 4px solid #FFD700;
-    transform: scale(1.05);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transition: background 0.4s ease;
   }
 
-  .pricing-card-highlighted:hover {
-    transform: scale(1.05) translateY(-8px);
+  .pricing-card:hover .card-content {
+    background: transparent;
   }
 
-  .card-header {
-    margin-bottom: 1.5rem;
+  /* Highlighted card — always shows bg+yellow */
+  .pricing-card.highlighted {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(255,215,0,0.25);
+    border-color: #FFD700;
   }
 
+  .pricing-card.highlighted .card-bg,
+  .pricing-card.highlighted .card-overlay {
+    opacity: 1;
+  }
+
+  .pricing-card.highlighted .card-content {
+    background: transparent;
+  }
+
+  .pricing-card.highlighted:hover {
+    transform: translateY(-14px);
+  }
+
+  /* Icon */
+  .plan-icon { margin-bottom: 0.25rem; }
+  .plan-icon svg { color: #9ca3af; transition: color 0.3s ease; }
+  .pricing-card:hover .plan-icon svg,
+  .pricing-card.highlighted .plan-icon svg { color: rgba(0,0,0,0.5); }
+
+  /* Text — dark on white, dark on yellow */
   .plan-name {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: #000000;
-    margin: 0 0 0.75rem 0;
+    margin: 0;
+    line-height: 1.2;
   }
 
   .plan-description {
-    font-size: 0.9375rem;
+    font-size: 0.9rem;
     color: #6b7280;
     line-height: 1.6;
     margin: 0;
+    transition: color 0.3s ease;
   }
 
+  .pricing-card:hover .plan-description,
+  .pricing-card.highlighted .plan-description { color: rgba(0,0,0,0.65); }
+
   .plan-price {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 2px solid #f3f4f6;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
   }
 
   .price-amount {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #FF6B35;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #000000;
     line-height: 1;
+    font-family: 'Barlow Condensed', system-ui, sans-serif;
   }
 
   .price-period {
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: #6b7280;
-    margin-left: 0.5rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .pricing-card:hover .price-period,
+  .pricing-card.highlighted .price-period { color: rgba(0,0,0,0.6); }
+
+  /* Button — default: black bg, white text */
+  .plan-button {
+    display: block;
+    width: 100%;
+    padding: 0.875rem;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 0.25rem 0;
+  }
+
+  /* On hover of card or highlighted — white bg, black text */
+  .pricing-card:hover .plan-button,
+  .pricing-card.highlighted .plan-button {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .plan-button:hover {
+    opacity: 0.9;
+  }
+
+  /* Features */
+  .plan-features-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 0.25rem;
   }
 
   .plan-features {
     list-style: none;
     padding: 0;
-    margin: 0 0 2rem 0;
-    flex: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
   }
 
   .plan-features li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .plan-features svg {
-    color: #000000;
-    flex-shrink: 0;
-    margin-top: 0.125rem;
-  }
-
-  .plan-features span {
-    font-size: 0.9375rem;
-    color: #4b5563;
-    line-height: 1.6;
-  }
-
-  .plan-button {
-    width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #000000;
-    border: none;
-    border-radius: 12px;
-    font-weight: 800;
     font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    color: #4b5563;
+    transition: color 0.3s ease;
   }
 
-  .plan-button:hover {
-    background: #000000;
-    color: #ffffff;
+  .pricing-card:hover .plan-features li,
+  .pricing-card.highlighted .plan-features li { color: rgba(0,0,0,0.75); }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FFD700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
   }
 
-  .pricing-card-highlighted .plan-button {
+  .pricing-card:hover .check-icon,
+  .pricing-card.highlighted .check-icon { background: #000000; }
+
+  /* CTA bar */
+  .pricing-cta-bar {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    border: 1px solid #e5e7eb;
+    margin-top: 1rem;
+  }
+
+  .cta-bar-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .cta-bar-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    max-width: 500px;
+  }
+
+  .cta-bar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
     color: #000000;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
   }
 
-  .pricing-card-highlighted .plan-button:hover {
-    background: #000000;
-    color: #ffffff;
-  }
+  .cta-bar-btn:hover { background: #000000; color: #FFD700; }
 
   @media (max-width: 1024px) {
-    .pricing-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .pricing-card-highlighted {
-      transform: scale(1);
-    }
-
-    .pricing-card-highlighted:hover {
-      transform: translateY(-8px);
-    }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.highlighted { transform: none; }
+    .pricing-cta-bar { flex-direction: column; align-items: flex-start; }
   }
 
-  @media (max-width: 768px) {
-    .pricing-section {
-      padding: 4rem 1.5rem;
-    }
-
-    .pricing-header {
-      margin-bottom: 3rem;
-    }
-
-    .pricing-card {
-      padding: 2rem 1.5rem;
-    }
-
-    .price-amount {
-      font-size: 2.5rem;
-    }
+  @media (max-width: 640px) {
+    .pricing-section { padding: 4rem 1.5rem; }
+    .card-content { padding: 2rem 1.5rem; }
   }
 </style>

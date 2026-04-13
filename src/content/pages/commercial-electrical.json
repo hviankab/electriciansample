@@ -15,21 +15,6 @@
       }
     },
     {
-      "component": "CommercialIntroSection",
-      "props": {
-        "eyebrow": "COMMERCIAL ELECTRICAL EXPERTS",
-        "title": "Powering Businesses Across the Region",
-        "subtitle": "Professional electrical solutions for commercial properties of all sizes",
-        "description": "From small tenant improvements to ground-up developments, we partner with business owners who expect quality without compromise. Our licensed commercial electricians deliver reliable, code-compliant electrical services that keep your business running smoothly.",
-        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-        "stats": [
-          { "number": "500+", "label": "Commercial Projects" },
-          { "number": "27+", "label": "Years Experience" },
-          { "number": "100%", "label": "Licensed & Insured" }
-        ]
-      }
-    },
-    {
       "component": "ServiceDetailSection",
       "props": {
         "title": "Commercial Electrical Services",
@@ -42,52 +27,33 @@
           "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
         ],
         "features": [
-          { "title": "Tailored Solutions & Focus", "description": "We provide personalized electrical solutions for commercial projects, ensuring safety and reliability at every step." },
-          { "title": "Expert Craftsmanship & Quality", "description": "Our certified team uses top-grade materials and proven techniques to deliver durable, long-lasting electrical systems." }
-        ],
-        "serviceLinks": [
-          { "title": "Ground-Up Construction", "href": "/commercial-electrical/ground-up-construction" },
-          { "title": "Electrical Upgrades", "href": "/commercial-electrical" },
-          { "title": "Emergency Power Systems", "href": "/commercial-electrical" },
-          { "title": "Lighting Solutions", "href": "/commercial-electrical" },
-          { "title": "Panel Installations", "href": "/commercial-electrical" }
-        ]
-      }
-    },
-    {
-      "component": "WhyChooseSection",
-      "props": {
-        "eyebrow": "Why Choose Us",
-        "title": "Commercial Electrical",
-        "subtitle": "Experts You Can Trust",
-        "description": "We Build Relationships - Not Just Electrical Systems.",
-        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-        "yearsOfExperience": "27+",
-        "features": [
           {
-            "title": "Licensed & Certified:",
-            "description": "Fully licensed commercial electricians with extensive experience."
+            "title": "Tailored Solutions & Focus",
+            "description": "We provide personalized electrical solutions for commercial projects, ensuring safety and reliability at every step."
           },
           {
-            "title": "Code Compliance:",
-            "description": "All work meets current electrical codes and regulations."
-          },
-          {
-            "title": "Minimal Disruption:",
-            "description": "We work around your business hours to keep operations running."
-          },
-          {
-            "title": "Project Management:",
-            "description": "Single point of contact from estimate to completion."
-          },
-          {
-            "title": "24/7 Emergency Service:",
-            "description": "Available anytime for urgent commercial electrical issues."
+            "title": "Expert Craftsmanship & Quality",
+            "description": "Our certified team uses top-grade materials and proven techniques to deliver durable, long-lasting electrical systems."
           }
         ],
-        "closingText": "When you work with us, you get more than an electrician - you get a partner invested in your business success.",
-        "buttonText": "Request Your Quote Today",
-        "buttonHref": "/contact"
+        "serviceLinks": [
+          {
+            "title": "Commercial Electrical Services",
+            "href": "/commercial-electrical"
+          },
+          {
+            "title": "Residential Electrical Services",
+            "href": "/residential-electrical"
+          },
+          {
+            "title": "Specialty Services",
+            "href": "/specialty-services"
+          },
+          {
+            "title": "Emergency Services",
+            "href": "/emergency"
+          }
+        ]
       }
     },
     {
@@ -95,89 +61,35 @@
       "props": {
         "title": "Commercial Electrical",
         "subtitle": "Services We Offer",
-        "description": "Comprehensive electrical solutions for businesses of all sizes.",
+        "description": "Comprehensive electrical solutions for businesses of all sizes. Click any service to learn more.",
         "services": [
           {
-            "title": "New Construction",
+            "title": "Ground-Up Construction",
             "description": "Complete electrical systems for new commercial buildings from design to final inspection.",
             "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
             "icon": "🏗️",
             "href": "/commercial-electrical/ground-up-construction"
           },
           {
-            "title": "Electrical Upgrades",
-            "description": "Panel upgrades, circuit additions, and system modernization for growing businesses.",
+            "title": "Emergency & Standby Power",
+            "description": "Generator installation and backup power systems to keep your business running.",
             "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
             "icon": "⚡",
-            "href": "/commercial-electrical"
+            "href": "/commercial-electrical/emergency-standby-power"
           },
           {
-            "title": "Lighting Solutions",
-            "description": "Energy-efficient LED lighting retrofits and commercial lighting design.",
+            "title": "Commercial Electrical Systems",
+            "description": "Full electrical system design, installation, and upgrades for commercial properties.",
             "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
             "icon": "💡",
-            "href": "/commercial-electrical"
+            "href": "/commercial-electrical/electrical-systems"
           },
           {
-            "title": "Emergency Power",
-            "description": "Generator installation, UPS systems, and backup power solutions.",
+            "title": "Commercial Electrical Panels",
+            "description": "Panel upgrades, replacements, and new installations for businesses of all sizes.",
             "image": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg",
             "icon": "🔋",
-            "href": "/commercial-electrical"
-          }
-        ]
-      }
-    },
-    {
-      "component": "OurProjectsSection",
-      "props": {
-        "eyebrow": "RECENT PROJECTS",
-        "title": "Commercial Projects We've Completed",
-        "description": "See examples of our commercial electrical work across various industries and business types.",
-        "buttonText": "VIEW ALL PROJECTS",
-        "buttonHref": "/projects",
-        "projects": [
-          {
-            "title": "Office Building Rewiring",
-            "category": "Commercial",
-            "description": "Complete electrical system upgrade for a 10,000 sq ft office building [...]",
-            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
-            "href": "/projects/office-rewiring"
-          },
-          {
-            "title": "Restaurant Electrical",
-            "category": "Commercial",
-            "description": "New electrical installation for restaurant including kitchen equipment [...]",
-            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-            "href": "/projects/restaurant"
-          },
-          {
-            "title": "Retail Store Lighting",
-            "category": "Commercial",
-            "description": "LED lighting retrofit and electrical upgrades for retail space [...]",
-            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
-            "href": "/projects/retail"
-          },
-          {
-            "title": "Warehouse Power Systems",
-            "category": "Industrial",
-            "description": "High-voltage power distribution for industrial warehouse facility [...]",
-            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
-            "href": "/projects/warehouse"
-          },
-          {
-            "title": "Medical Office Electrical",
-            "category": "Commercial",
-            "description": "Specialized electrical systems for medical office with backup power [...]",
-            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
-            "href": "/projects/medical"
-          },
-          {
-            "title": "Hotel Renovation",
-            "category": "Commercial",
-            "description": "Complete electrical renovation for boutique hotel property [...]",
-            "image": "/electricianimgs/AdobeStock_543922851.jpeg",
-            "href": "/projects/hotel"
+            "href": "/commercial-electrical/electrical-panels"
           }
         ]
       }
@@ -263,6 +175,60 @@
             "rating": 5,
             "date": "3 weeks ago",
             "content": "Top-notch electrical contractor for commercial work. They delivered our industrial facility on schedule with zero punch list items at final inspection."
+          }
+        ]
+      }
+    },
+    {
+      "component": "OurProjectsSection",
+      "props": {
+        "eyebrow": "RECENT PROJECTS",
+        "title": "Commercial Projects We've Completed",
+        "description": "See examples of our commercial electrical work across various industries and business types.",
+        "buttonText": "VIEW ALL PROJECTS",
+        "buttonHref": "/projects",
+        "projects": [
+          {
+            "title": "Office Building Rewiring",
+            "category": "Commercial",
+            "description": "Complete electrical system upgrade for a 10,000 sq ft office building [...]",
+            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+            "href": "/projects/office-rewiring"
+          },
+          {
+            "title": "Restaurant Electrical",
+            "category": "Commercial",
+            "description": "New electrical installation for restaurant including kitchen equipment [...]",
+            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+            "href": "/projects/restaurant"
+          },
+          {
+            "title": "Retail Store Lighting",
+            "category": "Commercial",
+            "description": "LED lighting retrofit and electrical upgrades for retail space [...]",
+            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+            "href": "/projects/retail"
+          },
+          {
+            "title": "Warehouse Power Systems",
+            "category": "Industrial",
+            "description": "High-voltage power distribution for industrial warehouse facility [...]",
+            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
+            "href": "/projects/warehouse"
+          },
+          {
+            "title": "Medical Office Electrical",
+            "category": "Commercial",
+            "description": "Specialized electrical systems for medical office with backup power [...]",
+            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
+            "href": "/projects/medical"
+          },
+          {
+            "title": "Hotel Renovation",
+            "category": "Commercial",
+            "description": "Complete electrical renovation for boutique hotel property [...]",
+            "image": "/electricianimgs/AdobeStock_543922851.jpeg",
+            "href": "/projects/hotel"
           }
         ]
       }

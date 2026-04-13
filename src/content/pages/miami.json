@@ -15,6 +15,35 @@
       }
     },
     {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Serving Miami & Surrounding Areas",
+        "description": "We provide professional electrical services throughout Miami-Dade County. From Downtown Miami to the suburbs, our licensed electricians are ready to help.",
+        "mapAddress": "Miami, FL",
+        "variant": "full",
+        "buttonText": "VIEW SERVICE AREAS",
+        "buttonHref": "/contact",
+        "areas": [
+          "Downtown Miami",
+          "Brickell",
+          "Coral Gables",
+          "Coconut Grove",
+          "Wynwood",
+          "Miami Beach",
+          "Little Havana",
+          "Kendall",
+          "Hialeah",
+          "Doral",
+          "Aventura",
+          "Homestead",
+          "North Miami",
+          "South Miami",
+          "Cutler Bay",
+          "Pinecrest"
+        ]
+      }
+    },
+    {
       "component": "LocationIntroSection",
       "props": {
         "eyebrow": "SERVING MIAMI",
@@ -23,11 +52,32 @@
         "description": "For over 27 years, we've been Miami's go-to electrical service provider. Our team of licensed electricians serves residential and commercial clients throughout Miami-Dade County with professional electrical installations, repairs, and maintenance.",
         "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
         "features": [
-          { "icon": "⚡", "title": "Same-Day Service", "description": "Fast response times throughout Miami" },
-          { "icon": "🏆", "title": "Licensed & Insured", "description": "Fully certified Miami electricians" },
-          { "icon": "🕐", "title": "24/7 Emergency", "description": "Available anytime for urgent issues" }
+          {
+            "icon": "⚡",
+            "title": "Same-Day Service",
+            "description": "Fast response times throughout Miami"
+          },
+          {
+            "icon": "🏆",
+            "title": "Licensed & Insured",
+            "description": "Fully certified Miami electricians"
+          },
+          {
+            "icon": "🕐",
+            "title": "24/7 Emergency",
+            "description": "Available anytime for urgent issues"
+          }
         ],
-        "serviceAreas": ["Downtown Miami", "Brickell", "Coral Gables", "Coconut Grove", "Wynwood", "Miami Beach", "Little Havana", "Kendall"]
+        "serviceAreas": [
+          "Downtown Miami",
+          "Brickell",
+          "Coral Gables",
+          "Coconut Grove",
+          "Wynwood",
+          "Miami Beach",
+          "Little Havana",
+          "Kendall"
+        ]
       }
     },
     {
@@ -169,16 +219,76 @@
           {
             "name": "Carlos Hernandez",
             "role": "Homeowner - Coral Gables",
+            "initials": "CH",
             "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
             "rating": 5,
-            "content": "Best electrician in Miami! They upgraded our entire electrical panel and added new circuits for our home office. Professional, clean work, and fair pricing. Highly recommend for any electrical work in the Coral Gables area."
+            "date": "2 weeks ago",
+            "content": "Best electrician in Miami! They upgraded our entire electrical panel and added new circuits for our home office. Professional, clean work, and fair pricing."
           },
           {
             "name": "Maria Santos",
             "role": "Business Owner - Brickell",
+            "initials": "MS",
             "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg",
             "rating": 5,
-            "content": "Called them for an emergency at our Brickell office and they were here within 30 minutes. Fixed our power issue quickly and professionally. Excellent emergency electrical service in Miami. Will definitely use them again."
+            "date": "1 month ago",
+            "content": "Called them for an emergency at our Brickell office and they were here within 30 minutes. Fixed our power issue quickly and professionally. Excellent service."
+          },
+          {
+            "name": "James Rivera",
+            "role": "Property Manager - Wynwood",
+            "initials": "JR",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "They handled all the electrical work for our Wynwood property renovation. On time, on budget, and the quality exceeded our expectations. Highly recommend."
+          },
+          {
+            "name": "Sofia Martinez",
+            "role": "Homeowner - Miami Beach",
+            "initials": "SM",
+            "rating": 5,
+            "date": "1 week ago",
+            "content": "Installed smart home electrical systems throughout our Miami Beach condo. Very knowledgeable team, clean work, and great communication throughout the project."
+          },
+          {
+            "name": "David Chen",
+            "role": "Restaurant Owner - Downtown",
+            "initials": "DC",
+            "rating": 5,
+            "date": "2 months ago",
+            "content": "They wired our entire downtown restaurant from scratch. Coordinated perfectly with our contractor and passed all inspections on the first try. Outstanding work."
+          },
+          {
+            "name": "Ana Lopez",
+            "role": "Homeowner - Kendall",
+            "initials": "AL",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "Fast response, professional service, and fair pricing. They fixed our electrical issues quickly and explained everything clearly. Will definitely use them again."
+          },
+          {
+            "name": "Robert Kim",
+            "role": "Office Manager - Coral Gables",
+            "initials": "RK",
+            "rating": 5,
+            "date": "1 week ago",
+            "content": "Complete office electrical upgrade done with minimal disruption to our business. The team was professional, efficient, and very respectful of our workspace."
+          },
+          {
+            "name": "Patricia Gomez",
+            "role": "Homeowner - Coconut Grove",
+            "initials": "PG",
+            "rating": 5,
+            "date": "2 weeks ago",
+            "content": "Excellent electrical service in Coconut Grove. They rewired our older home safely and up to code. Very transparent pricing and no hidden fees. Great experience."
+          },
+          {
+            "name": "Michael Torres",
+            "role": "Contractor - Hialeah",
+            "initials": "MT",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "I use them on all my construction projects in Miami. Reliable, licensed, and always deliver quality work on schedule. The best electrical contractor in the area."
           }
         ]
       }
