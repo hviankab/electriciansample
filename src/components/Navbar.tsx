@@ -438,6 +438,25 @@ export function Navbar() {
                   </a>
                 </div>
               )}
+
+              {/* Mobile hamburger — always visible on mobile/tablet in scrolled state */}
+              {scrolled && (
+                <div className="flex xl:hidden items-center gap-3 ml-auto">
+                  <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+                    <SheetTrigger asChild>
+                      <Button variant="ghost" size="icon" aria-label="Open menu" className="text-white hover:bg-white/10">
+                        <Menu className="h-6 w-6" />
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent side="right" className="w-full sm:w-[400px] p-0 flex flex-col overflow-hidden">
+                      <SheetHeader className="sr-only"><SheetTitle>Menu</SheetTitle></SheetHeader>
+                      <div className="flex-1 overflow-y-auto">
+                        <MobileNav onClose={() => setMobileOpen(false)} />
+                      </div>
+                    </SheetContent>
+                  </Sheet>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -480,10 +499,7 @@ function MobileNav({ onClose }: { onClose: () => void }) {
   return (
     <div className="flex flex-col h-full bg-white">
       {/* Close bar */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-6 py-3 flex justify-between items-center min-h-[60px] mt-10">
-        <a href="/" onClick={onClose}>
-          <img src={siteConfig.logo.src} alt={siteConfig.logo.alt} className="h-10 w-auto object-contain" />
-        </a>
+      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-6 py-3 flex justify-end items-center min-h-[60px] mt-10">
         <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="Close menu">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -492,9 +508,9 @@ function MobileNav({ onClose }: { onClose: () => void }) {
       </div>
 
       {/* Phone + info */}
-      <a href={`tel:${siteConfig.contact.phone}`} className="flex items-center justify-center gap-2 bg-brand-secondary text-gray-900 px-6 py-3.5 hover:bg-brand-highlight transition-colors">
+      <a href={`tel:${siteConfig.contact.phone}`} className="flex items-center justify-center gap-2 px-6 py-3.5 transition-colors font-semibold text-lg" style={{ background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)", color: "#000000" }}>
         <Phone className="h-5 w-5" />
-        <span className="font-semibold text-lg">{siteConfig.contact.phoneFormatted}</span>
+        <span>{siteConfig.contact.phoneFormatted}</span>
       </a>
       <div className="px-6 py-3 bg-gray-50 border-b border-gray-200">
         <div className="flex flex-col gap-2 text-sm text-gray-700">
@@ -511,7 +527,7 @@ function MobileNav({ onClose }: { onClose: () => void }) {
 
         {/* About Us */}
         <div className="border-b border-gray-200">
-          <button onClick={() => setAboutOpen(!aboutOpen)} className="flex items-center justify-between w-full py-3 text-base font-medium text-black hover:text-brand-secondary transition-colors">
+          <button onClick={() => setAboutOpen(!aboutOpen)} className="flex items-center justify-between w-full py-3 text-base font-medium text-black hover:text-brand-secondary transition-colors border-0 bg-transparent">
             About Us <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${aboutOpen ? "rotate-180" : ""}`} />
           </button>
           {aboutOpen && (
@@ -525,7 +541,7 @@ function MobileNav({ onClose }: { onClose: () => void }) {
 
         {/* Services */}
         <div className="border-b border-gray-200">
-          <button onClick={() => setServicesOpen(!servicesOpen)} className="flex items-center justify-between w-full py-3 text-base font-medium text-black hover:text-brand-secondary transition-colors">
+          <button onClick={() => setServicesOpen(!servicesOpen)} className="flex items-center justify-between w-full py-3 text-base font-medium text-black hover:text-brand-secondary transition-colors border-0 bg-transparent">
             Services <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
           </button>
           {servicesOpen && (
@@ -555,7 +571,7 @@ function MobileNav({ onClose }: { onClose: () => void }) {
 
         {/* Service Areas */}
         <div className="border-b border-gray-200">
-          <button onClick={() => setAreasOpen(!areasOpen)} className="flex items-center justify-between w-full py-3 text-base font-medium text-black hover:text-brand-secondary transition-colors">
+          <button onClick={() => setAreasOpen(!areasOpen)} className="flex items-center justify-between w-full py-3 text-base font-medium text-black hover:text-brand-secondary transition-colors border-0 bg-transparent">
             Service Areas <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${areasOpen ? "rotate-180" : ""}`} />
           </button>
           {areasOpen && (
@@ -576,7 +592,7 @@ function MobileNav({ onClose }: { onClose: () => void }) {
           <a href="/specials-coupons" className="flex-1 flex items-center justify-center bg-white text-gray-900 px-4 py-2.5 rounded-full text-sm font-semibold border border-gray-300 hover:bg-gray-100 transition-all" onClick={onClose}>Specials / Coupons</a>
           <a href="/financing" className="flex-1 flex items-center justify-center bg-white text-gray-900 px-4 py-2.5 rounded-full text-sm font-semibold border border-gray-300 hover:bg-gray-100 transition-all" onClick={onClose}>Financing</a>
         </div>
-        <a href="/contact" className="flex items-center justify-center bg-brand-secondary text-gray-900 px-6 py-3 rounded-full text-base font-semibold hover:bg-brand-highlight transition-all w-full shadow-sm" onClick={onClose}>
+        <a href="/contact" className="flex items-center justify-center px-6 py-3 rounded-full text-base font-bold w-full shadow-sm transition-all" style={{ background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)", color: "#000000" }} onClick={onClose}>
           Book Now
         </a>
       </div>
