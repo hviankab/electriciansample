@@ -1,0 +1,151 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { siteConfig } from "@/config/site"
+---
+
+<BaseLayout title="Page Not Found | Coming Soon">
+  <div class="page-404">
+    <!-- Decorative lines -->
+    <div class="deco-lines top-lines">
+      <div class="line line-1"></div>
+      <div class="line line-2"></div>
+    </div>
+
+    <!-- Main badge -->
+    <div class="badge-wrapper">
+      <div class="badge-dark">
+        <span class="coming-soon">COMING SOON</span>
+      </div>
+      <div class="badge-white">
+        <span class="under-construction">UNDER CONSTRUCTION</span>
+      </div>
+    </div>
+
+    <!-- Decorative lines -->
+    <div class="deco-lines bottom-lines">
+      <div class="line line-3"></div>
+      <div class="line line-4"></div>
+    </div>
+
+    <!-- Description -->
+    <p class="description">
+      Our website is under construction, but we are ready to go! We are preparing something amazing and exciting for you. Special surprise for our subscribers only.
+    </p>
+
+    <!-- CTA -->
+    <a href="/" class="notify-btn">GO BACK HOME</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-404 {
+    min-height: 100vh;
+    background: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  /* Decorative lines */
+  .deco-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 280px;
+  }
+
+  .line {
+    height: 2px;
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  .top-lines { margin-bottom: -1rem; }
+  .bottom-lines { margin-top: -1rem; }
+
+  .line-1, .line-3 { width: 100%; }
+  .line-2, .line-4 { width: 70%; margin-left: auto; }
+  .line-3 { width: 70%; }
+  .line-4 { width: 100%; }
+
+  /* Badge */
+  .badge-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .badge-dark {
+    background: #1a1a1a;
+    padding: 1.25rem 3rem;
+    transform: skewX(-6deg);
+    position: relative;
+    z-index: 2;
+  }
+
+  .coming-soon {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-weight: 900;
+    color: #FFD700;
+    letter-spacing: 0.05em;
+    font-family: 'Barlow Condensed', system-ui, sans-serif;
+    display: inline-block;
+    transform: skewX(6deg);
+  }
+
+  .badge-white {
+    background: #ffffff;
+    padding: 0.625rem 2.5rem;
+    transform: skewX(-6deg);
+    margin-top: -4px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .under-construction {
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 0.15em;
+    font-family: 'Barlow Condensed', system-ui, sans-serif;
+    display: inline-block;
+    transform: skewX(6deg);
+  }
+
+  /* Description */
+  .description {
+    font-size: 1rem;
+    color: #1a1a1a;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* Button */
+  .notify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
+    padding: 1rem 2.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .notify-btn:hover {
+    background: #000000;
+    color: #ffffff;
+  }
+</style>
