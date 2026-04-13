@@ -100,7 +100,7 @@ const embedUrl = mapEmbed || (mapAddress ? getMapEmbedUrl(mapAddress) : null);
         </div>
         <h2 class="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
         <p class="text-base text-muted-foreground leading-relaxed mb-6 max-w-4xl">
-          We cover a wide range of locations throughout New York, ensuring high-quality HVAC services are always nearby when you need them. Our main service areas include but are not limited to:
+          {description || "We cover a wide range of locations throughout the area, ensuring high-quality electrical services are always nearby when you need them. Our main service areas include but are not limited to:"}
         </p>
         
         {/* Tabs for areas - Single line with chevrons */}
@@ -342,7 +342,7 @@ const embedUrl = mapEmbed || (mapAddress ? getMapEmbedUrl(mapAddress) : null);
   }
 
   .sa-tab-active {
-    color: #dc2626;
+    color: #D4A017;
   }
 
   .sa-tab svg {
@@ -416,7 +416,7 @@ const embedUrl = mapEmbed || (mapAddress ? getMapEmbedUrl(mapAddress) : null);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #dc2626;
+    color: #D4A017;
   }
 
   .sa-detail-icon svg {
@@ -426,6 +426,11 @@ const embedUrl = mapEmbed || (mapAddress ? getMapEmbedUrl(mapAddress) : null);
 
   .sa-detail-content {
     flex: 1;
+  }
+
+  /* Override global eyebrow color for this section */
+  .eyebrow span, .eyebrow p {
+    color: #000000 !important;
   }
 
   .sa-detail-text {
