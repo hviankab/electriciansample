@@ -30,6 +30,31 @@
       }
     },
     {
+      "component": "ServiceDetailSection",
+      "props": {
+        "title": "Commercial Electrical Services",
+        "description": "Our commercial electrical services are designed to provide lasting reliability and safety for your business. We handle every project with precision — from initial assessment and system design to professional installation and final inspection.\n\nUsing high-quality materials, advanced techniques, and a skilled team, we ensure that every electrical system we install is durable, code-compliant, and built to withstand the demands of commercial use.",
+        "whyTitle": "Why Choose Our Commercial Electrical Services",
+        "whyDescription": "From small businesses to large commercial properties, we offer tailored solutions that meet your specific needs. With comprehensive warranties, post-installation inspections, and expert guidance, choosing our electrical services ensures peace of mind.",
+        "mainImage": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+        "whyImages": [
+          "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+          "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
+        ],
+        "features": [
+          { "title": "Tailored Solutions & Focus", "description": "We provide personalized electrical solutions for commercial projects, ensuring safety and reliability at every step." },
+          { "title": "Expert Craftsmanship & Quality", "description": "Our certified team uses top-grade materials and proven techniques to deliver durable, long-lasting electrical systems." }
+        ],
+        "serviceLinks": [
+          { "title": "Ground-Up Construction", "href": "/commercial-electrical/ground-up-construction" },
+          { "title": "Electrical Upgrades", "href": "/commercial-electrical" },
+          { "title": "Emergency Power Systems", "href": "/commercial-electrical" },
+          { "title": "Lighting Solutions", "href": "/commercial-electrical" },
+          { "title": "Panel Installations", "href": "/commercial-electrical" }
+        ]
+      }
+    },
+    {
       "component": "WhyChooseSection",
       "props": {
         "eyebrow": "Why Choose Us",
@@ -168,16 +193,76 @@
           {
             "name": "David M.",
             "role": "Restaurant Owner",
+            "initials": "DM",
             "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
             "rating": 5,
-            "content": "They handled our restaurant's electrical installation professionally and on schedule. The team worked efficiently and ensured all kitchen equipment was properly wired. Excellent communication throughout the project and competitive pricing."
+            "date": "2 weeks ago",
+            "content": "They handled our restaurant's electrical installation professionally and on schedule. Excellent communication throughout the project and competitive pricing."
           },
           {
             "name": "Sarah K.",
             "role": "Office Manager",
+            "initials": "SK",
             "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg",
             "rating": 5,
-            "content": "Our office building needed a complete electrical upgrade. They completed the work with minimal disruption to our business operations. Professional team, quality workmanship, and great customer service from start to finish."
+            "date": "1 month ago",
+            "content": "Our office building needed a complete electrical upgrade. They completed the work with minimal disruption to our business operations. Professional team, quality workmanship."
+          },
+          {
+            "name": "James T.",
+            "role": "General Contractor",
+            "initials": "JT",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "We've worked with them on multiple commercial projects. Their team is professional, always on schedule, and delivers quality work. Highly recommend."
+          },
+          {
+            "name": "Maria L.",
+            "role": "Property Developer",
+            "initials": "ML",
+            "rating": 5,
+            "date": "1 week ago",
+            "content": "Excellent electrical contractor for our new office building project. From design phase through final inspection, they were responsive and professional."
+          },
+          {
+            "name": "Robert H.",
+            "role": "Building Owner",
+            "initials": "RH",
+            "rating": 5,
+            "date": "2 months ago",
+            "content": "They handled the complete electrical system for our retail complex. On time, on budget, and the quality of work exceeded our expectations."
+          },
+          {
+            "name": "Lisa P.",
+            "role": "Facility Manager",
+            "initials": "LP",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "Reliable, professional, and highly skilled. They managed all permits and inspections seamlessly. Will definitely use them on future projects."
+          },
+          {
+            "name": "Carlos R.",
+            "role": "Developer",
+            "initials": "CR",
+            "rating": 5,
+            "date": "1 week ago",
+            "content": "Exceptional service from start to finish. Their team handled our multi-story office building with precision and professionalism throughout the entire project."
+          },
+          {
+            "name": "Amanda W.",
+            "role": "Business Owner",
+            "initials": "AW",
+            "rating": 5,
+            "date": "2 weeks ago",
+            "content": "The electrical system they installed in our new facility has been flawless. Great communication throughout the project and very competitive pricing."
+          },
+          {
+            "name": "Michael B.",
+            "role": "Construction Manager",
+            "initials": "MB",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "Top-notch electrical contractor for commercial work. They delivered our industrial facility on schedule with zero punch list items at final inspection."
           }
         ]
       }
