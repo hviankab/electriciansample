@@ -1,0 +1,319 @@
+---
+interface Coupon {
+  label: string;
+  discount: string;
+  description: string;
+  expiry?: string;
+  code?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  coupons?: Coupon[];
+}
+
+const {
+  eyebrow = "SPECIAL OFFERS",
+  title = "Exclusive Deals &",
+  subtitle = "Savings For You",
+  coupons = [
+    {
+      label: "New Customer Special",
+      discount: "$100 OFF",
+      description: "Any electrical service for first-time customers only.",
+      expiry: "Limited time offer",
+      code: "NEW100"
+    },
+    {
+      label: "Panel Upgrade Deal",
+      discount: "$150 OFF",
+      description: "Save $150 on any electrical panel upgrade or replacement.",
+      expiry: "Valid for repairs over $500",
+      code: "PANEL150"
+    },
+    {
+      label: "Safety Inspection",
+      discount: "$50 OFF",
+      description: "Complete home electrical safety inspection at a discounted rate.",
+      expiry: "Limited time offer",
+      code: "SAFE50"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="coupons-section">
+  <div class="coupons-container">
+    <!-- Header -->
+    <div class="coupons-header">
+      <p class="coupons-eyebrow">{eyebrow}</p>
+      <h2 class="coupons-title">{title} <span class="title-accent">{subtitle}</span></h2>
+    </div>
+
+    <!-- Coupon Cards -->
+    <div class="coupons-grid">
+      {coupons.map((coupon) => (
+        <div class="coupon-card">
+          <!-- Left: Discount badge -->
+          <div class="coupon-left">
+            <div class="discount-badge">
+              <span class="discount-amount">{coupon.discount}</span>
+              <span class="discount-label">offer</span>
+            </div>
+          </div>
+
+          <!-- Divider with circles -->
+          <div class="coupon-divider">
+            <div class="circle-top"></div>
+            <div class="dashed-line"></div>
+            <div class="circle-bottom"></div>
+          </div>
+
+          <!-- Right: Content -->
+          <div class="coupon-right">
+            <p class="coupon-label">{coupon.label}</p>
+            <h3 class="coupon-description">{coupon.description}</h3>
+            {coupon.expiry && <p class="coupon-expiry">* {coupon.expiry}</p>}
+            <div class="coupon-footer">
+              {coupon.code && (
+                <div class="coupon-code">
+                  <span class="code-label">Code:</span>
+                  <span class="code-value">{coupon.code}</span>
+                </div>
+              )}
+              <a href="/contact" class="coupon-btn">
+                Claim Offer
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .coupons-section {
+    padding: 6rem 2rem;
+    background: #f7f7f7;
+  }
+
+  .coupons-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .coupons-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .coupons-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin: 0 0 1rem 0;
+  }
+
+  .coupons-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .title-accent {
+    color: #D4A017;
+  }
+
+  /* Grid */
+  .coupons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  /* Coupon card */
+  .coupon-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    display: flex;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .coupon-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+  }
+
+  /* Left yellow section */
+  .coupon-left {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.25rem;
+    min-width: 110px;
+    flex-shrink: 0;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .discount-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .discount-amount {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #000000;
+    line-height: 1;
+    font-family: 'Barlow Condensed', system-ui, sans-serif;
+    white-space: nowrap;
+  }
+
+  .discount-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(0,0,0,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Divider */
+  .coupon-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 20px;
+    flex-shrink: 0;
+    background: #ffffff;
+  }
+
+  .circle-top, .circle-bottom {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f7f7f7;
+    border: 2px solid #e5e7eb;
+    flex-shrink: 0;
+    position: absolute;
+  }
+
+  .circle-top { top: -10px; }
+  .circle-bottom { bottom: -10px; }
+
+  .dashed-line {
+    flex: 1;
+    width: 2px;
+    border-left: 2px dashed #e5e7eb;
+    margin: 12px 0;
+  }
+
+  /* Right content */
+  .coupon-right {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .coupon-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #D4A017;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  .coupon-description {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000000;
+    line-height: 1.4;
+    margin: 0;
+    flex: 1;
+  }
+
+  .coupon-expiry {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin: 0;
+  }
+
+  .coupon-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f3f4f6;
+    flex-wrap: wrap;
+  }
+
+  .coupon-code {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: #f3f4f6;
+    padding: 0.25rem 0.625rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .code-label {
+    font-size: 0.7rem;
+    color: #6b7280;
+    font-weight: 600;
+  }
+
+  .code-value {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: 0.05em;
+  }
+
+  .coupon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .coupon-btn:hover {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  @media (max-width: 1024px) {
+    .coupons-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  @media (max-width: 640px) {
+    .coupons-section { padding: 4rem 1.5rem; }
+    .coupon-left { min-width: 90px; padding: 1.5rem 1rem; }
+    .discount-amount { font-size: 1.5rem; }
+  }
+</style>

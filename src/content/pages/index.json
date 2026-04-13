@@ -15,6 +15,37 @@
       }
     },
     {
+      "component": "CouponsSection",
+      "props": {
+        "eyebrow": "SPECIAL OFFERS",
+        "title": "Exclusive Deals &",
+        "subtitle": "Savings For You",
+        "coupons": [
+          {
+            "label": "New Customer Special",
+            "discount": "$100 OFF",
+            "description": "Any electrical service for first-time customers only. Get started with savings!",
+            "expiry": "Limited time offer",
+            "code": "NEW100"
+          },
+          {
+            "label": "Panel Upgrade Deal",
+            "discount": "$150 OFF",
+            "description": "Save $150 on any electrical panel upgrade or replacement service.",
+            "expiry": "Valid for repairs over $500",
+            "code": "PANEL150"
+          },
+          {
+            "label": "Safety Inspection",
+            "discount": "$50 OFF",
+            "description": "Complete home electrical safety inspection at a discounted rate.",
+            "expiry": "Limited time offer",
+            "code": "SAFE50"
+          }
+        ]
+      }
+    },
+    {
       "component": "TrustBadgesSection",
       "props": {
         "title": "Trusted by Businesses & Homeowners",

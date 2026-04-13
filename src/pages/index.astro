@@ -11,6 +11,7 @@ import OurProjectsSection from "@/components/sections/OurProjectsSection.astro"
 import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
 import FAQAccordionSection from "@/components/sections/FAQAccordionSection.astro"
 import ContactCTASection from "@/components/sections/ContactCTASection.astro"
+import CouponsSection from "@/components/sections/CouponsSection.astro"
 
 const page = await getEntry("pages", "index")
 if (!page) throw new Error("index.json not found in src/content/pages/")
@@ -26,6 +27,7 @@ const componentMap = {
   TestimonialsSection,
   FAQAccordionSection,
   ContactCTASection,
+  CouponsSection,
 }
 ---
 
