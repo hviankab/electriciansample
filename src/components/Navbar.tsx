@@ -205,7 +205,11 @@ export function Navbar() {
   const areasCloseTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null)
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => {
+      const isScrolled = window.scrollY > 20
+      setScrolled(isScrolled)
+      document.body.classList.toggle('scrolled', isScrolled)
+    }
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
@@ -221,6 +225,7 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-[100] w-full">
       <style>{`
         body { padding-top: 36px; }
+        body.scrolled { padding-top: 0px; }
         * { font-family: 'Barlow', system-ui, -apple-system, sans-serif; }
         .utility-bar {
           transition: max-height 0.3s ease, opacity 0.3s ease;
@@ -252,6 +257,17 @@ export function Navbar() {
         .navbar-bottom-wrapper.scrolled {
           height: 56px;
         }
+        @media (max-width: 1279px) {
+          .navbar-bottom-wrapper {
+            height: 0px;
+          }
+          .navbar-bottom-wrapper.scrolled {
+            height: 56px;
+          }
+          .navbar-bottom.floating {
+            display: none;
+          }
+        }
         .navbar-bottom {
           position: absolute;
           top: 50%;
@@ -262,7 +278,7 @@ export function Navbar() {
           z-index: 10;
         }
         .navbar-bottom.floating {
-          max-width: 1400px;
+          max-width: 1280px;
           width: calc(100% - 48px);
           border-radius: 8px;
           box-shadow: 0 4px 20px rgba(0,0,0,0.15);
@@ -273,6 +289,11 @@ export function Navbar() {
           border-radius: 0;
           top: 0;
           transform: translate(-50%, 0);
+        }
+        .navbar-bottom.scrolled > div {
+          max-width: 1280px;
+          margin: 0 auto;
+          width: 100%;
         }
         .nav-link {
           position: relative;
@@ -370,7 +391,7 @@ export function Navbar() {
       {/* Bottom nav bar wrapper - creates space for the floating nav */}
       <div className={`navbar-bottom-wrapper w-full${scrolled ? " scrolled" : ""}`}>
         <div className={`navbar-bottom${scrolled ? " scrolled" : " floating"}`}>
-          <div className={scrolled ? "container mx-auto px-6" : "px-6"}>
+          <div className={scrolled ? "px-6 w-full" : "px-6"} style={scrolled ? { maxWidth: "1280px", margin: "0 auto" } : {}}>
             <div className="flex h-14 items-center justify-between">
               {/* Logo - only visible when scrolled */}
               {scrolled && (

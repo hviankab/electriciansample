@@ -235,17 +235,77 @@
         "testimonials": [
           {
             "name": "William S.",
-            "role": "Happy Client",
+            "role": "Homeowner",
+            "initials": "WS",
             "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
             "rating": 5,
-            "content": "Highly professional and quick service. They fixed our wiring issue fast and ensured everything was safe. Very reliable team and great experience overall. The team upgraded our electrical panel smoothly. Transparent pricing and no hidden costs. Solved everything efficiently and professionally."
+            "date": "2 weeks ago",
+            "content": "Highly professional and quick service. They fixed our wiring issue fast and ensured everything was safe. Very reliable team and great experience overall."
           },
           {
             "name": "Michael R.",
-            "role": "Happy Client",
+            "role": "Business Owner",
+            "initials": "MR",
             "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg",
             "rating": 5,
-            "content": "Highly professional and quick service. They fixed our wiring issue fast and ensured everything was safe. Very reliable team and great experience overall. The team upgraded our electrical panel smoothly. Transparent pricing and no hidden costs. Solved everything efficiently and professionally."
+            "date": "1 month ago",
+            "content": "The team upgraded our electrical panel smoothly. Transparent pricing and no hidden costs. Solved everything efficiently and professionally. Highly recommend!"
+          },
+          {
+            "name": "Sarah J.",
+            "role": "Property Manager",
+            "initials": "SJ",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "Called them for an emergency at 11 PM and they were at my property within 45 minutes. Fixed the problem quickly and professionally. Outstanding service!"
+          },
+          {
+            "name": "David C.",
+            "role": "Restaurant Owner",
+            "initials": "DC",
+            "rating": 5,
+            "date": "1 week ago",
+            "content": "Installed EV charging stations and upgraded our entire lighting system. Clean work, fair pricing, and they explained everything clearly. Will use again!"
+          },
+          {
+            "name": "Lisa M.",
+            "role": "Homeowner",
+            "initials": "LM",
+            "rating": 5,
+            "date": "2 months ago",
+            "content": "Best electricians I've worked with. They upgraded our electrical panel and added new circuits. Very knowledgeable, professional, and on time every visit."
+          },
+          {
+            "name": "Robert T.",
+            "role": "Contractor",
+            "initials": "RT",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "Used them for our commercial project. They handled everything from permits to final inspection. Couldn't be happier with the quality and professionalism."
+          },
+          {
+            "name": "Jennifer L.",
+            "role": "Homeowner",
+            "initials": "JL",
+            "rating": 5,
+            "date": "1 week ago",
+            "content": "Great experience! They installed recessed lighting throughout our home. The quality of work is outstanding and the price was very reasonable. Highly recommend!"
+          },
+          {
+            "name": "Carlos M.",
+            "role": "Property Owner",
+            "initials": "CM",
+            "rating": 5,
+            "date": "2 weeks ago",
+            "content": "Fast, reliable, and very professional. They rewired our entire office and the job was done perfectly. Will definitely call them again for future projects."
+          },
+          {
+            "name": "Amanda K.",
+            "role": "Business Owner",
+            "initials": "AK",
+            "rating": 5,
+            "date": "3 weeks ago",
+            "content": "Excellent service from start to finish. The electricians were on time, clean, and very knowledgeable. Fixed our panel issue quickly and at a fair price."
           }
         ]
       }

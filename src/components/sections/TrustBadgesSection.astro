@@ -60,11 +60,6 @@ const {
       <div class="title-column">
         <h2 class="section-title">{title}</h2>
       </div>
-
-      <!-- Right: Description -->
-      <div class="description-column">
-        <p class="section-description">{description}</p>
-      </div>
     </div>
 
     <!-- Images and Features Grid -->
@@ -97,6 +92,7 @@ const {
             <p class="feature-description">{feature.description}</p>
           </div>
         ))}
+        <p class="features-footer-text">From small tenant improvements to ground-up developments, Roofora Unlimited partners with Nevada property owners who expect quality without compromise.</p>
       </div>
     </div>
 
@@ -120,7 +116,7 @@ const {
   }
 
   .trust-container {
-    max-width: 1400px;
+    max-width: 1280px;
     margin: 0 auto;
   }
 
@@ -252,6 +248,15 @@ const {
     color: #4a4a4a;
     line-height: 1.6;
     margin: 0;
+  }
+
+  .features-footer-text {
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 2px solid #e5e7eb;
   }
 
   /* Logo Carousel */
