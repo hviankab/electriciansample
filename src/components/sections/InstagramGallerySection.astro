@@ -1,0 +1,323 @@
+---
+interface InstagramPost {
+  image: string;
+  alt: string;
+  link?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  instagramHandle?: string;
+  instagramUrl?: string;
+  posts: InstagramPost[];
+}
+
+const {
+  title = "Follow Us On",
+  subtitle = "Instagram",
+  instagramHandle = "@yourelectrician",
+  instagramUrl = "https://instagram.com/yourelectrician",
+  posts = []
+} = Astro.props;
+---
+
+<section class="instagram-section">
+  <div class="instagram-container">
+    <!-- Header -->
+    <div class="instagram-header">
+      <div class="header-content">
+        <h2 class="instagram-title">
+          {title} <span class="instagram-gradient">{subtitle}</span>
+        </h2>
+        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="instagram-handle">
+          <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          <span>{instagramHandle}</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="instagram-grid">
+      {posts.map((post, index) => (
+        <a 
+          href={post.link || instagramUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="instagram-post"
+          data-index={index}
+        >
+          <img src={post.image} alt={post.alt} class="post-image" loading="lazy" />
+          <div class="post-overlay">
+            <svg class="overlay-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA Button -->
+    <div class="instagram-cta">
+      <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="follow-button">
+        <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+        <span>Follow Us on Instagram</span>
+        <svg class="button-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .instagram-section {
+    padding: 6rem 0;
+    background: #fafafa;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .instagram-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Header */
+  .instagram-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .instagram-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .instagram-gradient {
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .instagram-handle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .instagram-handle:hover {
+    border-color: #e6683c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(230, 104, 60, 0.2);
+  }
+
+  .instagram-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: url(#instagram-gradient);
+  }
+
+  .arrow-icon {
+    width: 1rem;
+    height: 1rem;
+    stroke: #94a3b8;
+    transition: transform 0.3s ease;
+  }
+
+  .instagram-handle:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+
+  /* Gallery Grid */
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .instagram-post {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    display: block;
+    background: #f0f0f0;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .instagram-post:hover .post-image {
+    transform: scale(1.1);
+  }
+
+  .post-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(240, 148, 51, 0.9) 0%, rgba(188, 24, 136, 0.9) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .instagram-post:hover .post-overlay {
+    opacity: 1;
+  }
+
+  .overlay-icon {
+    width: 3rem;
+    height: 3rem;
+    stroke: white;
+    stroke-width: 2;
+  }
+
+  /* CTA Button */
+  .instagram-cta {
+    text-align: center;
+  }
+
+  .follow-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(230, 104, 60, 0.3);
+  }
+
+  .follow-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(230, 104, 60, 0.4);
+  }
+
+  .button-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: white;
+  }
+
+  .button-arrow {
+    width: 1.125rem;
+    height: 1.125rem;
+    stroke: white;
+    transition: transform 0.3s ease;
+  }
+
+  .follow-button:hover .button-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .instagram-section {
+      padding: 4rem 0;
+    }
+
+    .instagram-container {
+      padding: 0 1rem;
+    }
+
+    .instagram-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .instagram-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Stagger animation */
+  .instagram-post {
+    opacity: 0;
+    animation: fadeInScale 0.6s ease forwards;
+  }
+
+  .instagram-post[data-index="0"] { animation-delay: 0.1s; }
+  .instagram-post[data-index="1"] { animation-delay: 0.15s; }
+  .instagram-post[data-index="2"] { animation-delay: 0.2s; }
+  .instagram-post[data-index="3"] { animation-delay: 0.25s; }
+  .instagram-post[data-index="4"] { animation-delay: 0.3s; }
+  .instagram-post[data-index="5"] { animation-delay: 0.35s; }
+  .instagram-post[data-index="6"] { animation-delay: 0.4s; }
+  .instagram-post[data-index="7"] { animation-delay: 0.45s; }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* SVG Gradient Definition */
+  svg defs {
+    display: none;
+  }
+</style>
+
+<svg style="position: absolute; width: 0; height: 0;">
+  <defs>
+    <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f09433;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#e6683c;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#dc2743;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#cc2366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#bc1888;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

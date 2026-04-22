@@ -6,12 +6,14 @@ import TrustBadgesSection from "@/components/sections/TrustBadgesSection.astro"
 import WhyChooseSection from "@/components/sections/WhyChooseSection.astro"
 import PricingSection from "@/components/sections/PricingSection.astro"
 import ServicesGridSection from "@/components/sections/ServicesGridSection.astro"
+import ServiceCardsGridSection from "@/components/sections/ServiceCardsGridSection.astro"
 import OurCreativeTeamSection from "@/components/sections/OurCreativeTeamSection.astro"
 import OurProjectsSection from "@/components/sections/OurProjectsSection.astro"
 import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
 import FAQAccordionSection from "@/components/sections/FAQAccordionSection.astro"
 import ContactCTASection from "@/components/sections/ContactCTASection.astro"
 import CouponsSection from "@/components/sections/CouponsSection.astro"
+import InstagramGallerySection from "@/components/sections/InstagramGallerySection.astro"
 
 const page = await getEntry("pages", "index")
 if (!page) throw new Error("index.json not found in src/content/pages/")
@@ -22,12 +24,14 @@ const componentMap = {
   WhyChooseSection,
   PricingSection,
   ServicesGridSection,
+  ServiceCardsGridSection,
   OurCreativeTeamSection,
   OurProjectsSection,
   TestimonialsSection,
   FAQAccordionSection,
   ContactCTASection,
   CouponsSection,
+  InstagramGallerySection,
 }
 ---
 

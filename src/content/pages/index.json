@@ -48,9 +48,163 @@
     {
       "component": "TrustBadgesSection",
       "props": {
-        "title": "Trusted by Businesses & Homeowners",
-        "subtitle": "Across Northern Nevada",
-        "description": "From small tenant improvements ground-up developments, Roofora Unlimited partners with Nevada property owners who expect quality without compromise."
+        "title": "About Our Company",
+        "subtitle": "Your Trusted Electrical Partner",
+        "description": "We are a family-owned electrical company with over 27 years of experience serving residential and commercial clients. Our licensed and insured electricians are committed to delivering safe, reliable, and professional electrical solutions with transparent pricing and exceptional customer service."
+      }
+    },
+    {
+      "component": "ServiceCardsGridSection",
+      "props": {
+        "badge": "OUR SERVICES",
+        "title": "Comprehensive Electrical Solutions",
+        "description": "From commercial installations to residential repairs and specialty services, we provide expert electrical solutions tailored to your needs.",
+        "tabs": [
+          {
+            "id": "commercial",
+            "title": "Commercial Electrical",
+            "icon": "🏢",
+            "heading": "Commercial Electrical Services",
+            "description": "Professional electrical solutions for businesses, offices, and commercial properties of all sizes.",
+            "image": "/electricianimgs/AdobeStock_187924476.jpeg",
+            "services": [
+              {
+                "icon": "⚡",
+                "title": "Ground-up Electrical Construction",
+                "href": "/commercial-electrical/ground-up-construction",
+                "image": "/electricianimgs/AdobeStock_187924476.jpeg"
+              },
+              {
+                "icon": "🔌",
+                "title": "Emergency & Standby Power Systems",
+                "href": "/commercial-electrical/emergency-standby-power",
+                "image": "/electricianimgs/AdobeStock_439136266.jpeg"
+              },
+              {
+                "icon": "🔧",
+                "title": "Commercial Electrical Systems",
+                "href": "/commercial-electrical/electrical-systems",
+                "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg"
+              },
+              {
+                "icon": "📊",
+                "title": "Commercial Electrical Panels",
+                "href": "/commercial-electrical/electrical-panels",
+                "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
+              }
+            ],
+            "buttonText": "View All Commercial Services",
+            "buttonHref": "/commercial-electrical"
+          },
+          {
+            "id": "residential",
+            "title": "Residential Electrical",
+            "icon": "🏠",
+            "heading": "Residential Electrical Services",
+            "description": "Safe and reliable electrical services for your home, from installations to repairs and upgrades.",
+            "image": "/electricianimgs/AdobeStock_208314515.jpeg",
+            "services": [
+              {
+                "icon": "🚗",
+                "title": "Car Charging Stations / EV",
+                "href": "/residential-electrical/ev-charging",
+                "image": "/electricianimgs/AdobeStock_1792070898.jpeg"
+              },
+              {
+                "icon": "💨",
+                "title": "Ceiling Fan Installation",
+                "href": "/residential-electrical/ceiling-fan",
+                "image": "/electricianimgs/AdobeStock_208314515.jpeg"
+              },
+              {
+                "icon": "🔌",
+                "title": "GFCI Outlets",
+                "href": "/residential-electrical/gfci-outlets",
+                "image": "/electricianimgs/AdobeStock_327681318.jpeg"
+              },
+              {
+                "icon": "⚡",
+                "title": "Backup Generators",
+                "href": "/residential-electrical/backup-generators",
+                "image": "/electricianimgs/AdobeStock_1886509888.jpeg"
+              }
+            ],
+            "buttonText": "View All Residential Services",
+            "buttonHref": "/residential-electrical"
+          },
+          {
+            "id": "specialty",
+            "title": "Specialty Services",
+            "icon": "✨",
+            "heading": "Specialty Services",
+            "description": "Specialized electrical solutions for unique needs including lighting, pools, and property management.",
+            "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+            "services": [
+              {
+                "icon": "🎄",
+                "title": "Holiday Lighting Installation",
+                "href": "/specialty-services/holiday-lighting",
+                "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg"
+              },
+              {
+                "icon": "💡",
+                "title": "Landscape Lighting",
+                "href": "/specialty-services/landscape-lighting",
+                "image": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg"
+              },
+              {
+                "icon": "🏊",
+                "title": "Pool & Spa Electrical",
+                "href": "/specialty-services/pool-spa-electrical",
+                "image": "/electricianimgs/raze-solar-GXLPLG3_Vf4-unsplash.jpg"
+              },
+              {
+                "icon": "🏢",
+                "title": "Property Management",
+                "href": "/specialty-services/property-management",
+                "image": "/electricianimgs/AdobeStock_136089970.jpeg"
+              }
+            ],
+            "buttonText": "View All Specialty Services",
+            "buttonHref": "/specialty-services"
+          },
+          {
+            "id": "emergency",
+            "title": "Emergency Services",
+            "icon": "🚨",
+            "heading": "24/7 Emergency Services",
+            "description": "Fast response emergency electrical services available around the clock to handle urgent issues.",
+            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
+            "services": [
+              {
+                "icon": "⏰",
+                "title": "24-hour Emergency Service",
+                "href": "/emergency/24-hour-service",
+                "image": "/electricianimgs/AdobeStock_543922851.jpeg"
+              },
+              {
+                "icon": "⚡",
+                "title": "Power Outages",
+                "href": "/emergency/power-outages",
+                "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg"
+              },
+              {
+                "icon": "🔥",
+                "title": "Electrical Fires",
+                "href": "/emergency/electrical-fires",
+                "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg"
+              },
+              {
+                "icon": "🔌",
+                "title": "Circuit Breaker Issues",
+                "href": "/emergency/circuit-breakers",
+                "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg"
+              }
+            ],
+            "buttonText": "Get Emergency Help Now",
+            "buttonHref": "/emergency"
+          }
+        ]
       }
     },
     {
@@ -203,55 +357,52 @@
       }
     },
     {
-      "component": "OurProjectsSection",
+      "component": "InstagramGallerySection",
       "props": {
-        "eyebrow": "EXPLORE SERVICES",
-        "title": "Our Electrical Services",
-        "description": "Comprehensive solutions for homes and businesses, delivered with safety, efficiency, and precision.",
-        "buttonText": "VIEW ALL SERVICES",
-        "buttonHref": "/services",
-        "projects": [
+        "title": "Follow Us On",
+        "subtitle": "Instagram",
+        "instagramHandle": "@yourelectrician",
+        "instagramUrl": "https://instagram.com/yourelectrician",
+        "posts": [
           {
-            "title": "Electrical Installation",
-            "category": "Installation",
-            "description": "Complete electrical setups for new homes and businesses, ensuring safe [...]",
             "image": "/electricianimgs/AdobeStock_136089970.jpeg",
-            "href": "/services/electrical-installation"
+            "alt": "Electrical installation project",
+            "link": "https://instagram.com/yourelectrician"
           },
           {
-            "title": "Wiring & Rewiring",
-            "category": "Wiring",
-            "description": "Upgrade or repair outdated wiring with modern solutions that improve safety [...]",
             "image": "/electricianimgs/AdobeStock_187924476.jpeg",
-            "href": "/services/wiring-rewiring"
+            "alt": "Commercial electrical work",
+            "link": "https://instagram.com/yourelectrician"
           },
           {
-            "title": "Lighting Solutions",
-            "category": "Lighting",
-            "description": "Design and install indoor, outdoor, and smart lighting systems to enhance [...]",
             "image": "/electricianimgs/AdobeStock_208314515.jpeg",
-            "href": "/services/lighting-solutions"
+            "alt": "Residential electrical service",
+            "link": "https://instagram.com/yourelectrician"
           },
           {
-            "title": "Panel Upgrades",
-            "category": "Upgrades",
-            "description": "Modernize your electrical panel to handle increased power demands [...]",
             "image": "/electricianimgs/AdobeStock_327681318.jpeg",
-            "href": "/services/panel-upgrades"
+            "alt": "Panel upgrade installation",
+            "link": "https://instagram.com/yourelectrician"
           },
           {
-            "title": "Emergency Repairs",
-            "category": "Emergency",
-            "description": "24/7 emergency electrical services to address urgent issues [...]",
             "image": "/electricianimgs/AdobeStock_439136266.jpeg",
-            "href": "/services/emergency-repairs"
+            "alt": "Emergency electrical repair",
+            "link": "https://instagram.com/yourelectrician"
           },
           {
-            "title": "Safety Inspections",
-            "category": "Inspection",
-            "description": "Comprehensive electrical safety inspections for residential and commercial [...]",
             "image": "/electricianimgs/AdobeStock_543922851.jpeg",
-            "href": "/services/safety-inspections"
+            "alt": "Safety inspection service",
+            "link": "https://instagram.com/yourelectrician"
+          },
+          {
+            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
+            "alt": "Professional electrician at work",
+            "link": "https://instagram.com/yourelectrician"
+          },
+          {
+            "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+            "alt": "Lighting installation project",
+            "link": "https://instagram.com/yourelectrician"
           }
         ]
       }
