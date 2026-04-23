@@ -1,0 +1,173 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  primaryButtonText?: string;
+  primaryButtonHref?: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+  image?: string;
+}
+
+const {
+  title = "Need To Schedule Your First Service.",
+  description = "Aliquam nulla facilisi cras fermentum odio eu. Cras fermentum odio eu feugiat pretium.",
+  primaryButtonText = "Get A Quote",
+  primaryButtonHref = "/contact",
+  secondaryButtonText = "Book Your Services",
+  secondaryButtonHref = "/contact",
+  image = "/electricianimgs/house-img.webp"
+} = Astro.props;
+---
+
+<section class="final-cta-section">
+  <div class="final-cta-container">
+    <div class="final-cta-content">
+      <div class="house-image">
+        <img src={image} alt="House" />
+      </div>
+      
+      <div class="cta-text">
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </div>
+      
+      <div class="cta-buttons">
+        <a href={primaryButtonHref} class="cta-btn primary">{primaryButtonText}</a>
+        <a href={secondaryButtonHref} class="cta-btn secondary">{secondaryButtonText}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta-section {
+    background: #1a1a1a;
+    padding: 2rem 2rem;
+    position: relative;
+  }
+
+  .final-cta-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .final-cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .house-image {
+    flex-shrink: 0;
+  }
+
+  .house-image img {
+    width: 220px;
+    height: auto;
+    display: block;
+  }
+
+  .cta-text {
+    flex: 1;
+  }
+
+  .cta-text h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+  }
+
+  .cta-text p {
+    font-size: 1rem;
+    color: #d1d5db;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .cta-btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .cta-btn.primary {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    border: 2px solid transparent;
+  }
+
+  .cta-btn.primary:hover {
+    background: #000;
+    color: #FFD700;
+    border-color: #FFD700;
+    transform: translateY(-2px);
+  }
+
+  .cta-btn.secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+  }
+
+  .cta-btn.secondary:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 1024px) {
+    .final-cta-content {
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .house-image {
+      display: none;
+    }
+
+    .cta-text {
+      order: 0;
+    }
+
+    .cta-buttons {
+      order: 1;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .final-cta-section {
+      padding: 1.5rem 1.5rem;
+    }
+
+    .final-cta-content {
+      gap: 1.5rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-btn {
+      width: 100%;
+    }
+  }
+</style>

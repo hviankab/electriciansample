@@ -110,10 +110,8 @@ const {
             <div class="plan-price">
               <span class="price-amount monthly-price">{plan.monthlyPrice}</span>
               <span class="price-amount yearly-price" style="display: none;">{plan.yearlyPrice}</span>
-              <span class="price-period">
-                <span class="monthly-period">/ Per Month</span>
-                <span class="yearly-period" style="display: none;">/ Per Year</span>
-              </span>
+              <span class="price-period monthly-period">/ Monthly</span>
+              <span class="price-period yearly-period" style="display: none;">/ Yearly</span>
             </div>
             
             <ul class="plan-features">
@@ -149,69 +147,90 @@ const {
 </section>
 
 <script>
-  function initPricingToggle() {
-    const toggleBtns = document.querySelectorAll('.toggle-btn');
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Pricing toggle script loaded');
+    
+    const monthlyBtn = document.querySelector('.toggle-btn[data-period="monthly"]');
+    const yearlyBtn = document.querySelector('.toggle-btn[data-period="yearly"]');
     const toggleSwitch = document.querySelector('.toggle-switch');
     const toggleSlider = document.querySelector('.toggle-slider');
-    const monthlyPrices = document.querySelectorAll('.monthly-price');
-    const yearlyPrices = document.querySelectorAll('.yearly-price');
-    const monthlyPeriods = document.querySelectorAll('.monthly-period');
-    const yearlyPeriods = document.querySelectorAll('.yearly-period');
-
-    if (!toggleBtns.length || !toggleSlider) return;
-
-    // Handle button clicks
-    toggleBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const period = btn.getAttribute('data-period');
-        
-        // Update active state
-        toggleBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        // Move slider
-        if (period === 'yearly') {
-          toggleSlider.style.transform = 'translateX(28px)';
-        } else {
-          toggleSlider.style.transform = 'translateX(0)';
-        }
-        
-        // Toggle prices
-        if (period === 'yearly') {
-          monthlyPrices.forEach(el => el.style.display = 'none');
-          yearlyPrices.forEach(el => el.style.display = 'inline');
-          monthlyPeriods.forEach(el => el.style.display = 'none');
-          yearlyPeriods.forEach(el => el.style.display = 'inline');
-        } else {
-          monthlyPrices.forEach(el => el.style.display = 'inline');
-          yearlyPrices.forEach(el => el.style.display = 'none');
-          monthlyPeriods.forEach(el => el.style.display = 'inline');
-          yearlyPeriods.forEach(el => el.style.display = 'none');
-        }
-      });
+    
+    console.log('Elements found:', {
+      monthlyBtn: !!monthlyBtn,
+      yearlyBtn: !!yearlyBtn,
+      toggleSwitch: !!toggleSwitch,
+      toggleSlider: !!toggleSlider
     });
 
-    // Handle switch click
-    if (toggleSwitch) {
-      toggleSwitch.addEventListener('click', () => {
-        const activeBtn = document.querySelector('.toggle-btn.active');
-        const currentPeriod = activeBtn.getAttribute('data-period');
-        const newPeriod = currentPeriod === 'monthly' ? 'yearly' : 'monthly';
-        const newBtn = document.querySelector(`.toggle-btn[data-period="${newPeriod}"]`);
-        if (newBtn) newBtn.click();
+    function switchToMonthly() {
+      console.log('Switching to monthly');
+      
+      // Update buttons
+      monthlyBtn?.classList.add('active');
+      yearlyBtn?.classList.remove('active');
+      
+      // Move slider
+      if (toggleSlider) {
+        toggleSlider.style.transform = 'translateX(0)';
+      }
+      
+      // Show/hide prices
+      document.querySelectorAll('.monthly-price').forEach(el => el.style.display = 'inline');
+      document.querySelectorAll('.yearly-price').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.monthly-period').forEach(el => el.style.display = 'inline');
+      document.querySelectorAll('.yearly-period').forEach(el => el.style.display = 'none');
+    }
+
+    function switchToYearly() {
+      console.log('Switching to yearly');
+      
+      // Update buttons
+      monthlyBtn?.classList.remove('active');
+      yearlyBtn?.classList.add('active');
+      
+      // Move slider
+      if (toggleSlider) {
+        toggleSlider.style.transform = 'translateX(28px)';
+      }
+      
+      // Show/hide prices
+      document.querySelectorAll('.monthly-price').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.yearly-price').forEach(el => el.style.display = 'inline');
+      document.querySelectorAll('.monthly-period').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.yearly-period').forEach(el => el.style.display = 'inline');
+    }
+
+    // Add click handlers
+    if (monthlyBtn) {
+      monthlyBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Monthly button clicked');
+        switchToMonthly();
       });
     }
-  }
 
-  // Initialize on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPricingToggle);
-  } else {
-    initPricingToggle();
-  }
+    if (yearlyBtn) {
+      yearlyBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Yearly button clicked');
+        switchToYearly();
+      });
+    }
 
-  // Re-initialize on navigation
-  document.addEventListener('astro:page-load', initPricingToggle);
+    if (toggleSwitch) {
+      toggleSwitch.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Toggle switch clicked');
+        
+        const isMonthly = monthlyBtn?.classList.contains('active');
+        if (isMonthly) {
+          switchToYearly();
+        } else {
+          switchToMonthly();
+        }
+      });
+    }
+  });
 </script>
 
 <style>
@@ -382,6 +401,7 @@ const {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .price-amount {
@@ -453,7 +473,7 @@ const {
 
   .pricing-card.highlighted .plan-button {
     background: #000;
-    color: #FFD700;
+    color: #fff;
   }
 
   .pricing-card.highlighted .plan-button:hover {

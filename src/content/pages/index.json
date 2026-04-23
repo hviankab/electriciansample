@@ -105,7 +105,8 @@
           {
             "name": "Basic Plan",
             "description": "Perfect for small fixes and quick electrical tasks.",
-            "price": "$89",
+            "monthlyPrice": "$89",
+            "yearlyPrice": "$890",
             "features": [
               "Basic electrical inspection",
               "Priority support",
@@ -117,7 +118,8 @@
           {
             "name": "Standard Plan",
             "description": "Ideal for regular maintenance and common electrical work.",
-            "price": "$199",
+            "monthlyPrice": "$199",
+            "yearlyPrice": "$1990",
             "features": [
               "Full system inspection",
               "Priority support",
@@ -133,7 +135,8 @@
           {
             "name": "Premium Plan",
             "description": "Best for complete electrical solutions and upgrades.",
-            "price": "$350",
+            "monthlyPrice": "$350",
+            "yearlyPrice": "$3500",
             "features": [
               "Complete electrical setup",
               "Panel upgrades",
@@ -182,41 +185,15 @@
       }
     },
     {
-      "component": "ServicesGridSection",
+      "component": "FinalCTASection",
       "props": {
-        "title": "Delivering Every Project",
-        "subtitle": "With Precision",
-        "description": "Industry-standard services for safety, functionality, and long-lasting reliability.",
-        "services": [
-          {
-            "title": "Electrical Wiring & Repair",
-            "description": "Expert rewiring, updates, and troubleshooting for residential and commercial properties.",
-            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
-            "icon": "⚡",
-            "href": "/services/wiring-repair"
-          },
-          {
-            "title": "Commercial Installation",
-            "description": "Power distribution and lighting systems for medium to large-scale facilities.",
-            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
-            "icon": "🏢",
-            "href": "/services/commercial"
-          },
-          {
-            "title": "Lighting Design & Setup",
-            "description": "Energy-saving LED lighting that transforms your space.",
-            "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
-            "icon": "💡",
-            "href": "/services/lighting"
-          },
-          {
-            "title": "Electrical Maintenance",
-            "description": "Regular check-ups to keep your systems running safely.",
-            "image": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg",
-            "icon": "🔧",
-            "href": "/services/maintenance"
-          }
-        ]
+        "title": "Need To Schedule Your First Service.",
+        "description": "Get expert electrical services for your home or business. Contact us today for a free quote and experience professional service you can trust.",
+        "primaryButtonText": "Get A Quote",
+        "primaryButtonHref": "/contact",
+        "secondaryButtonText": "Book Your Services",
+        "secondaryButtonHref": "/contact",
+        "image": "/electricianimgs/house-img.webp"
       }
     },
     {
