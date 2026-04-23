@@ -1,0 +1,399 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  images?: {
+    main: string;
+    top: string;
+    bottom: string;
+  };
+  stats?: Array<{
+    number: string;
+    label: string;
+  }>;
+  features?: Array<{
+    icon: string;
+    title: string;
+    description: string;
+  }>;
+  phone?: string;
+  phoneLabel?: string;
+}
+
+const {
+  eyebrow = "24/7 HASSLE-FREE",
+  title = "Home And Businesses",
+  subtitle = "Installation Services",
+  description = "Imperdiet rutrum bibendum tortor, auctor sapien. Sit amet facilisis magna etiam duis mollis nullis. Integer neque ligula. Improved outcomes in recurring backed tempor. Augue ac feud quam semper auctor. Nunc tempus sed ligula ipsum, erat ullamco.",
+  images = {
+    main: "/electricianimgs/AdobeStock_187924476.jpeg",
+    top: "/electricianimgs/AdobeStock_208314515.jpeg",
+    bottom: "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg"
+  },
+  stats = [
+    { number: "560+", label: "Projects Done" },
+    { number: "180+", label: "Technicians" }
+  ],
+  features = [
+    {
+      icon: "hardhat",
+      title: "Earliest Consultation",
+      description: "Fam bibendum ut fringilla ut egestas quis quis suspendisse ultrices. Semper erat sed scelerisque mauris nibendum congue tellus adipiscing elit ullamcorper.",
+      bgColor: "gray"
+    },
+    {
+      icon: "document",
+      title: "Customized Solution",
+      description: "Augue interdum velit euismod in pellentesque massa placerat duis ultricies. Purus gravida quis blandit turpis. Diam sit amet consectetur adipiscing elit.",
+      bgColor: "yellow"
+    },
+    {
+      icon: "swatches",
+      title: "Affordable Pricing",
+      description: "Quis vel eros donec ac odio tempor. Pharetra semper feugiat nibh sed pulvinar proin gravida hendrerit. Suspendisse interdum consectetur.",
+      bgColor: "gray"
+    },
+    {
+      icon: "clipboard",
+      title: "All-In-One Service",
+      description: "Interdum et at tellus at urna. Quis vel eros donec ac odio tempor erat. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam.",
+      bgColor: "gray"
+    }
+  ],
+  phone = "000 123 456 789",
+  phoneLabel = "Call For Booking"
+} = Astro.props;
+---
+
+<section class="who-we-are-section">
+  <div class="who-container">
+    <div class="content-wrapper">
+      
+      <!-- Left Side: Content -->
+      <div class="content-column">
+        <div class="eyebrow">{eyebrow}</div>
+        
+        <h2 class="section-title">
+          {title}<br />{subtitle}
+        </h2>
+
+        <!-- Image Grid -->
+        <div class="image-grid">
+          <div class="main-image-wrapper">
+            <img src={images.main} alt="Electrician at work" loading="lazy" />
+          </div>
+
+          <div class="side-images">
+            <img src={images.top} alt="Electrical work" loading="lazy" class="side-image" />
+            <img src={images.bottom} alt="Professional electrician" loading="lazy" class="side-image" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Features -->
+      <div class="features-column">
+        <p class="description">{description}</p>
+
+        <div class="features-list">
+          {features.map((feature) => (
+            <div class="feature-item">
+              <div class={`feature-icon ${feature.bgColor === 'yellow' ? 'icon-yellow' : 'icon-gray'}`}>
+                {feature.icon === 'hardhat' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3c-3.5 0-6.5 2.5-7 6h14c-.5-3.5-3.5-6-7-6z"/>
+                    <path d="M5 9v3c0 1 .5 2 1.5 2.5"/>
+                    <path d="M19 9v3c0 1-.5 2-1.5 2.5"/>
+                    <path d="M5 14.5c0 1.5 1 2.5 2.5 2.5h9c1.5 0 2.5-1 2.5-2.5"/>
+                    <circle cx="12" cy="12" r="1.5"/>
+                  </svg>
+                )}
+                {feature.icon === 'document' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <circle cx="10" cy="16" r="2"/>
+                    <path d="M10 14v-2"/>
+                    <path d="M10 18v2"/>
+                  </svg>
+                )}
+                {feature.icon === 'swatches' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 3h7l4 4v14H3z"/>
+                    <path d="M10 3v4h4"/>
+                    <path d="M14 7h7v14h-7"/>
+                    <path d="M18 11h-2"/>
+                    <path d="M18 15h-2"/>
+                    <path d="M18 19h-2"/>
+                  </svg>
+                )}
+                {feature.icon === 'clipboard' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                    <path d="M9 14l2 2 4-4"/>
+                  </svg>
+                )}
+              </div>
+              <div class="feature-content">
+                <h3 class="feature-title">{feature.title}</h3>
+                <p class="feature-description">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="cta-section">
+          <a href="/contact" class="book-now-btn">Book Now</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .who-we-are-section {
+    padding: 6rem 0;
+    background: #ffffff url('/electricianimgs/body-bg-flip.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+  }
+
+  .who-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 48% 52%;
+    gap: 100px;
+    align-items: stretch;
+  }
+
+  /* Left Side - Content */
+  .content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #000000;
+    line-height: 1.15;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 1.5rem;
+    position: relative;
+    margin-top: 2rem;
+  }
+
+  .main-image-wrapper {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 3/5;
+  }
+
+  .main-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .side-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+  }
+
+  .side-image {
+    width: 100%;
+    flex: 1;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+
+  .side-image:first-child {
+    min-height: 0;
+  }
+
+  .side-image:last-child {
+    min-height: 0;
+  }
+
+  /* Right Side - Features */
+  .features-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2rem;
+    height: 100%;
+  }
+
+  .description {
+    font-size: 1.125rem;
+    color: #6b7280;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    cursor: default;
+  }
+
+  .feature-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    background: #f3f4f6;
+    color: #1f2937;
+  }
+
+  .feature-item:hover .feature-icon {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
+    animation: pulse-blink 1s ease-in-out infinite;
+  }
+
+  @keyframes pulse-blink {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+  }
+
+  .icon-gray {
+    /* Default gray styling - overridden by hover */
+  }
+
+  .icon-yellow {
+    /* Yellow styling for specific items if needed */
+  }
+
+  .feature-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .feature-content {
+    flex: 1;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .feature-description {
+    font-size: 1.05rem;
+    color: #6b7280;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .cta-section {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .book-now-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: #000000;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .book-now-btn:hover,
+  .book-now-btn:focus {
+    background: #FFD700;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+  }
+
+  @media (max-width: 1024px) {
+    .content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .who-we-are-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .image-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-overlay {
+      position: static;
+      flex-direction: row;
+      margin-top: 1rem;
+    }
+
+    .cta-section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .read-more-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,102 @@
+---
+interface Props {
+  carouselLogos?: string[];
+}
+
+const {
+  carouselLogos = [
+    "/newimages/Licensed.webp",
+    "/newimages/Certified.webp",
+    "/newimages/BBB-Logo.webp",
+    "/newimages/Google-Reviews-Logo.webp",
+    "/newimages/Home-Advisor-Logo.webp",
+    "/newimages/Angies-List-Award.webp"
+  ]
+} = Astro.props;
+---
+
+<section class="logo-carousel-section">
+  <div class="carousel-container">
+    <div class="logo-carousel">
+      <div class="carousel-track">
+        {[...carouselLogos, ...carouselLogos].map((logo, index) => (
+          <div class="logo-item">
+            <img src={logo} alt={`Partner logo ${index + 1}`} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-carousel-section {
+    padding: 3rem 2rem;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .carousel-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .logo-carousel {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 30s linear infinite;
+  }
+
+  .logo-item {
+    flex-shrink: 0;
+    width: 140px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
+
+  .logo-item:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .logo-carousel-section {
+      padding: 2rem 1rem;
+    }
+
+    .carousel-track {
+      gap: 3rem;
+    }
+
+    .logo-item {
+      width: 100px;
+      height: 50px;
+    }
+  }
+</style>

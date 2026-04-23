@@ -31,7 +31,18 @@ const {
 {variant === "main" ? (
 <section class="hero-main">
   <div class="hero-bg">
-    <img src="/electricianimgs/AdobeStock_208314515.jpeg" alt="" class="hero-bg-img" />
+    <video 
+      autoplay 
+      loop 
+      muted 
+      playsinline
+      preload="auto"
+      class="hero-bg-video"
+      poster="/electricianimgs/AdobeStock_208314515.jpeg"
+    >
+      <source src="/electricianimgs/18780266-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-container">
@@ -146,15 +157,53 @@ const {
 )}
 
 <style>
-  .hero-main { min-height: 75vh; display: flex; flex-direction: column; justify-content: center; overflow: visible; position: relative; padding: 1.875rem 0; }
-  .hero-bg { position: absolute; inset: 0; z-index: 0; }
-  .hero-bg-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-  .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
-  .hero-container { max-width: 1280px; margin: 0 auto; width: 100%; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; gap: 3rem; position: relative; z-index: 1; }
+  .hero-main { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; position: relative; padding: 1.875rem 0; }
+  
+  /* Ultra-wide screen height optimization */
+  @media (min-width: 2560px) {
+    .hero-main {
+      min-height: 70vh;
+      max-height: 800px;
+    }
+  }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+  .hero-bg-video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.65); z-index: 1; }
+  .hero-container { max-width: 1280px; margin: 0 auto; width: 100%; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 3rem; position: relative; z-index: 1; }
+  
+  /* Ultra-wide screen optimization (2560px and above) */
+  @media (min-width: 2560px) {
+    .hero-container { 
+      max-width: 1600px; 
+      padding: 0 4rem;
+      gap: 6rem;
+    }
+    .hero-left {
+      max-width: 800px;
+    }
+    .hero-right-form {
+      width: 420px;
+    }
+    .hero-h1 {
+      font-size: 5rem;
+    }
+    .hero-sub {
+      font-size: 1.4rem;
+      max-width: 650px;
+    }
+  }
   .hero-left { display: flex; flex-direction: column; gap: 2rem; flex: 1; text-align: left; align-items: flex-start; }
   .hero-badge { color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
   .hero-h1 { font-size: clamp(2.75rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.05; color: #fff; margin: 0; font-family: 'Barlow Condensed', system-ui, sans-serif; letter-spacing: -0.02em; }
-  .hero-emphasis { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; }
+  .hero-emphasis { color: #fff; display: inline-block; }
   .hero-sub { font-size: 1.2rem; color: rgba(255,255,255,0.9); line-height: 1.7; max-width: 540px; margin: 0; }
   .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
   .hero-cta-btn { display: inline-flex; align-items: center; gap: 0.625rem; padding: 1rem 2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; }

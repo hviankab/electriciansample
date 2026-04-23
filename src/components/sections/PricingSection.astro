@@ -2,79 +2,75 @@
 interface PricingPlan {
   name: string;
   description: string;
-  price: string;
-  period?: string;
+  monthlyPrice: string;
+  yearlyPrice: string;
   features: string[];
   highlighted?: boolean;
   buttonText?: string;
   buttonHref?: string;
-  bgImage?: string;
 }
 
 interface Props {
   eyebrow?: string;
   title?: string;
-  ctaText?: string;
-  ctaDescription?: string;
-  ctaButtonText?: string;
-  ctaButtonHref?: string;
+  description?: string;
   plans?: PricingPlan[];
 }
 
 const {
-  eyebrow = "PRICING YOU CAN TRUST",
-  title = "Affordable Pricing Plan",
-  ctaText = "Contact Our Support Team",
-  ctaDescription = "Have questions about pricing? Our team is ready to help you find the right plan for your needs.",
-  ctaButtonText = "Get Custom Pricing",
-  ctaButtonHref = "/contact",
+  eyebrow = "BEST IN CITY",
+  title = "AMC Packages",
+  description = "A libero sollicitudin tempor id ac ut nunc. Id porttitor faucibus venenatis urna sed. Mus imperdiet massa tincidunt pulvinar sapien id ligula ullamcorper.",
   plans = [
     {
-      name: "Basic Service",
+      name: "Repairing Plan",
       description: "Perfect for small fixes and quick electrical tasks.",
-      price: "$89",
-      period: "Per Service",
-      buttonText: "Get This Plan",
+      monthlyPrice: "$25",
+      yearlyPrice: "$250",
+      buttonText: "Get This Package",
       buttonHref: "/contact",
-      bgImage: "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
       features: [
-        "Basic electrical inspection",
-        "Safety compliance check",
-        "Wiring & minor upgrades",
-        "Quick service support"
+        "Condimentum mattis pellentesque",
+        "Donec massa sapien faucibus",
+        "Pharetra et ultrices neque ornare",
+        "Non urna cursus egestas",
+        "Ullamcorper sit amet risus nullam",
+        "Ligula ullamcorper malesuada"
       ]
     },
     {
-      name: "Standard Service",
+      name: "Emergency Plan",
       description: "Ideal for regular maintenance and common electrical work.",
-      price: "$199",
-      period: "Per Service",
-      buttonText: "Get This Plan",
+      monthlyPrice: "$50",
+      yearlyPrice: "$500",
+      buttonText: "Get This Package",
       buttonHref: "/contact",
       highlighted: true,
-      bgImage: "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
       features: [
-        "Full system inspection",
-        "Priority support",
-        "Panel upgrades",
-        "Priority emergency support",
-        "Complete electrical setup"
+        "Rhoncus semper elit mauris",
+        "Venenatis lorem porttitor lacinia",
+        "Donec pretend libero vel",
+        "Pellentesque massa placerat",
+        "Duis at tellus at urna",
+        "Nunc sed blandit libero",
+        "Commodo ullamcorper a lacus",
+        "Consequat interdum varius"
       ]
     },
     {
-      name: "Premium Service",
+      name: "Replacement Plan",
       description: "Best for complete electrical solutions and upgrades.",
-      price: "$350",
-      period: "Per Service",
-      buttonText: "Get This Plan",
+      monthlyPrice: "$75",
+      yearlyPrice: "$750",
+      buttonText: "Get This Package",
       buttonHref: "/contact",
-      bgImage: "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
       features: [
-        "Complete electrical setup",
-        "Panel upgrades",
-        "Advanced diagnostics",
-        "Priority emergency support",
-        "Wiring & minor upgrades"
+        "Mollis nunc sed id semper",
+        "Mattis molestie a iaculis at",
+        "Turpis massa tincidunt dui",
+        "Nunc pulvinar sapien et",
+        "Semper feugiat nibh sed pulvinar",
+        "Consequat interdum varius"
       ]
     }
   ]
@@ -85,83 +81,145 @@ const {
   <div class="pricing-container">
     <!-- Header -->
     <div class="pricing-header">
-      <div class="eyebrow" style="justify-content: center;">
-        <span style="color: #000000;">{eyebrow}</span>
+      <div class="eyebrow-badge">
+        <span>{eyebrow}</span>
       </div>
       <h2 class="pricing-title">{title}</h2>
+      <p class="pricing-description">{description}</p>
+      
+      <!-- Monthly/Yearly Toggle -->
+      <div class="pricing-toggle">
+        <button class="toggle-btn active" data-period="monthly">Monthly</button>
+        <div class="toggle-switch">
+          <div class="toggle-slider"></div>
+        </div>
+        <button class="toggle-btn" data-period="yearly">Yearly</button>
+      </div>
     </div>
 
     <!-- Cards -->
     <div class="pricing-grid">
       {plans.map((plan) => (
-        <div
-          class={`pricing-card ${plan.highlighted ? 'highlighted' : ''}`}
-        >
-          <!-- BG layer (shown on hover or if highlighted) -->
-          <div class="card-bg" style={plan.bgImage ? `background-image: url('${plan.bgImage}')` : ''}></div>
-          <div class="card-overlay"></div>
-          <!-- Content -->
+        <div class={`pricing-card ${plan.highlighted ? 'highlighted' : ''}`}>
+          {plan.highlighted && (
+            <div class="most-popular-badge">Most Popular</div>
+          )}
+          
           <div class="card-content">
-            <div class="plan-icon">
-              {plan.highlighted ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              ) : plan.name.includes("Basic") ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              )}
-            </div>
             <h3 class="plan-name">{plan.name}</h3>
-            <p class="plan-description">{plan.description}</p>
             <div class="plan-price">
-              <span class="price-amount">{plan.price}</span>
-              <span class="price-period">/ {plan.period || "Per Service"}</span>
+              <span class="price-amount monthly-price">{plan.monthlyPrice}</span>
+              <span class="price-amount yearly-price" style="display: none;">{plan.yearlyPrice}</span>
+              <span class="price-period">
+                <span class="monthly-period">/ Per Month</span>
+                <span class="yearly-period" style="display: none;">/ Per Year</span>
+              </span>
             </div>
-            <a href={plan.buttonHref || "/contact"} class="plan-button">
-              {plan.buttonText || "Get This Plan"}
-            </a>
-            <div class="plan-features-label">Plan Features :</div>
+            
             <ul class="plan-features">
               {plan.features.map((feature) => (
                 <li>
-                  <span class="check-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
-                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M20 6 9 17l-5-5"/>
+                  </svg>
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
+            
+            <a href={plan.buttonHref || "/contact"} class="plan-button">
+              {plan.buttonText || "Get This Package"}
+            </a>
           </div>
         </div>
       ))}
     </div>
 
-    <!-- Bottom CTA Bar -->
-    <div class="pricing-cta-bar">
-      <div class="cta-bar-text">
-        <h3 class="cta-bar-title">{ctaText}</h3>
-        <p class="cta-bar-desc">{ctaDescription}</p>
-      </div>
-      <a href={ctaButtonHref} class="cta-bar-btn">
-        {ctaButtonText}
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+    <!-- Bottom disclaimer -->
+    <div class="pricing-disclaimer">
+      <p>
+        Nam quam nunc blandit adipiscing. Phasellus vitae nibh posuere turpis ipsum. Sit mauris facilisis magna aliquet urna mollis rutrum. Integer luctus fames a imperdiet vel mauris in. 
+        <a href="/terms">Elementum Proin</a> fames vitae. Non magna facilisis magna aliquet urna mollis rutrum. Tellus tellus sit in. 
+        <a href="/privacy">Elementum Proin</a> molestie suscipit augue. Mauris ut vitae sed ipsum sapien. Nunc magna facilisis magna aliquet urna mollis rutrum. Phasellus vitae nibh posuere turpis ipsum. 
+        <a href="/contact">Elementum Proin</a> fames vitae. Non magna facilisis magna aliquet urna mollis rutrum. Tellus tellus sit in. 
+        <a href="/terms">Elementum Proin</a> molestie suscipit augue. Mauris ut vitae sed ipsum sapien. Nunc magna facilisis magna aliquet urna mollis rutrum.
+      </p>
     </div>
   </div>
 </section>
 
+<script>
+  function initPricingToggle() {
+    const toggleBtns = document.querySelectorAll('.toggle-btn');
+    const toggleSwitch = document.querySelector('.toggle-switch');
+    const toggleSlider = document.querySelector('.toggle-slider');
+    const monthlyPrices = document.querySelectorAll('.monthly-price');
+    const yearlyPrices = document.querySelectorAll('.yearly-price');
+    const monthlyPeriods = document.querySelectorAll('.monthly-period');
+    const yearlyPeriods = document.querySelectorAll('.yearly-period');
+
+    if (!toggleBtns.length || !toggleSlider) return;
+
+    // Handle button clicks
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const period = btn.getAttribute('data-period');
+        
+        // Update active state
+        toggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Move slider
+        if (period === 'yearly') {
+          toggleSlider.style.transform = 'translateX(28px)';
+        } else {
+          toggleSlider.style.transform = 'translateX(0)';
+        }
+        
+        // Toggle prices
+        if (period === 'yearly') {
+          monthlyPrices.forEach(el => el.style.display = 'none');
+          yearlyPrices.forEach(el => el.style.display = 'inline');
+          monthlyPeriods.forEach(el => el.style.display = 'none');
+          yearlyPeriods.forEach(el => el.style.display = 'inline');
+        } else {
+          monthlyPrices.forEach(el => el.style.display = 'inline');
+          yearlyPrices.forEach(el => el.style.display = 'none');
+          monthlyPeriods.forEach(el => el.style.display = 'inline');
+          yearlyPeriods.forEach(el => el.style.display = 'none');
+        }
+      });
+    });
+
+    // Handle switch click
+    if (toggleSwitch) {
+      toggleSwitch.addEventListener('click', () => {
+        const activeBtn = document.querySelector('.toggle-btn.active');
+        const currentPeriod = activeBtn.getAttribute('data-period');
+        const newPeriod = currentPeriod === 'monthly' ? 'yearly' : 'monthly';
+        const newBtn = document.querySelector(`.toggle-btn[data-period="${newPeriod}"]`);
+        if (newBtn) newBtn.click();
+      });
+    }
+  }
+
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPricingToggle);
+  } else {
+    initPricingToggle();
+  }
+
+  // Re-initialize on navigation
+  document.addEventListener('astro:page-load', initPricingToggle);
+</script>
+
 <style>
   .pricing-section {
     padding: 6rem 2rem;
-    background: #f7f7f7;
+    background: #ffffff url(/electricianimgs/body-bg.png) no-repeat center center;
+    background-size: cover;
+    position: relative;
   }
 
   .pricing-container {
@@ -169,151 +227,167 @@ const {
     margin: 0 auto;
   }
 
+  /* Header */
   .pricing-header {
     text-align: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .eyebrow-badge {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow-badge span {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7280;
   }
 
   .pricing-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    color: #000000;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #000;
     line-height: 1.2;
-    margin: 0;
+    margin: 0 0 1rem 0;
+  }
+
+  .pricing-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 2.5rem auto;
+  }
+
+  /* Toggle */
+  .pricing-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .toggle-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    border-radius: 50px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .toggle-btn.active {
+    color: #000;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 32px;
+    background: #000;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    background: #FFD700;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .toggle-btn[data-period="yearly"].active ~ .toggle-switch .toggle-slider {
+    transform: translateX(28px);
   }
 
   /* Grid */
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    align-items: start;
-    margin-bottom: 2rem;
+    gap: 2rem;
+    margin-bottom: 3rem;
   }
 
-  /* Card base — white by default */
+  /* Card */
   .pricing-card {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
+    background: #fff;
     border: 2px solid #e5e7eb;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    cursor: pointer;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 
   .pricing-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    border-color: #FFD700;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-color: #d1d5db;
   }
 
-  /* BG image layer — hidden by default, shown on hover */
-  .card-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 0;
-  }
-
-  /* Yellow overlay — separate layer on top of image */
-  .card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,215,0,0.88) 0%, rgba(255,165,0,0.88) 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 1;
-  }
-
-  /* Yellow overlay on top of bg image */
-  .card-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,215,0,0.88) 0%, rgba(255,165,0,0.88) 100%);
-  }
-
-  .pricing-card:hover .card-bg,
-  .pricing-card:hover .card-overlay {
-    opacity: 1;
-  }
-
-  /* Content sits above bg */
-  .card-content {
-    position: relative;
-    z-index: 2;
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background: #ffffff;
-    transition: background 0.4s ease;
-  }
-
-  .pricing-card:hover .card-content {
-    background: transparent;
-  }
-
-  /* Highlighted card — always shows bg+yellow */
   .pricing-card.highlighted {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border-color: #FFA500;
     transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(255,215,0,0.25);
-    border-color: #FFD700;
-  }
-
-  .pricing-card.highlighted .card-bg,
-  .pricing-card.highlighted .card-overlay {
-    opacity: 1;
-  }
-
-  .pricing-card.highlighted .card-content {
-    background: transparent;
+    box-shadow: 0 12px 32px rgba(255, 165, 0, 0.25);
   }
 
   .pricing-card.highlighted:hover {
-    transform: translateY(-14px);
+    transform: translateY(-12px);
+    box-shadow: 0 16px 40px rgba(255, 165, 0, 0.3);
   }
 
-  /* Icon */
-  .plan-icon { margin-bottom: 0.25rem; }
-  .plan-icon svg { color: #9ca3af; transition: color 0.3s ease; }
-  .pricing-card:hover .plan-icon svg,
-  .pricing-card.highlighted .plan-icon svg { color: rgba(0,0,0,0.5); }
+  .most-popular-badge {
+    position: absolute;
+    top: -12px;
+    right: 2rem;
+    background: #1e3a8a;
+    color: #fff;
+    padding: 0.375rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 
-  /* Text — dark on white, dark on yellow */
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
   .plan-name {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 800;
-    color: #000000;
+    color: #000;
     margin: 0;
     line-height: 1.2;
   }
-
-  .plan-description {
-    font-size: 0.9rem;
-    color: #6b7280;
-    line-height: 1.6;
-    margin: 0;
-    transition: color 0.3s ease;
-  }
-
-  .pricing-card:hover .plan-description,
-  .pricing-card.highlighted .plan-description { color: rgba(0,0,0,0.65); }
 
   .plan-price {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
-    margin: 0.25rem 0;
   }
 
   .price-amount {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    color: #000000;
+    color: #000;
     line-height: 1;
     font-family: 'Barlow Condensed', system-ui, sans-serif;
   }
@@ -322,137 +396,123 @@ const {
     font-size: 0.875rem;
     color: #6b7280;
     font-weight: 500;
-    transition: color 0.3s ease;
-  }
-
-  .pricing-card:hover .price-period,
-  .pricing-card.highlighted .price-period { color: rgba(0,0,0,0.6); }
-
-  /* Button — default: black bg, white text */
-  .plan-button {
-    display: block;
-    width: 100%;
-    padding: 0.875rem;
-    background: #000000;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    margin: 0.25rem 0;
-  }
-
-  /* On hover of card or highlighted — white bg, black text */
-  .pricing-card:hover .plan-button,
-  .pricing-card.highlighted .plan-button {
-    background: #ffffff;
-    color: #000000;
-  }
-
-  .plan-button:hover {
-    opacity: 0.9;
   }
 
   /* Features */
-  .plan-features-label {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #000000;
-    margin-top: 0.25rem;
-  }
-
   .plan-features {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.625rem;
+    gap: 0.875rem;
   }
 
   .plan-features li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.75rem;
-    font-size: 0.875rem;
-    color: #4b5563;
-    transition: color 0.3s ease;
-  }
-
-  .pricing-card:hover .plan-features li,
-  .pricing-card.highlighted .plan-features li { color: rgba(0,0,0,0.75); }
-
-  .check-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #FFD700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.3s ease;
-  }
-
-  .pricing-card:hover .check-icon,
-  .pricing-card.highlighted .check-icon { background: #000000; }
-
-  /* CTA bar */
-  .pricing-cta-bar {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    border: 1px solid #e5e7eb;
-    margin-top: 1rem;
-  }
-
-  .cta-bar-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #000000;
-    margin: 0 0 0.5rem 0;
-  }
-
-  .cta-bar-desc {
     font-size: 0.9rem;
-    color: #6b7280;
-    margin: 0;
-    max-width: 500px;
+    color: #374151;
+    line-height: 1.5;
   }
 
-  .cta-bar-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
+  .plan-features svg {
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    color: #10b981;
+  }
+
+  .pricing-card.highlighted .plan-features svg {
+    color: #000;
+  }
+
+  /* Button */
+  .plan-button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #000000;
-    border-radius: 8px;
+    color: #000;
+    border: none;
+    border-radius: 50px;
     font-weight: 700;
     font-size: 0.95rem;
+    text-align: center;
     text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
+    transition: all 0.3s ease;
+    margin-top: auto;
   }
 
-  .cta-bar-btn:hover { background: #000000; color: #FFD700; }
+  .plan-button:hover {
+    background: #000;
+    color: #FFD700;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
 
+  .pricing-card.highlighted .plan-button {
+    background: #000;
+    color: #FFD700;
+  }
+
+  .pricing-card.highlighted .plan-button:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Disclaimer */
+  .pricing-disclaimer {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .pricing-disclaimer p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .pricing-disclaimer a {
+    color: #2563eb;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .pricing-disclaimer a:hover {
+    color: #1d4ed8;
+  }
+
+  /* Responsive */
   @media (max-width: 1024px) {
-    .pricing-grid { grid-template-columns: 1fr; }
-    .pricing-card.highlighted { transform: none; }
-    .pricing-cta-bar { flex-direction: column; align-items: flex-start; }
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .pricing-card.highlighted {
+      transform: none;
+    }
   }
 
   @media (max-width: 640px) {
-    .pricing-section { padding: 4rem 1.5rem; }
-    .card-content { padding: 2rem 1.5rem; }
+    .pricing-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .pricing-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .plan-name {
+      font-size: 1.5rem;
+    }
+
+    .price-amount {
+      font-size: 2rem;
+    }
   }
 </style>

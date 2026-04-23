@@ -3,6 +3,8 @@ import { getEntry } from "astro:content"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import HeroSection from "@/components/sections/HeroSection.astro"
 import TrustBadgesSection from "@/components/sections/TrustBadgesSection.astro"
+import LogoCarouselSection from "@/components/sections/LogoCarouselSection.astro"
+import WhoWeAreSection from "@/components/sections/WhoWeAreSection.astro"
 import WhyChooseSection from "@/components/sections/WhyChooseSection.astro"
 import PricingSection from "@/components/sections/PricingSection.astro"
 import ServicesGridSection from "@/components/sections/ServicesGridSection.astro"
@@ -21,6 +23,8 @@ if (!page) throw new Error("index.json not found in src/content/pages/")
 const componentMap = {
   HeroSection,
   TrustBadgesSection,
+  LogoCarouselSection,
+  WhoWeAreSection,
   WhyChooseSection,
   PricingSection,
   ServicesGridSection,

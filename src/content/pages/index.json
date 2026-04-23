@@ -15,6 +15,10 @@
       }
     },
     {
+      "component": "LogoCarouselSection",
+      "props": {}
+    },
+    {
       "component": "CouponsSection",
       "props": {
         "eyebrow": "SPECIAL OFFERS",
@@ -46,165 +50,49 @@
       }
     },
     {
-      "component": "TrustBadgesSection",
+      "component": "WhoWeAreSection",
       "props": {
-        "title": "About Our Company",
-        "subtitle": "Your Trusted Electrical Partner",
-        "description": "We are a family-owned electrical company with over 27 years of experience serving residential and commercial clients. Our licensed and insured electricians are committed to delivering safe, reliable, and professional electrical solutions with transparent pricing and exceptional customer service."
-      }
-    },
-    {
-      "component": "ServiceCardsGridSection",
-      "props": {
-        "badge": "OUR SERVICES",
-        "title": "Comprehensive Electrical Solutions",
-        "description": "From commercial installations to residential repairs and specialty services, we provide expert electrical solutions tailored to your needs.",
-        "tabs": [
+        "eyebrow": "24/7 HASSLE-FREE",
+        "title": "Home And Businesses",
+        "subtitle": "Installation Services",
+        "description": "We provide comprehensive electrical solutions for residential and commercial properties. Our licensed electricians deliver safe, reliable, and code-compliant installations with a focus on quality workmanship and customer satisfaction.",
+        "images": {
+          "main": "/electricianimgs/AdobeStock_187924476.jpeg",
+          "top": "/electricianimgs/AdobeStock_208314515.jpeg",
+          "bottom": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg"
+        },
+        "stats": [
+          { "number": "560+", "label": "Projects Done" },
+          { "number": "180+", "label": "Technicians" }
+        ],
+        "features": [
           {
-            "id": "commercial",
-            "title": "Commercial Electrical",
-            "icon": "🏢",
-            "heading": "Commercial Electrical Services",
-            "description": "Professional electrical solutions for businesses, offices, and commercial properties of all sizes.",
-            "image": "/electricianimgs/AdobeStock_187924476.jpeg",
-            "services": [
-              {
-                "icon": "⚡",
-                "title": "Ground-up Electrical Construction",
-                "href": "/commercial-electrical/ground-up-construction",
-                "image": "/electricianimgs/AdobeStock_187924476.jpeg"
-              },
-              {
-                "icon": "🔌",
-                "title": "Emergency & Standby Power Systems",
-                "href": "/commercial-electrical/emergency-standby-power",
-                "image": "/electricianimgs/AdobeStock_439136266.jpeg"
-              },
-              {
-                "icon": "🔧",
-                "title": "Commercial Electrical Systems",
-                "href": "/commercial-electrical/electrical-systems",
-                "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg"
-              },
-              {
-                "icon": "📊",
-                "title": "Commercial Electrical Panels",
-                "href": "/commercial-electrical/electrical-panels",
-                "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
-              }
-            ],
-            "buttonText": "View All Commercial Services",
-            "buttonHref": "/commercial-electrical"
+            "icon": "hardhat",
+            "title": "Licensed & Certified",
+            "description": "All our electricians are fully licensed, insured, and certified to handle residential and commercial electrical work with expertise and professionalism.",
+            "bgColor": "gray"
           },
           {
-            "id": "residential",
-            "title": "Residential Electrical",
-            "icon": "🏠",
-            "heading": "Residential Electrical Services",
-            "description": "Safe and reliable electrical services for your home, from installations to repairs and upgrades.",
-            "image": "/electricianimgs/AdobeStock_208314515.jpeg",
-            "services": [
-              {
-                "icon": "🚗",
-                "title": "Car Charging Stations / EV",
-                "href": "/residential-electrical/ev-charging",
-                "image": "/electricianimgs/AdobeStock_1792070898.jpeg"
-              },
-              {
-                "icon": "💨",
-                "title": "Ceiling Fan Installation",
-                "href": "/residential-electrical/ceiling-fan",
-                "image": "/electricianimgs/AdobeStock_208314515.jpeg"
-              },
-              {
-                "icon": "🔌",
-                "title": "GFCI Outlets",
-                "href": "/residential-electrical/gfci-outlets",
-                "image": "/electricianimgs/AdobeStock_327681318.jpeg"
-              },
-              {
-                "icon": "⚡",
-                "title": "Backup Generators",
-                "href": "/residential-electrical/backup-generators",
-                "image": "/electricianimgs/AdobeStock_1886509888.jpeg"
-              }
-            ],
-            "buttonText": "View All Residential Services",
-            "buttonHref": "/residential-electrical"
+            "icon": "document",
+            "title": "Custom Electrical Solutions",
+            "description": "We design and implement tailored electrical systems that meet your specific needs, from panel upgrades to complete rewiring projects.",
+            "bgColor": "yellow"
           },
           {
-            "id": "specialty",
-            "title": "Specialty Services",
-            "icon": "✨",
-            "heading": "Specialty Services",
-            "description": "Specialized electrical solutions for unique needs including lighting, pools, and property management.",
-            "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
-            "services": [
-              {
-                "icon": "🎄",
-                "title": "Holiday Lighting Installation",
-                "href": "/specialty-services/holiday-lighting",
-                "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg"
-              },
-              {
-                "icon": "💡",
-                "title": "Landscape Lighting",
-                "href": "/specialty-services/landscape-lighting",
-                "image": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg"
-              },
-              {
-                "icon": "🏊",
-                "title": "Pool & Spa Electrical",
-                "href": "/specialty-services/pool-spa-electrical",
-                "image": "/electricianimgs/raze-solar-GXLPLG3_Vf4-unsplash.jpg"
-              },
-              {
-                "icon": "🏢",
-                "title": "Property Management",
-                "href": "/specialty-services/property-management",
-                "image": "/electricianimgs/AdobeStock_136089970.jpeg"
-              }
-            ],
-            "buttonText": "View All Specialty Services",
-            "buttonHref": "/specialty-services"
+            "icon": "swatches",
+            "title": "Transparent Pricing",
+            "description": "Upfront quotes with no hidden fees. We provide detailed estimates so you know exactly what to expect before we start any work.",
+            "bgColor": "gray"
           },
           {
-            "id": "emergency",
-            "title": "Emergency Services",
-            "icon": "🚨",
-            "heading": "24/7 Emergency Services",
-            "description": "Fast response emergency electrical services available around the clock to handle urgent issues.",
-            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
-            "services": [
-              {
-                "icon": "⏰",
-                "title": "24-hour Emergency Service",
-                "href": "/emergency/24-hour-service",
-                "image": "/electricianimgs/AdobeStock_543922851.jpeg"
-              },
-              {
-                "icon": "⚡",
-                "title": "Power Outages",
-                "href": "/emergency/power-outages",
-                "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg"
-              },
-              {
-                "icon": "🔥",
-                "title": "Electrical Fires",
-                "href": "/emergency/electrical-fires",
-                "image": "/electricianimgs/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg"
-              },
-              {
-                "icon": "🔌",
-                "title": "Circuit Breaker Issues",
-                "href": "/emergency/circuit-breakers",
-                "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg"
-              }
-            ],
-            "buttonText": "Get Emergency Help Now",
-            "buttonHref": "/emergency"
+            "icon": "clipboard",
+            "title": "Full-Service Electrical",
+            "description": "From initial consultation and design to installation and ongoing maintenance, we handle every aspect of your electrical needs.",
+            "bgColor": "gray"
           }
-        ]
+        ],
+        "phone": "000 123 456 789",
+        "phoneLabel": "Call For Booking"
       }
     },
     {
