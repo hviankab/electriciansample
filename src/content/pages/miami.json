@@ -4,206 +4,236 @@
   "keywords": "electrician Miami, electrical services Miami, Miami electrician, emergency electrician Miami",
   "sections": [
     {
-      "component": "HeroPage",
+      "component": "HeroLocation",
       "props": {
-        "eyebrow": "MIAMI ELECTRICAL SERVICES",
-        "title": "Professional Electricians Serving Miami",
-        "subtitle": "Trusted electrical solutions for homes and businesses throughout Miami. Licensed, insured, and available 24/7 for emergencies.",
-        "buttonText": "Get Free Estimate",
-        "buttonHref": "/contact",
-        "backgroundImage": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
-      }
-    },
-    {
-      "component": "ServiceAreaSection",
-      "props": {
-        "title": "Serving Miami & Surrounding Areas",
-        "description": "We provide professional electrical services throughout Miami-Dade County. From Downtown Miami to the suburbs, our licensed electricians are ready to help.",
-        "mapAddress": "Miami, FL",
-        "variant": "full",
-        "buttonText": "VIEW SERVICE AREAS",
-        "buttonHref": "/contact",
-        "areas": [
-          "Downtown Miami",
-          "Brickell",
-          "Coral Gables",
-          "Coconut Grove",
-          "Wynwood",
-          "Miami Beach",
-          "Little Havana",
-          "Kendall",
-          "Hialeah",
-          "Doral",
-          "Aventura",
-          "Homestead",
-          "North Miami",
-          "South Miami",
-          "Cutler Bay",
-          "Pinecrest"
-        ]
-      }
-    },
-    {
-      "component": "LocationIntroSection",
-      "props": {
-        "eyebrow": "SERVING MIAMI",
-        "title": "Your Trusted Miami Electricians",
-        "location": "Miami & Surrounding Areas",
-        "description": "For over 27 years, we've been Miami's go-to electrical service provider. Our team of licensed electricians serves residential and commercial clients throughout Miami-Dade County with professional electrical installations, repairs, and maintenance.",
-        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-        "features": [
+        "slides": [
           {
-            "icon": "⚡",
-            "title": "Same-Day Service",
-            "description": "Fast response times throughout Miami"
+            "title": "Power Outages & Electrical Emergencies? We're Your 24/7 Solution!",
+            "subtitle": "Don't let electrical issues disrupt your day. Licensed electricians ready to help.",
+            "coupon": {
+              "discount": "Get 20% OFF",
+              "title": "All Emergency Electrical Services",
+              "description": "Available 24/7 for urgent repairs"
+            },
+            "backgroundImage": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg"
           },
           {
-            "icon": "🏆",
-            "title": "Licensed & Insured",
-            "description": "Fully certified Miami electricians"
+            "title": "Professional Electricians Serving Miami",
+            "subtitle": "Trusted electrical solutions for homes and businesses throughout Miami-Dade County.",
+            "coupon": {
+              "discount": "$95",
+              "title": "Electrical Service Call",
+              "description": "When work is completed"
+            },
+            "backgroundImage": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg"
           },
           {
-            "icon": "🕐",
-            "title": "24/7 Emergency",
-            "description": "Available anytime for urgent issues"
+            "title": "Upgrade Your Electrical Panel Today",
+            "subtitle": "Safe, code-compliant panel installations by licensed Miami electricians.",
+            "coupon": {
+              "discount": "Save $100",
+              "title": "On Panel Upgrades",
+              "description": "New customers only"
+            },
+            "backgroundImage": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg"
           }
         ],
-        "serviceAreas": [
-          "Downtown Miami",
-          "Brickell",
-          "Coral Gables",
-          "Coconut Grove",
-          "Wynwood",
-          "Miami Beach",
-          "Little Havana",
-          "Kendall"
-        ]
-      }
-    },
-    {
-      "component": "ServicesGridSection",
-      "props": {
-        "title": "Complete Electrical Services",
-        "subtitle": "for Miami Homes & Businesses",
-        "description": "From routine repairs to major installations, our Miami electricians handle all your electrical needs.",
-        "services": [
-          {
-            "title": "Residential Electrical",
-            "description": "Complete electrical services for Miami homeowners including repairs, upgrades, and installations.",
-            "image": "/electricianimgs/AdobeStock_136089970.jpeg",
-            "icon": "🏠",
-            "href": "/residential-electrical"
-          },
-          {
-            "title": "Commercial Electrical",
-            "description": "Professional electrical solutions for Miami businesses, offices, and commercial properties.",
-            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
-            "icon": "🏢",
-            "href": "/commercial-electrical"
-          },
-          {
-            "title": "Emergency Services",
-            "description": "24/7 emergency electrical services for urgent issues throughout Miami.",
-            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
-            "icon": "🚨",
-            "href": "/contact"
-          },
-          {
-            "title": "Panel Upgrades",
-            "description": "Electrical panel upgrades and replacements for Miami homes and businesses.",
-            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
-            "icon": "⚡",
-            "href": "/services/panel-upgrades"
-          }
-        ]
-      }
-    },
-    {
-      "component": "WhyChooseSection",
-      "props": {
-        "eyebrow": "Why Choose Us",
-        "title": "Miami's Most Trusted",
-        "subtitle": "Electrical Service Provider",
-        "description": "Delivering Excellence to Miami Homes and Businesses.",
-        "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-        "yearsOfExperience": "27+",
-        "features": [
-          {
-            "title": "Local Miami Experts:",
-            "description": "Deep knowledge of Miami building codes and electrical requirements."
-          },
-          {
-            "title": "Fast Response Times:",
-            "description": "Same-day service available throughout Miami-Dade County."
-          },
-          {
-            "title": "Licensed & Insured:",
-            "description": "Fully certified electricians you can trust with your property."
-          },
-          {
-            "title": "Upfront Pricing:",
-            "description": "Transparent quotes with no hidden fees or surprises."
-          },
-          {
-            "title": "100% Satisfaction:",
-            "description": "We stand behind our work with comprehensive guarantees."
-          }
-        ],
-        "closingText": "Whether you need a simple repair or a complete electrical system upgrade, our Miami electricians deliver quality workmanship and exceptional service.",
-        "buttonText": "Schedule Service Today",
+        "buttonText": "Call Now",
         "buttonHref": "/contact"
       }
     },
     {
-      "component": "OurProjectsSection",
+      "component": "WhyLocationSection",
       "props": {
-        "eyebrow": "MIAMI PROJECTS",
-        "title": "Recent Projects in Miami",
-        "description": "See examples of our electrical work throughout Miami neighborhoods and commercial districts.",
-        "buttonText": "VIEW ALL PROJECTS",
-        "buttonHref": "/projects",
-        "projects": [
+        "eyebrow": "SERVICE AREAS",
+        "title": "Reliable Electrical Solutions in",
+        "location": "Miami, FL",
+        "description": "Regular maintenance is key to preventing costly repairs and ensuring the efficiency of your electrical system. At Electrician Sample, our Electrical Maintenance Plans are designed to keep your home or business running smoothly year-round.",
+        "image": "/electricianimgs/AdobeStock_208314515.jpeg",
+        "features": [
           {
-            "title": "Brickell Office Building",
-            "category": "Commercial",
-            "description": "Complete electrical upgrade for modern office space in Brickell [...]",
+            "icon": "🔌",
+            "title": "Local Knowledge",
+            "description": "With years of experience serving Miami, we understand the specific electrical requirements of the area."
+          },
+          {
+            "icon": "⚡",
+            "title": "Prompt Response",
+            "description": "We're committed to addressing your electrical issues quickly and effectively."
+          },
+          {
+            "icon": "⚙️",
+            "title": "Comprehensive Services",
+            "description": "From minor repairs to major installations, we handle it all with precision and care."
+          }
+        ]
+      }
+    },
+    {
+      "component": "PromoCardsSection",
+      "props": {
+        "cards": [
+          {
+            "title": "Maintenance Plan",
+            "subtitle": "Protect Your Investment",
+            "description": "Keep your electrical system running smoothly with regular maintenance and priority service.",
+            "buttonHref": "/contact",
+            "image": "/electricianimgs/AdobeStock_208314515.jpeg",
+            "badge": "Best Value"
+          },
+          {
+            "title": "No Interest No Payment",
+            "subtitle": "Until 2026",
+            "description": "Get the electrical upgrades you need now with approved financing. No interest, no payment until 2026.",
+            "buttonHref": "/contact",
             "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
-            "href": "/projects/brickell-office"
+            "badge": "Limited Time"
           },
           {
-            "title": "Coral Gables Home Rewiring",
-            "category": "Residential",
-            "description": "Full home rewiring and panel upgrade in historic Coral Gables [...]",
-            "image": "/electricianimgs/AdobeStock_136089970.jpeg",
-            "href": "/projects/coral-gables-home"
+            "title": "20% OFF",
+            "subtitle": "All Emergency Services",
+            "description": "Save on all emergency electrical services. Available 24/7 for urgent repairs and installations.",
+            "buttonHref": "/contact",
+            "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+            "badge": "Special Offer"
+          }
+        ]
+      }
+    },
+    {
+      "component": "ServicesShowcaseSection",
+      "props": {
+        "eyebrow": "OUR SERVICES",
+        "title": "Complete Electrical Services for Safety, Quality, and 24/7 Support",
+        "description": "Our company has been delivering top-notch electrical services for over 15 years. Our team of certified professionals is committed to providing reliable, efficient electrical solutions that make your home a sanctuary of comfort. With an emphasis on customer satisfaction and integrity, we deliver services that go beyond expectations.",
+        "categories": [
+          {
+            "name": "Commercial Electrical Services",
+            "icon": "🏢",
+            "services": [
+              {
+                "title": "Ground-up Electrical Construction",
+                "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+                "href": "/commercial-electrical/ground-up-construction"
+              },
+              {
+                "title": "Emergency & Standby Power Generating Systems",
+                "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+                "href": "/commercial-electrical/emergency-standby-power"
+              },
+              {
+                "title": "Commercial Electrical Systems",
+                "image": "/electricianimgs/AdobeStock_208314515.jpeg",
+                "href": "/commercial-electrical/electrical-systems"
+              },
+              {
+                "title": "Commercial Electrical Panels",
+                "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+                "href": "/commercial-electrical/electrical-panels"
+              },
+              {
+                "title": "View All Commercial Services",
+                "icon": "➡️",
+                "href": "/commercial-electrical",
+                "featured": true
+              }
+            ]
           },
           {
-            "title": "Wynwood Restaurant",
-            "category": "Commercial",
-            "description": "New electrical installation for trendy Wynwood restaurant [...]",
-            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-            "href": "/projects/wynwood-restaurant"
+            "name": "Residential Electrical Services",
+            "icon": "🏠",
+            "services": [
+              {
+                "title": "Car Charging Stations / EV",
+                "image": "/electricianimgs/AdobeStock_208314515.jpeg",
+                "href": "/residential-electrical/ev-charging"
+              },
+              {
+                "title": "Ceiling Fan",
+                "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+                "href": "/residential-electrical/ceiling-fan"
+              },
+              {
+                "title": "GFCI Outlets",
+                "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+                "href": "/residential-electrical/gfci-outlets"
+              },
+              {
+                "title": "Backup Generators",
+                "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+                "href": "/residential-electrical/backup-generators"
+              },
+              {
+                "title": "View All Residential Services",
+                "icon": "➡️",
+                "href": "/residential-electrical",
+                "featured": true
+              }
+            ]
           },
           {
-            "title": "Miami Beach Condo",
-            "category": "Residential",
-            "description": "Electrical upgrades and smart home integration for beachfront condo [...]",
-            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
-            "href": "/projects/miami-beach-condo"
+            "name": "Specialty Services",
+            "icon": "⚙️",
+            "services": [
+              {
+                "title": "Holiday Lighting Installation Services",
+                "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+                "href": "/specialty-services/holiday-lighting"
+              },
+              {
+                "title": "Landscape Lighting",
+                "image": "/electricianimgs/AdobeStock_208314515.jpeg",
+                "href": "/specialty-services/landscape-lighting"
+              },
+              {
+                "title": "Pool & Spa Electrical",
+                "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+                "href": "/specialty-services/pool-spa-electrical"
+              },
+              {
+                "title": "Property Management",
+                "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+                "href": "/specialty-services/property-management"
+              },
+              {
+                "title": "View All Specialty Services",
+                "icon": "➡️",
+                "href": "/specialty-services",
+                "featured": true
+              }
+            ]
           },
           {
-            "title": "Downtown Retail Space",
-            "category": "Commercial",
-            "description": "LED lighting retrofit and electrical upgrades for downtown retail [...]",
-            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
-            "href": "/projects/downtown-retail"
-          },
-          {
-            "title": "Kendall Medical Office",
-            "category": "Commercial",
-            "description": "Specialized electrical systems for medical facility in Kendall [...]",
-            "image": "/electricianimgs/AdobeStock_543922851.jpeg",
-            "href": "/projects/kendall-medical"
+            "name": "Emergency",
+            "icon": "⚡",
+            "services": [
+              {
+                "title": "24-hour Emergency Service",
+                "image": "/electricianimgs/AdobeStock_208314515.jpeg",
+                "href": "/emergency/24-hour-service"
+              },
+              {
+                "title": "Power Outages",
+                "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+                "href": "/emergency/power-outages"
+              },
+              {
+                "title": "Electrical Fires",
+                "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+                "href": "/emergency/electrical-fires"
+              },
+              {
+                "title": "Circuit Breaker Issues",
+                "image": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+                "href": "/emergency/circuit-breakers"
+              },
+              {
+                "title": "View All Emergency Services",
+                "icon": "📞",
+                "href": "/emergency",
+                "featured": true
+              }
+            ]
           }
         ]
       }
@@ -337,6 +367,35 @@
             "question": "What types of electrical services do you provide?",
             "answer": "We provide complete electrical services including repairs, installations, upgrades, panel replacements, lighting, wiring, emergency services, and more for both residential and commercial properties."
           }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Serving Miami & Surrounding Areas",
+        "description": "We provide professional electrical services throughout Miami-Dade County. From Downtown Miami to the suburbs, our licensed electricians are ready to help.",
+        "mapAddress": "Miami, FL",
+        "variant": "full",
+        "buttonText": "VIEW SERVICE AREAS",
+        "buttonHref": "/contact",
+        "areas": [
+          "Downtown Miami",
+          "Brickell",
+          "Coral Gables",
+          "Coconut Grove",
+          "Wynwood",
+          "Miami Beach",
+          "Little Havana",
+          "Kendall",
+          "Hialeah",
+          "Doral",
+          "Aventura",
+          "Homestead",
+          "North Miami",
+          "South Miami",
+          "Cutler Bay",
+          "Pinecrest"
         ]
       }
     }

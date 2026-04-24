@@ -2,33 +2,43 @@
 import { getCollection } from "astro:content"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import HeroPage from "@/components/sections/HeroPage.astro"
+import HeroLocation from "@/components/sections/HeroLocation.astro"
 import TrustBadgesSection from "@/components/sections/TrustBadgesSection.astro"
 import CommercialIntroSection from "@/components/sections/CommercialIntroSection.astro"
 import ServiceDetailSection from "@/components/sections/ServiceDetailSection.astro"
 import LocationIntroSection from "@/components/sections/LocationIntroSection.astro"
+import WhyLocationSection from "@/components/sections/WhyLocationSection.astro"
 import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro"
 import WhyChooseSection from "@/components/sections/WhyChooseSection.astro"
 import ServicesGridSection from "@/components/sections/ServicesGridSection.astro"
+import ServicesShowcaseSection from "@/components/sections/ServicesShowcaseSection.astro"
 import OurCreativeTeamSection from "@/components/sections/OurCreativeTeamSection.astro"
 import OurProjectsSection from "@/components/sections/OurProjectsSection.astro"
 import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
 import FAQAccordionSection from "@/components/sections/FAQAccordionSection.astro"
 import ContactCTASection from "@/components/sections/ContactCTASection.astro"
+import PromotionalCardsSection from "@/components/sections/PromotionalCardsSection.astro"
+import PromoCardsSection from "@/components/sections/PromoCardsSection.astro"
 
 const componentMap = {
   HeroPage,
+  HeroLocation,
   TrustBadgesSection,
   CommercialIntroSection,
   ServiceDetailSection,
   LocationIntroSection,
+  WhyLocationSection,
   ServiceAreaSection,
   WhyChooseSection,
   ServicesGridSection,
+  ServicesShowcaseSection,
   OurCreativeTeamSection,
   OurProjectsSection,
   TestimonialsSection,
   FAQAccordionSection,
   ContactCTASection,
+  PromotionalCardsSection,
+  PromoCardsSection,
 }
 
 export async function getStaticPaths() {

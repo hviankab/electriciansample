@@ -1,0 +1,274 @@
+---
+interface BenefitItem {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  benefitsTitle?: string;
+  benefits?: BenefitItem[];
+  buttonText?: string;
+  buttonHref?: string;
+  image?: string;
+  imageCaption?: string;
+}
+
+const {
+  eyebrow = "FLEXIBLE ELECTRICAL FINANCING OPTIONS",
+  title = "Get a New Electrical System Without Breaking the Bank",
+  description = "Upgrade your home comfort with our flexible electrical financing options, designed to make electrical upgrades affordable for any budget. Whether you're facing an urgent electrical replacement or looking to upgrade for energy efficiency, our financing plans offer low monthly payments and competitive rates to help you stay safe and comfortable year-round. Avoid the upfront cost and spread out payments with ease—our fast, hassle-free application process makes it simple.",
+  benefitsTitle = "Why Choose Our Electrical Financing Solutions?",
+  benefits = [],
+  buttonText = "LEARN MORE",
+  buttonHref = "/contact",
+  image = "/electricianimgs/AdobeStock_208314515.jpeg",
+  imageCaption = "Electrical Financing Solutions"
+} = Astro.props;
+---
+
+<section class="financing-section">
+  <div class="financing-container">
+    <!-- Header -->
+    <div class="financing-header">
+      <div class="eyebrow-badge">
+        <span>{eyebrow}</span>
+      </div>
+      <h2 class="financing-title">{title}</h2>
+      <p class="financing-description">{description}</p>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="financing-grid">
+      <!-- Left Column: Benefits -->
+      <div class="benefits-column">
+        <h3 class="benefits-title">{benefitsTitle}</h3>
+        <div class="benefits-list">
+          {benefits.map((benefit) => (
+            <div class="benefit-item">
+              <div class="check-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+              <div class="benefit-content">
+                <h4 class="benefit-title">{benefit.title}</h4>
+                <p class="benefit-description">{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <a href={buttonHref} class="financing-btn">{buttonText}</a>
+      </div>
+
+      <!-- Right Column: Image -->
+      <div class="image-column">
+        <div class="image-wrapper">
+          <img src={image} alt={imageCaption} />
+          <div class="image-caption">
+            <span>{imageCaption}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .financing-section {
+    padding: 6rem 2rem;
+    background: #e5e7eb;
+    position: relative;
+  }
+
+  .financing-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .financing-header {
+    margin-bottom: 4rem;
+  }
+
+  .eyebrow-badge {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow-badge span {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .financing-title {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 800;
+    color: #000;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .financing-description {
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.7;
+    max-width: 1000px;
+  }
+
+  /* Grid */
+  .financing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Benefits Column */
+  .benefits-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .benefits-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: #ef4444;
+  }
+
+  .benefit-content {
+    flex: 1;
+  }
+
+  .benefit-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .benefit-description {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Button */
+  .financing-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  .financing-btn:hover {
+    background: #000;
+    color: #FFD700;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Image Column */
+  .image-column {
+    position: relative;
+  }
+
+  .image-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    border: 4px solid #1e40af;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1e40af;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .image-caption span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .financing-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .image-column {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .financing-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .financing-header {
+      margin-bottom: 3rem;
+    }
+
+    .financing-title {
+      font-size: 1.75rem;
+    }
+
+    .benefits-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>

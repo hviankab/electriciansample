@@ -18,6 +18,10 @@ import CouponsSection from "@/components/sections/CouponsSection.astro"
 import InstagramGallerySection from "@/components/sections/InstagramGallerySection.astro"
 import FinalCTASection from "@/components/sections/FinalCTASection.astro"
 import AllServicesSection from "@/components/sections/AllServicesSection.astro"
+import MaintenancePlansSection from "@/components/sections/MaintenancePlansSection.astro"
+import FinancingOptionsSection from "@/components/sections/FinancingOptionsSection.astro"
+import ServicesShowcaseSection from "@/components/sections/ServicesShowcaseSection.astro"
+import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro"
 
 const page = await getEntry("pages", "index")
 if (!page) throw new Error("index.json not found in src/content/pages/")
@@ -40,6 +44,10 @@ const componentMap = {
   InstagramGallerySection,
   FinalCTASection,
   AllServicesSection,
+  MaintenancePlansSection,
+  FinancingOptionsSection,
+  ServicesShowcaseSection,
+  ServiceAreaSection,
 }
 ---
 

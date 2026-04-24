@@ -1,0 +1,223 @@
+---
+interface Service {
+  title: string;
+  description: string;
+  image: string;
+  href: string;
+}
+
+interface Props {
+  title?: string;
+  services: Service[];
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  title = "RELATED SERVICES",
+  services,
+  buttonText = "View All Services",
+  buttonHref = "/commercial-electrical"
+} = Astro.props;
+---
+
+<section class="related-services-section">
+  <div class="container">
+    <h2 class="section-title">{title}</h2>
+    
+    <div class="services-grid">
+      {services.map((service) => (
+        <a href={service.href} class="service-card">
+          <div class="card-image">
+            <img src={service.image} alt={service.title} />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">{service.title}</h3>
+            <p class="card-description">{service.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {buttonText && buttonHref && (
+      <div class="button-container">
+        <a href={buttonHref} class="view-all-btn">
+          {buttonText}
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .related-services-section {
+    padding: 6rem 2rem;
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .related-services-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .service-card {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid transparent;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+    border-color: #FFD700;
+  }
+
+  .card-image {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover .card-image img {
+    transform: scale(1.1);
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+
+  .view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  }
+
+  .view-all-btn:hover {
+    background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+  }
+
+  .view-all-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .view-all-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 968px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .related-services-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .card-image {
+      height: 200px;
+    }
+
+    .section-title {
+      margin-bottom: 2rem;
+    }
+  }
+</style>

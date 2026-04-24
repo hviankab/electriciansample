@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import HeroPage from "@/components/sections/HeroPage.astro"
+import HeroSubpage from "@/components/sections/HeroSubpage.astro"
 import ServiceIntroSection from "@/components/sections/ServiceIntroSection.astro"
 import ServiceDetailSection from "@/components/sections/ServiceDetailSection.astro"
 import ServiceTabsSection from "@/components/sections/ServiceTabsSection.astro"
@@ -12,9 +13,14 @@ import OurProjectsSection from "@/components/sections/OurProjectsSection.astro"
 import TestimonialsSection from "@/components/sections/TestimonialsSection.astro"
 import ContactCTASection from "@/components/sections/ContactCTASection.astro"
 import FAQAccordionSection from "@/components/sections/FAQAccordionSection.astro"
+import TBDSection from "@/components/sections/TBDSection.astro"
+import PromotionalCardsSection from "@/components/sections/PromotionalCardsSection.astro"
+import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro"
+import RelatedServicesSection from "@/components/sections/RelatedServicesSection.astro"
 
 const componentMap = {
   HeroPage,
+  HeroSubpage,
   ServiceIntroSection,
   ServiceDetailSection,
   ServiceTabsSection,
@@ -25,6 +31,10 @@ const componentMap = {
   TestimonialsSection,
   ContactCTASection,
   FAQAccordionSection,
+  TBDSection,
+  PromotionalCardsSection,
+  ServiceAreaSection,
+  RelatedServicesSection,
 }
 
 export async function getStaticPaths() {

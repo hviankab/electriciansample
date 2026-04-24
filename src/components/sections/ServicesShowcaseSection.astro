@@ -1,0 +1,432 @@
+---
+interface ServiceCard {
+  title: string;
+  image?: string;
+  icon?: string;
+  href?: string;
+  featured?: boolean;
+}
+
+interface ServiceCategory {
+  name: string;
+  icon: string;
+  active?: boolean;
+  services: ServiceCard[];
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  categories?: ServiceCategory[];
+}
+
+const {
+  eyebrow = "OUR SERVICES",
+  title = "Complete Electrical Services for Safety, Quality, and 24/7 Support",
+  description = "ABC Company has been delivering top-notch electrical services in [Location] for over 15 years. Our team of certified professionals is committed to providing reliable, efficient electrical solutions that make your home a sanctuary of comfort. With an emphasis on customer satisfaction and integrity, we deliver services that go beyond expectations.",
+  categories = []
+} = Astro.props;
+---
+
+<section class="services-showcase-section">
+  <div class="services-showcase-container">
+    <!-- Header -->
+    <div class="showcase-header">
+      <div class="eyebrow-badge">
+        <span>{eyebrow}</span>
+      </div>
+      <h2 class="showcase-title">{title}</h2>
+      <p class="showcase-description">{description}</p>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="showcase-grid">
+      <!-- Sidebar Categories -->
+      <div class="categories-sidebar">
+        {categories.map((category, index) => (
+          <button 
+            class={`category-btn ${index === 0 ? 'active' : ''}`}
+            data-category={`category-${index}`}
+          >
+            <span class="category-icon">{category.icon}</span>
+            <span class="category-name">{category.name}</span>
+          </button>
+        ))}
+      </div>
+
+      <!-- Services Grid -->
+      <div class="services-content">
+        {categories.map((category, index) => (
+          <div 
+            class={`services-grid ${index === 0 ? 'active' : ''}`}
+            data-content={`category-${index}`}
+          >
+            {category.services.map((service) => (
+              service.featured ? (
+                <div class="service-card featured">
+                  <div class="card-icon-wrapper">
+                    <div class="card-icon">
+                      <a href={service.href || "#"} class="view-all-btn">{service.title}</a>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <a href={service.href || "#"} class="service-card">
+                  {service.image ? (
+                    <div class="card-image">
+                      <img src={service.image} alt={service.title} />
+                    </div>
+                  ) : (
+                    <div class="card-icon-wrapper">
+                      <div class="card-icon">
+                        {service.icon || (
+                          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  <div class="card-title-wrapper">
+                    <h3 class="card-title">{service.title}</h3>
+                  </div>
+                </a>
+              )
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Wait for DOM to be fully loaded
+  function initServiceTabs() {
+    const categoryButtons = document.querySelectorAll('.services-showcase-section .category-btn');
+    const serviceGrids = document.querySelectorAll('.services-showcase-section .services-grid');
+
+    console.log('Found buttons:', categoryButtons.length);
+    console.log('Found grids:', serviceGrids.length);
+
+    categoryButtons.forEach((button, index) => {
+      console.log('Adding listener to button', index);
+      button.addEventListener('click', function(e) {
+        console.log('Button clicked:', index);
+        const categoryId = this.getAttribute('data-category');
+        console.log('Category ID:', categoryId);
+
+        // Remove active class from all buttons and grids
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        serviceGrids.forEach(grid => grid.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding grid
+        this.classList.add('active');
+        const activeGrid = document.querySelector(`.services-showcase-section .services-grid[data-content="${categoryId}"]`);
+        console.log('Active grid found:', activeGrid);
+        if (activeGrid) {
+          activeGrid.classList.add('active');
+        }
+      });
+    });
+  }
+
+  // Try multiple initialization methods
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServiceTabs);
+  } else {
+    initServiceTabs();
+  }
+
+  // Also try after a short delay as fallback
+  setTimeout(initServiceTabs, 100);
+</script>
+
+<style>
+  .services-showcase-section {
+    padding: 6rem 2rem;
+    background: #000;
+    position: relative;
+  }
+
+  .services-showcase-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .showcase-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .eyebrow-badge {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+  }
+
+  .eyebrow-badge span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .showcase-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .showcase-description {
+    font-size: 0.95rem;
+    color: #d1d5db;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Grid Layout */
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Sidebar */
+  .categories-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .category-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: #f9fafb;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+
+  .category-btn:hover {
+    background: #e5e7eb;
+  }
+
+  .category-btn.active {
+    background: #fff9c3;
+  }
+
+  .category-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .category-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .category-btn.active .category-name {
+    color: #000;
+  }
+
+  /* Services Grid */
+  .services-content {
+    position: relative;
+  }
+
+  .services-grid {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .services-grid.active {
+    display: grid;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .service-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .service-card.featured:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .service-card.featured {
+    grid-row: span 2;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+
+  .service-card.featured .card-icon-wrapper {
+    background: none !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+
+  /* Card with Image */
+  .card-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Card with Icon */
+  .card-icon-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    min-height: 200px;
+    padding: 2rem;
+  }
+
+  .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .service-card.featured .card-icon {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .view-all-btn {
+    display: inline-block;
+    padding: 1.25rem 3rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .view-all-btn:hover {
+    background: #000;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Card Title */
+  .card-title-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff9c3;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .showcase-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .categories-sidebar {
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 0.75rem;
+    }
+
+    .category-btn {
+      flex-shrink: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .services-showcase-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .showcase-header {
+      margin-bottom: 3rem;
+    }
+
+    .showcase-grid {
+      padding: 1.5rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card.featured {
+      grid-row: span 1;
+    }
+  }
+</style>

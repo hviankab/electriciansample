@@ -1,0 +1,103 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  backgroundImage?: string;
+}
+
+const {
+  title = "TO BE DETERMINED",
+  subtitle = "BASED ON THE CLIENT DISCOVERY CONVERSATION",
+  backgroundImage = "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg"
+} = Astro.props;
+---
+
+<section class="tbd-section">
+  <div class="tbd-background" style={`background-image: url(${backgroundImage})`}></div>
+  <div class="tbd-overlay"></div>
+  <div class="tbd-container">
+    <h2 class="tbd-title">{title}</h2>
+    <div class="tbd-divider"></div>
+    <p class="tbd-subtitle">{subtitle}</p>
+  </div>
+</section>
+
+<style>
+  .tbd-section {
+    position: relative;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .tbd-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .tbd-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .tbd-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tbd-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    color: #000;
+    margin: 0 0 2rem 0;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .tbd-divider {
+    width: 400px;
+    max-width: 80%;
+    height: 4px;
+    background: #1e3a8a;
+    margin: 0 auto 2rem auto;
+  }
+
+  .tbd-subtitle {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    .tbd-section {
+      min-height: 500px;
+    }
+
+    .tbd-container {
+      padding: 3rem 1.5rem;
+    }
+
+    .tbd-divider {
+      width: 300px;
+    }
+  }
+</style>

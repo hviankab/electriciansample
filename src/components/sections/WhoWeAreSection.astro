@@ -30,7 +30,7 @@ const {
   images = {
     main: "/electricianimgs/AdobeStock_187924476.jpeg",
     top: "/electricianimgs/AdobeStock_208314515.jpeg",
-    bottom: "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg"
+    bottom: "/electricianimgs/AdobeStock_327681318.jpeg"
   },
   stats = [
     { number: "560+", label: "Projects Done" },
@@ -344,8 +344,8 @@ const {
     align-items: center;
     gap: 0.5rem;
     padding: 1rem 2.5rem;
-    background: #000000;
-    color: #ffffff;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000000;
     font-size: 1rem;
     font-weight: 700;
     border-radius: 50px;
@@ -357,11 +357,10 @@ const {
 
   .book-now-btn:hover,
   .book-now-btn:focus {
-    background: #FFD700;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #000000;
+    background: #000000;
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 1024px) {

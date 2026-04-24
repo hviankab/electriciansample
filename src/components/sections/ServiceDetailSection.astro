@@ -12,6 +12,19 @@ interface Feature {
   description: string;
 }
 
+interface ServiceTab {
+  id: string;
+  title: string;
+  href: string;
+  description: string;
+  whyTitle: string;
+  whyDescription: string;
+  mainImage: string;
+  whyImages: string[];
+  features: Feature[];
+  buttonText?: string;
+}
+
 interface Props {
   title?: string;
   description?: string;
@@ -21,6 +34,8 @@ interface Props {
   whyImages?: string[];
   features?: Feature[];
   serviceLinks?: ServiceLink[];
+  serviceTabs?: ServiceTab[];
+  sectionTitle?: string;
 }
 
 const {
@@ -30,8 +45,8 @@ const {
   whyDescription = "From small businesses to large commercial properties, we offer tailored solutions that meet your specific needs. With comprehensive warranties, post-installation inspections, and expert guidance, choosing our electrical services ensures peace of mind and a system that will protect your property for decades.",
   mainImage = "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
   whyImages = [
-    "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-    "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
+    "/electricianimgs/AdobeStock_208314515.jpeg",
+    "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg"
   ],
   features = [
     { title: "Tailored Solutions & Focus", description: "We provide personalized electrical solutions for residential and commercial projects, ensuring safety and reliability." },
@@ -43,29 +58,53 @@ const {
     { title: "Emergency Power Systems", href: "/commercial-electrical" },
     { title: "Lighting Solutions", href: "/commercial-electrical" },
     { title: "Panel Installations", href: "/commercial-electrical" }
-  ]
+  ],
+  serviceTabs = [],
+  sectionTitle = "EXPLORE OUR OTHER SERVICES"
 } = Astro.props;
 
 const descriptionParagraphs = description.split('\n\n').filter(p => p.trim());
+const useTabMode = serviceTabs && serviceTabs.length > 0;
 ---
 
 <section class="service-detail-section">
   <div class="service-detail-container">
 
-    <!-- Left Sidebar -->
-    <aside class="sidebar">
+    {sectionTitle && (
+      <div class="section-title-wrapper">
+        <h2 class="section-title">{sectionTitle}</h2>
+      </div>
+    )}
+
+    <div class="service-detail-grid">
+      <!-- Left Sidebar -->
+      <aside class="sidebar">
       <!-- Services List -->
       <div class="sidebar-services">
-        <div class="sidebar-header">Explore Our Services</div>
+        <div class="sidebar-header">RELATED SERVICES</div>
         <ul class="services-list">
-          {serviceLinks.map((link) => (
-            <li>
-              <a href={link.href} class="service-link">
-                <span>{link.title}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-              </a>
-            </li>
-          ))}
+          {useTabMode ? (
+            serviceTabs.map((tab, index) => (
+              <li>
+                <button 
+                  class={`service-tab ${index === 0 ? 'active' : ''}`}
+                  data-tab={tab.id}
+                >
+                  <span>{tab.title}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </button>
+              </li>
+            ))
+          ) : (
+            serviceLinks.map((link) => (
+              <li>
+                <a href={link.href} class="service-link">
+                  <span>{link.title}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+              </li>
+            ))
+          )}
         </ul>
       </div>
 
@@ -88,51 +127,136 @@ const descriptionParagraphs = description.split('\n\n').filter(p => p.trim());
 
     <!-- Main Content -->
     <div class="main-content">
-      <!-- Hero Image -->
-      <div class="main-image">
-        <img src={mainImage} alt={title} loading="lazy" />
-      </div>
-
-      <!-- Description -->
-      <div class="content-text">
-        {descriptionParagraphs.map((para) => (
-          <p>{para}</p>
-        ))}
-      </div>
-
-      <!-- Why Choose -->
-      <div class="why-section">
-        <h2 class="why-title">{whyTitle}</h2>
-        <p class="why-description">{whyDescription}</p>
-
-        <!-- Why Images -->
-        <div class="why-images">
-          {whyImages.map((img) => (
-            <div class="why-image">
-              <img src={img} alt="Electrical service" loading="lazy" />
+      {useTabMode ? (
+        serviceTabs.map((tab, index) => (
+          <div class={`tab-content ${index === 0 ? 'active' : ''}`} data-content={tab.id}>
+            <!-- Hero Image -->
+            <div class="main-image">
+              <img src={tab.mainImage} alt={tab.title} loading="lazy" />
             </div>
-          ))}
-        </div>
 
-        <!-- Features -->
-        <div class="features-grid">
-          {features.map((feature) => (
-            <div class="feature-item">
-              <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <!-- Description -->
+            <div class="content-text">
+              {tab.description.split('\n\n').filter(p => p.trim()).map((para) => (
+                <p>{para}</p>
+              ))}
+            </div>
+
+            <!-- Why Choose -->
+            <div class="why-section">
+              <h2 class="why-title">{tab.whyTitle}</h2>
+              <p class="why-description">{tab.whyDescription}</p>
+
+              <!-- Why Images -->
+              <div class="why-images">
+                {tab.whyImages.map((img) => (
+                  <div class="why-image">
+                    <img src={img} alt="Electrical service" loading="lazy" />
+                  </div>
+                ))}
               </div>
-              <div class="feature-content">
-                <h4 class="feature-title">{feature.title}</h4>
-                <p class="feature-desc">{feature.description}</p>
+
+              <!-- Features -->
+              <div class="features-grid">
+                {tab.features.map((feature) => (
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div class="feature-content">
+                      <h4 class="feature-title">{feature.title}</h4>
+                      <p class="feature-desc">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Learn More Button -->
+              <div class="learn-more-wrapper">
+                <a href={tab.href} class="learn-more-btn">
+                  {tab.buttonText || `Learn More About ${tab.title}`}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
               </div>
             </div>
-          ))}
+          </div>
+        ))
+      ) : (
+        <div class="tab-content active">
+          <!-- Hero Image -->
+          <div class="main-image">
+            <img src={mainImage} alt={title} loading="lazy" />
+          </div>
+
+          <!-- Description -->
+          <div class="content-text">
+            {descriptionParagraphs.map((para) => (
+              <p>{para}</p>
+            ))}
+          </div>
+
+          <!-- Why Choose -->
+          <div class="why-section">
+            <h2 class="why-title">{whyTitle}</h2>
+            <p class="why-description">{whyDescription}</p>
+
+            <!-- Why Images -->
+            <div class="why-images">
+              {whyImages.map((img) => (
+                <div class="why-image">
+                  <img src={img} alt="Electrical service" loading="lazy" />
+                </div>
+              ))}
+            </div>
+
+            <!-- Features -->
+            <div class="features-grid">
+              {features.map((feature) => (
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  </div>
+                  <div class="feature-content">
+                    <h4 class="feature-title">{feature.title}</h4>
+                    <p class="feature-desc">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
 
   </div>
+</div>
 </section>
+
+{useTabMode && (
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.service-detail-section .service-tab');
+      const tabContents = document.querySelectorAll('.service-detail-section .tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const tabId = this.getAttribute('data-tab');
+
+          // Remove active class from all buttons and contents
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+
+          // Add active class to clicked button and corresponding content
+          this.classList.add('active');
+          const activeContent = document.querySelector(`.service-detail-section .tab-content[data-content="${tabId}"]`);
+          if (activeContent) {
+            activeContent.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+)}
 
 <style>
   .service-detail-section {
@@ -143,6 +267,26 @@ const descriptionParagraphs = description.split('\n\n').filter(p => p.trim());
   .service-detail-container {
     max-width: 1280px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .section-title-wrapper {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #000;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .service-detail-grid {
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 3rem;
@@ -190,21 +334,58 @@ const descriptionParagraphs = description.split('\n\n').filter(p => p.trim());
     font-weight: 500;
     border-bottom: 1px solid #f3f4f6;
     transition: all 0.2s ease;
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
   }
 
-  .service-link:hover {
+  .service-link:hover,
+  .service-tab:hover {
     background: #f9fafb;
     color: #000000;
     padding-left: 1.75rem;
   }
 
-  .service-link svg {
+  .service-tab {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.5rem;
+    color: #374151;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-bottom: 1px solid #f3f4f6;
+    transition: all 0.2s ease;
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .service-tab.active {
+    background: #fff9c3;
+    color: #000000;
+    font-weight: 600;
+  }
+
+  .service-link svg,
+  .service-tab svg {
     flex-shrink: 0;
     color: #9ca3af;
     transition: color 0.2s ease;
   }
 
-  .service-link:hover svg {
+  .service-link:hover svg,
+  .service-tab:hover svg,
+  .service-tab.active svg {
     color: #FFD700;
   }
 
@@ -265,9 +446,29 @@ const descriptionParagraphs = description.split('\n\n').filter(p => p.trim());
 
   /* Main content */
   .main-content {
-    display: flex;
+    position: relative;
+  }
+
+  .tab-content {
+    display: none;
     flex-direction: column;
     gap: 2.5rem;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .tab-content.active {
+    display: flex;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .main-image {
@@ -383,8 +584,48 @@ const descriptionParagraphs = description.split('\n\n').filter(p => p.trim());
     margin: 0;
   }
 
+  /* Learn More Button */
+  .learn-more-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .learn-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .learn-more-btn:hover {
+    background: #000;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .learn-more-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .learn-more-btn:hover svg {
+    transform: translateX(4px);
+  }
+
   @media (max-width: 1024px) {
-    .service-detail-container { grid-template-columns: 1fr; }
+    .service-detail-grid { grid-template-columns: 1fr; }
     .sidebar { position: static; }
     .why-images { grid-template-columns: 1fr 1fr; }
     .features-grid { grid-template-columns: 1fr 1fr; }

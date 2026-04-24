@@ -1,0 +1,328 @@
+---
+interface Slide {
+  title: string;
+  subtitle?: string;
+  coupon: {
+    discount?: string;
+    title: string;
+    description: string;
+  };
+  backgroundImage: string;
+}
+
+interface Props {
+  slides: Slide[];
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  slides,
+  buttonText = "Call Now",
+  buttonHref = "/contact"
+} = Astro.props;
+---
+
+<section class="hero-location">
+  <!-- Slides Container -->
+  <div class="slides-wrapper">
+    {slides.map((slide, index) => (
+      <div class={`hero-slide ${index === 0 ? 'active' : ''}`}>
+        <!-- Background Image -->
+        <div class="slide-background" style={`background-image: url(${slide.backgroundImage})`}></div>
+        <div class="slide-overlay"></div>
+        
+        <!-- Content -->
+        <div class="hero-container">
+          <div class="hero-content">
+            <h1 class="hero-title">{slide.title}</h1>
+            {slide.subtitle && <p class="hero-subtitle">{slide.subtitle}</p>}
+            
+            <div class="coupon-box">
+              {slide.coupon.discount && <div class="coupon-discount">{slide.coupon.discount}</div>}
+              <h3 class="coupon-title">{slide.coupon.title}</h3>
+              <p class="coupon-description">{slide.coupon.description}</p>
+            </div>
+            
+            <a href={buttonHref} class="hero-btn">{buttonText}</a>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Slider Dots -->
+  <div class="slider-dots">
+    {slides.map((_, index) => (
+      <button class={`dot ${index === 0 ? 'active' : ''}`} data-slide={index}></button>
+    ))}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroSlides = document.querySelectorAll('.hero-location .hero-slide');
+    const dots = document.querySelectorAll('.hero-location .dot');
+    let currentSlide = 0;
+
+    function showSlide(index: number) {
+      heroSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % heroSlides.length;
+      showSlide(currentSlide);
+    }
+
+    // Auto-advance slides every 9 seconds
+    setInterval(nextSlide, 9000);
+
+    // Dot click handlers
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+      });
+    });
+  });
+</script>
+
+<style>
+  .hero-location {
+    position: relative;
+    min-height: 85vh;
+    max-height: 600px;
+    overflow: hidden;
+  }
+
+  .slides-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 85vh;
+    max-height: 600px;
+  }
+
+  .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 85vh;
+    max-height: 600px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .slide-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 100%);
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8rem 2rem 6rem;
+    min-height: 85vh;
+    max-height: 600px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Left Side: Content */
+  .hero-content {
+    max-width: 700px;
+    color: #fff;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 0 1.5rem 0;
+    color: #fff;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 2rem 0;
+  }
+
+  /* Coupon Box */
+  .coupon-box {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    border: 3px dashed #FFD700;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    max-width: fit-content;
+  }
+
+  .coupon-discount {
+    font-size: 2.75rem;
+    font-weight: 900;
+    color: #FFD700;
+    margin: 0 0 0.5rem 0;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .coupon-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .coupon-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Button */
+  .hero-btn {
+    display: inline-block;
+    padding: 1.25rem 3rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .hero-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Slider Dots */
+  .slider-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem;
+    z-index: 10;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background: #FFD700;
+    width: 32px;
+    border-radius: 6px;
+  }
+
+  .dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 768px) {
+    .hero-location {
+      min-height: auto;
+    }
+
+    .slides-wrapper {
+      min-height: auto;
+    }
+
+    .hero-slide {
+      min-height: auto;
+    }
+
+    .hero-container {
+      padding: 5rem 1.5rem 4rem;
+      min-height: auto;
+    }
+
+    .coupon-box {
+      padding: 1.75rem 1.5rem;
+      max-width: 100%;
+    }
+
+    .coupon-discount {
+      font-size: 2.25rem;
+    }
+
+    .coupon-title {
+      font-size: 1.25rem;
+    }
+
+    .coupon-description {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .hero-location {
+      height: 800px !important;
+      min-height: 800px !important;
+      max-height: 800px !important;
+    }
+
+    .slides-wrapper {
+      height: 800px !important;
+      min-height: 800px !important;
+      max-height: 800px !important;
+    }
+
+    .hero-slide {
+      height: 800px !important;
+      min-height: 800px !important;
+      max-height: 800px !important;
+    }
+
+    .hero-container {
+      height: 800px !important;
+      min-height: 800px !important;
+      max-height: 800px !important;
+    }
+  }
+</style>

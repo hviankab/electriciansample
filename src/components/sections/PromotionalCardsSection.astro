@@ -1,0 +1,375 @@
+---
+interface Card {
+  title: string;
+  subtitle?: string;
+  price?: string;
+  priceLabel?: string;
+  description?: string;
+  buttonText: string;
+  buttonHref: string;
+  image: string;
+  phoneNumber?: string;
+  backgroundColor?: string;
+}
+
+interface Props {
+  cards?: Card[];
+}
+
+const {
+  cards = [
+    {
+      title: "MAINTENANCE PLAN",
+      price: "$14.33",
+      priceLabel: "PER MONTH",
+      description: "FOR AS LOW AS",
+      buttonText: "BOOK NOW",
+      buttonHref: "/contact",
+      image: "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+      phoneNumber: "012-345-6789",
+      backgroundColor: "#1e3a8a"
+    },
+    {
+      title: "NO INTEREST NO PAYMENT",
+      subtitle: "UNTIL 2026",
+      description: "*WITH APPROVED FINANCING",
+      buttonText: "LEARN MORE",
+      buttonHref: "/financing",
+      image: "/electricianimgs/AdobeStock_208314515.jpeg",
+      backgroundColor: "#dc2626"
+    },
+    {
+      title: "$95",
+      subtitle: "ELECTRICAL SERVICE CALL",
+      description: "IF DONE",
+      buttonText: "BOOK NOW",
+      buttonHref: "/contact",
+      image: "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+      phoneNumber: "012-345-6789",
+      backgroundColor: "#1e3a8a"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="promotional-cards-section">
+  <div class="promotional-cards-container">
+    {cards.map((card) => (
+      <div class="promo-card">
+        <div class="card-header" style={`background: ${card.backgroundColor || '#1e3a8a'}`}>
+          <div class="company-logo">
+            <span class="logo-icon">⚡</span>
+            <div class="logo-text">
+              <span class="company-name">ABC COMPANY</span>
+              <span class="company-tagline">ELECTRICAL SERVICES</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-content">
+            {card.description && (
+              <p class="card-description">{card.description}</p>
+            )}
+            
+            <h3 class="card-title">{card.title}</h3>
+            
+            {card.price && (
+              <div class="card-price">
+                <span class="price">{card.price}</span>
+                {card.priceLabel && (
+                  <span class="price-label">{card.priceLabel}</span>
+                )}
+              </div>
+            )}
+            
+            {card.subtitle && (
+              <p class="card-subtitle">{card.subtitle}</p>
+            )}
+
+            <a href={card.buttonHref} class="promo-button">
+              {card.buttonText}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            {card.phoneNumber && (
+              <div class="card-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <span>CALL US AT: {card.phoneNumber}</span>
+              </div>
+            )}
+          </div>
+
+          {card.image && (
+            <div class="card-image">
+              <img src={card.image} alt={card.title} loading="lazy" />
+            </div>
+          )}
+        </div>
+
+        <div class="card-decorative-wave"></div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .promotional-cards-section {
+    padding: 5rem 2rem;
+    background: #fff;
+  }
+
+  .promotional-cards-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .promo-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 3px solid #000;
+    position: relative;
+    animation: floatUpDown 3s ease-in-out infinite;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @keyframes floatUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .promo-card:hover {
+    animation-play-state: paused;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  .card-header {
+    padding: 1rem 1.5rem;
+    position: relative;
+  }
+
+  .company-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+    background: #FFD700;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .company-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .company-tagline {
+    font-size: 0.625rem;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.05em;
+  }
+
+  .card-body {
+    padding: 2rem 1.5rem;
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+    position: relative;
+    flex: 1;
+  }
+
+  .card-body:has(.card-image) {
+    grid-template-columns: 1fr 140px;
+  }
+
+  .card-body:not(:has(.card-image)) {
+    grid-template-columns: 1fr;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card-description {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .card-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 900;
+    color: #dc2626;
+    margin: 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .card-price {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #dc2626;
+    line-height: 1;
+  }
+
+  .price-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-transform: uppercase;
+  }
+
+  .card-subtitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .promo-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .promo-button:hover {
+    background: #000;
+    color: #fff;
+    transform: translateX(4px);
+  }
+
+  .promo-button svg {
+    transition: transform 0.3s ease;
+  }
+
+  .promo-button:hover svg {
+    transform: translateX(4px);
+  }
+
+  .card-phone {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #1e3a8a;
+  }
+
+  .card-phone svg {
+    color: #FFD700;
+  }
+
+  .card-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid #000;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-decorative-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(135deg, #dc2626 0%, #1e3a8a 100%);
+    clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+    opacity: 0.1;
+  }
+
+  @media (max-width: 1024px) {
+    .promotional-cards-container {
+      grid-template-columns: 1fr;
+    }
+
+    .card-body {
+      grid-template-columns: 1fr 120px;
+    }
+
+    .card-image {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .promotional-cards-section {
+      padding: 3rem 1.5rem;
+    }
+
+    .card-body {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 200px;
+      margin: 0 auto;
+    }
+
+    .promo-button {
+      align-self: center;
+    }
+  }
+</style>

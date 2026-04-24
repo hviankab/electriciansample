@@ -11,47 +11,96 @@
         "subtitle": "Reliable, code-compliant electrical services for offices, retail spaces, restaurants, and industrial facilities.",
         "buttonText": "Request Free Estimate",
         "buttonHref": "/contact",
-        "backgroundImage": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
+        "backgroundImage": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg"
+      }
+    },
+    {
+      "component": "CommercialIntroSection",
+      "props": {
+        "eyebrow": "Commercial Electrical Services",
+        "title": "Professional Commercial Electrical Services in New York City and Surrounding Areas",
+        "description": "Looking for top-quality commercial electrical services in New York City? Whether it's a new construction project or you need system upgrades, our reliable electrical services ensure that your business stays powered and operational. From expert installations and seamless wiring to preventative maintenance, we provide a comprehensive range of commercial electrical services tailored to your needs.",
+        "additionalDescription": "Our team of certified electricians has extensive experience servicing a wide variety of commercial properties, including office buildings, retail spaces, restaurants, warehouses, and more. With a commitment to quality and efficiency, we're dedicated to providing fast, professional, and reliable service to businesses throughout New York City, including Manhattan, Brooklyn, Queens, the Bronx, and Staten Island.",
+        "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+        "imageAlt": "Commercial Electrician Working",
+        "imageCaption": "Commercial Electrical Services"
       }
     },
     {
       "component": "ServiceDetailSection",
       "props": {
-        "title": "Commercial Electrical Services",
-        "description": "Our commercial electrical services are designed to provide lasting reliability and safety for your business. We handle every project with precision — from initial assessment and system design to professional installation and final inspection.\n\nUsing high-quality materials, advanced techniques, and a skilled team, we ensure that every electrical system we install is durable, code-compliant, and built to withstand the demands of commercial use.",
-        "whyTitle": "Why Choose Our Commercial Electrical Services",
-        "whyDescription": "From small businesses to large commercial properties, we offer tailored solutions that meet your specific needs. With comprehensive warranties, post-installation inspections, and expert guidance, choosing our electrical services ensures peace of mind.",
-        "mainImage": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
-        "whyImages": [
-          "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-          "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg"
-        ],
-        "features": [
+        "serviceTabs": [
           {
-            "title": "Tailored Solutions & Focus",
-            "description": "We provide personalized electrical solutions for commercial projects, ensuring safety and reliability at every step."
-          },
-          {
-            "title": "Expert Craftsmanship & Quality",
-            "description": "Our certified team uses top-grade materials and proven techniques to deliver durable, long-lasting electrical systems."
-          }
-        ],
-        "serviceLinks": [
-          {
-            "title": "Commercial Electrical Services",
-            "href": "/commercial-electrical"
-          },
-          {
+            "id": "residential",
             "title": "Residential Electrical Services",
-            "href": "/residential-electrical"
+            "href": "/residential-electrical",
+            "description": "Our residential electrical services are designed to keep your home safe, efficient, and up to code. From simple repairs to complete rewiring projects, we handle every job with care and precision.\n\nWhether you need panel upgrades, lighting installation, or smart home integration, our experienced electricians deliver quality workmanship that you can trust for years to come.",
+            "whyTitle": "Why Choose Our Residential Electrical Services",
+            "whyDescription": "We understand that your home is your sanctuary. That's why we provide reliable, professional electrical services with minimal disruption to your daily life. With upfront pricing, clean work areas, and guaranteed satisfaction, we make electrical work stress-free.",
+            "mainImage": "/electricianimgs/AdobeStock_208314515.jpeg",
+            "whyImages": [
+              "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
+              "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg"
+            ],
+            "features": [
+              {
+                "title": "Safety First Approach",
+                "description": "We prioritize your family's safety with code-compliant installations and thorough safety inspections."
+              },
+              {
+                "title": "Reliable & Professional",
+                "description": "Our licensed electricians arrive on time, work efficiently, and leave your home cleaner than we found it."
+              }
+            ],
+            "buttonText": "View All Residential Services"
           },
           {
+            "id": "specialty",
             "title": "Specialty Services",
-            "href": "/specialty-services"
+            "href": "/specialty-services",
+            "description": "Our specialty electrical services cover unique and specialized installations that require expert knowledge and precision. From EV charger installations to landscape lighting and smart home systems, we have the expertise to handle complex projects.\n\nWe stay current with the latest technologies and techniques to provide cutting-edge solutions for your specialized electrical needs.",
+            "whyTitle": "Why Choose Our Specialty Services",
+            "whyDescription": "Specialty electrical work requires specialized knowledge and experience. Our team has extensive training in advanced electrical systems and stays updated on the latest technologies to provide expert installations and service.",
+            "mainImage": "/electricianimgs/jimmy-nilsson-masth-U3GiK1u5j24-unsplash.jpg",
+            "whyImages": [
+              "/electricianimgs/AdobeStock_327681318.jpeg",
+              "/electricianimgs/AdobeStock_209947609.jpeg"
+            ],
+            "features": [
+              {
+                "title": "Advanced Technology",
+                "description": "We specialize in cutting-edge electrical solutions including EV chargers, smart home systems, and energy-efficient installations."
+              },
+              {
+                "title": "Specialized Expertise",
+                "description": "Our technicians receive ongoing training in specialized electrical systems to deliver expert service."
+              }
+            ],
+            "buttonText": "View All Specialty Services"
           },
           {
+            "id": "emergency",
             "title": "Emergency Services",
-            "href": "/emergency"
+            "href": "/emergency",
+            "description": "Electrical emergencies don't wait for business hours. That's why we offer 24/7 emergency electrical services to keep you safe and restore power quickly. From power outages to electrical fires and urgent repairs, our emergency team responds fast.\n\nWhen you have an electrical emergency, every minute counts. Our experienced electricians are ready to respond immediately with the tools and expertise to resolve your emergency safely.",
+            "whyTitle": "Why Choose Our Emergency Services",
+            "whyDescription": "When disaster strikes, you need a reliable electrician who can respond immediately. Our 24/7 emergency service means we're always available when you need us most, with rapid response times and expert solutions.",
+            "mainImage": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
+            "whyImages": [
+              "/electricianimgs/AdobeStock_208314515.jpeg",
+              "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg"
+            ],
+            "features": [
+              {
+                "title": "24/7 Availability",
+                "description": "We're available around the clock, every day of the year, ready to respond to your electrical emergency."
+              },
+              {
+                "title": "Rapid Response",
+                "description": "Our emergency team responds quickly with fully-stocked vehicles to resolve your issue fast."
+              }
+            ],
+            "buttonText": "Contact Emergency Services"
           }
         ]
       }
@@ -73,7 +122,7 @@
           {
             "title": "Emergency & Standby Power",
             "description": "Generator installation and backup power systems to keep your business running.",
-            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
+            "image": "/electricianimgs/anton-dmitriev-kBKOaghy8mU-unsplash.jpg",
             "icon": "⚡",
             "href": "/commercial-electrical/emergency-standby-power"
           },
@@ -90,6 +139,40 @@
             "image": "/electricianimgs/jimmy-nilsson-masth-UovTD1dG-lA-unsplash.jpg",
             "icon": "🔋",
             "href": "/commercial-electrical/electrical-panels"
+          }
+        ]
+      }
+    },
+    {
+      "component": "PromotionalCardsSection",
+      "props": {
+        "cards": [
+          {
+            "title": "MAINTENANCE PLAN",
+            "price": "$14.33",
+            "priceLabel": "PER MONTH",
+            "description": "FOR AS LOW AS",
+            "buttonText": "BOOK NOW",
+            "buttonHref": "/contact",
+            "phoneNumber": "012-345-6789",
+            "backgroundColor": "#1e3a8a"
+          },
+          {
+            "title": "NO INTEREST NO PAYMENT",
+            "subtitle": "UNTIL 2026",
+            "description": "*WITH APPROVED FINANCING",
+            "buttonText": "LEARN MORE",
+            "buttonHref": "/financing",
+            "backgroundColor": "#dc2626"
+          },
+          {
+            "title": "$95",
+            "subtitle": "ELECTRICAL SERVICE CALL",
+            "description": "IF DONE",
+            "buttonText": "BOOK NOW",
+            "buttonHref": "/contact",
+            "phoneNumber": "012-345-6789",
+            "backgroundColor": "#1e3a8a"
           }
         ]
       }
@@ -180,60 +263,6 @@
       }
     },
     {
-      "component": "OurProjectsSection",
-      "props": {
-        "eyebrow": "RECENT PROJECTS",
-        "title": "Commercial Projects We've Completed",
-        "description": "See examples of our commercial electrical work across various industries and business types.",
-        "buttonText": "VIEW ALL PROJECTS",
-        "buttonHref": "/projects",
-        "projects": [
-          {
-            "title": "Office Building Rewiring",
-            "category": "Commercial",
-            "description": "Complete electrical system upgrade for a 10,000 sq ft office building [...]",
-            "image": "/electricianimgs/electrician-working-near-board-with-wires-installation-connection-electrics.jpg",
-            "href": "/projects/office-rewiring"
-          },
-          {
-            "title": "Restaurant Electrical",
-            "category": "Commercial",
-            "description": "New electrical installation for restaurant including kitchen equipment [...]",
-            "image": "/electricianimgs/male-electrician-working-electrical-panel-male-electrician-overalls.jpg",
-            "href": "/projects/restaurant"
-          },
-          {
-            "title": "Retail Store Lighting",
-            "category": "Commercial",
-            "description": "LED lighting retrofit and electrical upgrades for retail space [...]",
-            "image": "/electricianimgs/male-electrician-working-switchboard-with-fuses.jpg",
-            "href": "/projects/retail"
-          },
-          {
-            "title": "Warehouse Power Systems",
-            "category": "Industrial",
-            "description": "High-voltage power distribution for industrial warehouse facility [...]",
-            "image": "/electricianimgs/AdobeStock_327681318.jpeg",
-            "href": "/projects/warehouse"
-          },
-          {
-            "title": "Medical Office Electrical",
-            "category": "Commercial",
-            "description": "Specialized electrical systems for medical office with backup power [...]",
-            "image": "/electricianimgs/AdobeStock_439136266.jpeg",
-            "href": "/projects/medical"
-          },
-          {
-            "title": "Hotel Renovation",
-            "category": "Commercial",
-            "description": "Complete electrical renovation for boutique hotel property [...]",
-            "image": "/electricianimgs/AdobeStock_543922851.jpeg",
-            "href": "/projects/hotel"
-          }
-        ]
-      }
-    },
-    {
       "component": "ContactCTASection",
       "props": {
         "eyebrow": "GET A FREE QUOTE",
@@ -277,6 +306,23 @@
             "question": "Do you offer maintenance contracts?",
             "answer": "Yes, we offer preventive maintenance programs to keep your commercial electrical systems running safely and efficiently."
           }
+        ]
+      }
+    },
+    {
+      "component": "ServiceAreaSection",
+      "props": {
+        "title": "Commercial Electrical Services Across New York",
+        "description": "We provide professional commercial electrical services throughout the New York metropolitan area. Our licensed electricians serve businesses in all five boroughs and surrounding communities.",
+        "areas": [
+          "Manhattan",
+          "Brooklyn",
+          "Queens",
+          "Bronx",
+          "Staten Island",
+          "Long Island",
+          "Westchester",
+          "New Jersey"
         ]
       }
     }

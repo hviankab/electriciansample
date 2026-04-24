@@ -1,0 +1,261 @@
+---
+interface IncludedItem {
+  title: string;
+  description: string;
+}
+
+interface BenefitItem {
+  text: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
+  includedTitle?: string;
+  includedItems?: IncludedItem[];
+  benefitsTitle?: string;
+  benefitItems?: BenefitItem[];
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  eyebrow = "MAINTENANCE PLANS",
+  title = "Protect Your",
+  titleHighlight = "Electrical System",
+  description = "Regular maintenance is key to preventing costly repairs and ensuring the efficiency of your electrical system. At [Your Company Name], our Electrical Maintenance Plans are designed to keep your home or business running smoothly year-round.",
+  includedTitle = "What's Included in Our Maintenance Plans?",
+  includedItems = [],
+  benefitsTitle = "Why Invest in a Maintenance Plan?",
+  benefitItems = [],
+  buttonText = "LEARN MORE",
+  buttonHref = "/contact"
+} = Astro.props;
+---
+
+<section class="maintenance-plans-section">
+  <div class="maintenance-container">
+    <!-- Header -->
+    <div class="maintenance-header">
+      <div class="eyebrow-badge">
+        <span>{eyebrow}</span>
+      </div>
+      <h2 class="maintenance-title">
+        {title} <span class="title-highlight">{titleHighlight}</span> for the Long Term
+      </h2>
+      <p class="maintenance-description">{description}</p>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="maintenance-grid">
+      <!-- Left Column: What's Included -->
+      <div class="maintenance-column">
+        <h3 class="column-title">{includedTitle}</h3>
+        <div class="items-list">
+          {includedItems.map((item) => (
+            <div class="list-item">
+              <div class="check-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+              <div class="item-content">
+                <h4 class="item-title">{item.title}</h4>
+                <p class="item-description">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Column: Why Invest -->
+      <div class="maintenance-column">
+        <h3 class="column-title">{benefitsTitle}</h3>
+        <div class="items-list">
+          {benefitItems.map((benefit) => (
+            <div class="list-item">
+              <div class="check-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+              <div class="item-content">
+                <p class="benefit-text">{benefit.text}</p>
+              </div>
+            </div>
+          ))}
+          <a href={buttonHref} class="learn-more-btn">{buttonText}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .maintenance-plans-section {
+    padding: 6rem 2rem;
+    background: #f9fafb;
+    position: relative;
+  }
+
+  .maintenance-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .maintenance-header {
+    margin-bottom: 4rem;
+  }
+
+  .eyebrow-badge {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow-badge span {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .maintenance-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: #000;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .title-highlight {
+    color: #000;
+  }
+
+  .maintenance-description {
+    font-size: 1rem;
+    color: #000;
+    line-height: 1.7;
+    max-width: 900px;
+  }
+
+  /* Grid */
+  .maintenance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  .maintenance-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .column-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* Items List */
+  .items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .list-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .check-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: #FFD700;
+  }
+
+  .item-content {
+    flex: 1;
+  }
+
+  .item-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+
+  .item-description {
+    font-size: 0.95rem;
+    color: #000;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .benefit-text {
+    font-size: 1rem;
+    color: #000;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Button */
+  .learn-more-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    width: fit-content;
+  }
+
+  .learn-more-btn:hover {
+    background: #000;
+    color: #FFD700;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .maintenance-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .maintenance-plans-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .maintenance-header {
+      margin-bottom: 3rem;
+    }
+
+    .maintenance-title {
+      font-size: 1.75rem;
+    }
+
+    .column-title {
+      font-size: 1.25rem;
+    }
+  }
+</style>
